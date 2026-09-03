@@ -1,4 +1,4 @@
-import { readFile, writeFile, mkdir } from 'node:fs/promises';
+import { readFile, writeFile, mkdir, copyFile } from 'node:fs/promises';
 import { dirname, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
@@ -45,4 +45,8 @@ output = output.replace('__BUILT_AT__', new Date().toISOString().slice(0, 10));
 
 await mkdir(dirname(out), { recursive: true });
 await writeFile(out, output, 'utf8');
-console.log(`docs/index.html 생성 (${(output.length / 1024).toFixed(1)}KB)`);
+
+// OG 이미지는 인라인할 수 없으므로 파일로 복사한다 (크롤러가 절대 URL로 받아감)
+await copyFile(resolve(src, 'og.png'), resolve(root, 'docs/og.png'));
+
+console.log(`docs/index.html 생성 (${(output.length / 1024).toFixed(1)}KB) + docs/og.png`);

@@ -292,9 +292,16 @@
 
 ```
 spec/   요구사항·정책 문서 (이 문서)
-src/    웹 페이지 소스 (index.html, styles.css, app.js, data/requirements.json)
-docs/   빌드 산출물 — GitHub Pages 게시 대상 (docs/index.html)
+src/    웹 페이지 소스 (index.html, styles.css, app.js, data/requirements.json, og.png, hd-logo.svg)
+docs/   빌드 산출물 — GitHub Pages 게시 대상 (index.html, og.png)
 ```
+
+### 9.1 링크 미리보기 (OG)
+
+- 카카오톡·슬랙 등에서 링크를 붙였을 때 학교 로고가 뜨도록 OG 태그를 넣는다.
+- `og:image`는 **절대 URL**이어야 하고 크롤러 대부분이 SVG를 렌더링하지 않으므로,
+  원본 `hd-logo.svg`(내부에 PNG 임베드)에서 PNG를 뽑아 1200x630 규격으로 만들어 `og.png`로 둔다.
+- 이미지 파일은 인라인할 수 없으므로 빌드가 `src/og.png` → `docs/og.png` 로 복사한다.
 
 - 빌드: `npm run build` — `src`의 CSS/JS/데이터를 **단일 `docs/index.html`로 인라인**한다.
   (파일 1개면 GitHub Pages 경로·MIME 이슈가 없고, 로컬에서 파일을 열어도 그대로 동작)
