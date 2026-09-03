@@ -30,12 +30,15 @@ let output = html
     `<script>\n${escapeForScript(js.trim())}\n</script>`,
   );
 
-for (const [label, pattern] of [
-  ['styles.css', '<style>'],
-  ['requirements.json', '"sections"'],
-  ['app.js', 'STORAGE_KEY'],
+// 인라인 대상이 남아 있으면 치환이 실패한 것이다 (내용이 아니라 참조 여부로 검증)
+for (const [label, leftover] of [
+  ['styles.css', 'href="./styles.css"'],
+  ['app.js', 'src="./app.js"'],
 ]) {
-  if (!output.includes(pattern)) throw new Error(`인라인 실패: ${label}`);
+  if (output.includes(leftover)) throw new Error(`인라인 실패: ${label}`);
+}
+if (!/<script id="requirements-data" type="application\/json">\s*\S/.test(output)) {
+  throw new Error('인라인 실패: requirements.json');
 }
 
 output = output.replace('__BUILT_AT__', new Date().toISOString().slice(0, 10));
