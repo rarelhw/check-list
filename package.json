@@ -1,0 +1,10 @@
+{
+  "name": "check-list",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "숙명여대 교육대학원 교직이수 체크리스트",
+  "scripts": {
+    "build": "node scripts/build.mjs"
+  }
+}

@@ -1,0 +1,158 @@
+:root {
+  --bg: #f5f6f8;
+  --card: #ffffff;
+  --line: #e2e5ea;
+  --text: #1f2328;
+  --muted: #656d76;
+  --accent: #2b5cd9;
+  --ok-bg: #e7f5ec;
+  --ok-fg: #1a7f42;
+  --warn-bg: #fdf0e3;
+  --warn-fg: #a35b06;
+  --under-bg: #eaf0fd;
+  --under-fg: #2b5cd9;
+  --radius: 10px;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Pretendard",
+    "Malgun Gothic", system-ui, sans-serif;
+  font-size: 15px;
+  line-height: 1.6;
+}
+
+.wrap { max-width: 880px; margin: 0 auto; padding: 0 16px; }
+
+.page-head { background: #fff; border-bottom: 1px solid var(--line); padding: 28px 0 24px; }
+.page-head h1 { margin: 4px 0 6px; font-size: 26px; letter-spacing: -0.02em; }
+.eyebrow { margin: 0; color: var(--accent); font-size: 13px; font-weight: 700; }
+.lead { margin: 0; color: var(--muted); }
+
+main { padding: 20px 16px 40px; }
+
+.card {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 18px 20px;
+  margin-bottom: 16px;
+}
+.card > h2 { margin: 0 0 12px; font-size: 18px; letter-spacing: -0.01em; }
+.card > h2 .sub { font-size: 13px; font-weight: 400; color: var(--muted); margin-left: 8px; }
+
+.note { margin: 0 0 10px; color: var(--muted); font-size: 13px; }
+
+/* 요약 */
+.totals { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 12px; }
+.total {
+  flex: 1 1 200px; border: 1px solid var(--line); border-radius: 8px;
+  padding: 10px 12px; background: #fbfcfd;
+}
+.total b { display: block; font-size: 20px; letter-spacing: -0.02em; }
+.total span { color: var(--muted); font-size: 12px; }
+
+.progress { height: 8px; background: #e9ecf1; border-radius: 99px; overflow: hidden; margin-bottom: 14px; }
+.progress > i { display: block; height: 100%; background: var(--accent); transition: width .2s; }
+
+.badges { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 12px; }
+.badge {
+  font-size: 12px; padding: 3px 9px; border-radius: 99px;
+  background: var(--warn-bg); color: var(--warn-fg); font-weight: 600;
+}
+.badge.ok { background: var(--ok-bg); color: var(--ok-fg); }
+
+.todo { border-top: 1px dashed var(--line); padding-top: 12px; }
+.todo h3 { margin: 0 0 6px; font-size: 14px; }
+.todo ul { margin: 0; padding-left: 18px; }
+.todo li { margin-bottom: 3px; }
+.todo .done { color: var(--ok-fg); }
+
+/* 영역 */
+.group { margin-bottom: 14px; }
+.group-head { display: flex; align-items: baseline; gap: 8px; flex-wrap: wrap; margin-bottom: 6px; }
+.group-head h3 { margin: 0; font-size: 14px; }
+.group-head .hint { font-size: 12px; color: var(--muted); }
+
+ul.courses { list-style: none; margin: 0; padding: 0; }
+
+li.course {
+  display: flex; align-items: center; gap: 10px; flex-wrap: wrap;
+  padding: 8px 10px; border: 1px solid var(--line); border-radius: 8px; margin-bottom: 6px;
+  background: #fff;
+}
+li.course.checked { background: #fafdfb; border-color: #cfe7d8; }
+li.course.undergrad { background: #fafbff; border-color: #d5def7; }
+
+.course-main { flex: 1 1 220px; min-width: 0; }
+.course-name { font-weight: 600; }
+.course-meta { display: block; font-size: 12px; color: var(--muted); }
+
+.status-group { display: flex; border: 1px solid var(--line); border-radius: 7px; overflow: hidden; }
+.status-group button {
+  border: 0; background: #fff; color: var(--muted);
+  font: inherit; font-size: 12px; padding: 5px 10px; cursor: pointer;
+}
+.status-group button + button { border-left: 1px solid var(--line); }
+.status-group button[aria-pressed="true"] { background: var(--ok-bg); color: var(--ok-fg); font-weight: 700; }
+.status-group button[data-status="UNDERGRAD"][aria-pressed="true"] { background: var(--under-bg); color: var(--under-fg); }
+.status-group button[data-status="NONE"][aria-pressed="true"] { background: #eef0f3; color: var(--text); }
+
+input.memo {
+  flex: 1 1 150px; min-width: 120px;
+  border: 1px solid var(--line); border-radius: 7px; padding: 5px 8px;
+  font: inherit; font-size: 13px; color: var(--muted); background: #fff;
+}
+input.memo:focus { outline: 2px solid var(--accent); outline-offset: -1px; color: var(--text); }
+
+.remain {
+  margin-top: 12px; padding: 12px 14px; border-radius: 8px;
+  background: var(--warn-bg); color: var(--warn-fg); font-size: 14px;
+}
+.remain.ok { background: var(--ok-bg); color: var(--ok-fg); }
+.remain h3 { margin: 0 0 6px; font-size: 13px; text-transform: none; }
+.remain ul { margin: 0; padding-left: 18px; }
+
+.exempt { display: flex; align-items: flex-start; gap: 8px; margin-bottom: 12px; font-size: 14px; }
+.exempt input { margin-top: 5px; }
+
+/* 비교과 */
+.counter { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; padding: 8px 10px;
+  border: 1px solid var(--line); border-radius: 8px; margin-bottom: 6px; }
+.counter .course-main { flex: 1 1 240px; }
+.steps { display: flex; align-items: center; gap: 8px; }
+.steps button {
+  width: 28px; height: 28px; border: 1px solid var(--line); background: #fff;
+  border-radius: 6px; font: inherit; cursor: pointer; line-height: 1;
+}
+.steps b { min-width: 62px; text-align: center; font-size: 13px; }
+.steps b.ok { color: var(--ok-fg); }
+
+.doc { display: flex; gap: 8px; align-items: flex-start; padding: 6px 2px; }
+
+/* 푸터 */
+.page-foot { padding: 20px 16px 48px; color: var(--muted); font-size: 12px; }
+.page-foot p { margin: 0 0 6px; }
+.foot-actions { display: flex; align-items: center; gap: 12px; margin-top: 10px; }
+button.ghost {
+  border: 1px solid var(--line); background: #fff; color: var(--muted);
+  font: inherit; font-size: 12px; padding: 5px 12px; border-radius: 7px; cursor: pointer;
+}
+button.ghost:hover { color: #b3261e; border-color: #f0c4c0; }
+
+@media (max-width: 560px) {
+  li.course { align-items: flex-start; }
+  .status-group { width: 100%; }
+  .status-group button { flex: 1; }
+  input.memo { flex: 1 1 100%; }
+}
+
+@media print {
+  body { background: #fff; }
+  .status-group button[aria-pressed="false"], .foot-actions, .steps button { display: none; }
+  .card { break-inside: avoid; border-color: #999; }
+}

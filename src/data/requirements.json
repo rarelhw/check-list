@@ -1,0 +1,191 @@
+{
+  "version": 1,
+  "admissionYear": 2026,
+  "major": {
+    "name": "컴퓨터교육전공",
+    "certSubject": "정보·컴퓨터",
+    "certType": "중등학교 정교사(2급)"
+  },
+  "credits": {
+    "undergradBase": 34,
+    "majorTarget": 50,
+    "teachingTarget": 23
+  },
+  "grade": {
+    "major": 75,
+    "teaching": 80
+  },
+  "sections": [
+    {
+      "id": "subject-pedagogy",
+      "title": "교과교육영역",
+      "category": "MAJOR",
+      "requiredCredits": 6,
+      "note": "반드시 우리 교육대학원 과목으로 이수해야 함 (학부 인정 불가)",
+      "allowUndergrad": false,
+      "groups": [
+        {
+          "id": "sp-1",
+          "requiredCount": 3,
+          "courses": [
+            { "id": "sp-theory", "name": "교과교육론", "credits": 2 },
+            { "id": "sp-material", "name": "교과교재연구및지도법", "credits": 2 },
+            { "id": "sp-logic", "name": "논리및논술", "credits": 2 }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "basic-courses",
+      "title": "기본이수과목",
+      "category": "MAJOR",
+      "requiredCredits": 14,
+      "note": "컴퓨터교육전공은 6개 영역 7과목 이상. 학부에서 인정받은 과목을 대학원에서 중복 이수하면 대학원 과목만 인정",
+      "allowUndergrad": true,
+      "groups": [
+        {
+          "id": "bc-1",
+          "label": "(1) 컴퓨터(정보)교육론, 프로그래밍",
+          "hint": "3과목 중 택2",
+          "requiredCount": 2,
+          "courses": [
+            { "id": "bc-info", "name": "정보·컴퓨터교육론", "code": "21024176", "credits": 2 },
+            { "id": "bc-prog", "name": "프로그래밍교육론", "code": "21023738", "credits": 2 },
+            { "id": "bc-proglang", "name": "프로그래밍언어교육론", "code": "21023740", "credits": 2 }
+          ]
+        },
+        {
+          "id": "bc-2",
+          "label": "(2) 알고리즘, 이산수학, 인공지능",
+          "hint": "택1",
+          "requiredCount": 1,
+          "courses": [
+            { "id": "bc-algo", "name": "알고리즘교육론", "code": "21023741", "credits": 2 },
+            { "id": "bc-ai", "name": "인공지능교육론", "code": "21060829", "credits": 2 }
+          ]
+        },
+        {
+          "id": "bc-3",
+          "label": "(3) 자료구조, 데이터베이스",
+          "hint": "택1",
+          "requiredCount": 1,
+          "courses": [
+            { "id": "bc-db", "name": "데이타베이스교육론", "code": "21023736", "credits": 2 }
+          ]
+        },
+        {
+          "id": "bc-4",
+          "label": "(4) 운영체제, 네트워크",
+          "hint": "택1",
+          "requiredCount": 1,
+          "courses": [
+            { "id": "bc-os", "name": "운영체제교육론", "code": "21023733", "credits": 2 },
+            { "id": "bc-network", "name": "컴퓨터네트워크교육론", "code": "21023735", "credits": 2 }
+          ]
+        },
+        {
+          "id": "bc-5",
+          "label": "(5) 컴퓨터구조, 논리회로",
+          "hint": "택1",
+          "requiredCount": 1,
+          "courses": [
+            { "id": "bc-arch", "name": "컴퓨터구조교육론", "code": "21023734", "credits": 2 }
+          ]
+        },
+        {
+          "id": "bc-6",
+          "label": "(6) 정보통신윤리, 소프트웨어공학",
+          "hint": "택1",
+          "requiredCount": 1,
+          "courses": [
+            { "id": "bc-se-proc", "name": "소프트웨어공학처리론", "code": "21024131", "credits": 2 },
+            { "id": "bc-se-edu", "name": "소프트웨어공학교육론", "code": "21023737", "credits": 2 },
+            { "id": "bc-ethics", "name": "정보통신윤리", "code": "21024130", "credits": 2 }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "teaching-theory",
+      "title": "교직이론",
+      "category": "TEACHING",
+      "requiredCredits": 12,
+      "note": "9개 과목 중 6과목 이상 이수",
+      "allowUndergrad": false,
+      "groups": [
+        {
+          "id": "tt-1",
+          "hint": "9과목 중 택6",
+          "requiredCount": 6,
+          "courses": [
+            { "id": "tt-intro", "name": "교육학개론", "credits": 2 },
+            { "id": "tt-philosophy", "name": "교육철학및교육사", "credits": 2 },
+            { "id": "tt-curriculum", "name": "교육과정", "credits": 2 },
+            { "id": "tt-evaluation", "name": "교육평가", "credits": 2 },
+            { "id": "tt-method", "name": "교육방법및공학", "credits": 2 },
+            { "id": "tt-psychology", "name": "교육심리", "credits": 2 },
+            { "id": "tt-society", "name": "교육사회", "credits": 2 },
+            { "id": "tt-admin", "name": "교육행정및경영", "credits": 2 },
+            { "id": "tt-guidance", "name": "생활지도및상담", "credits": 2 }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "teaching-literacy",
+      "title": "교직소양",
+      "category": "TEACHING",
+      "requiredCredits": 7,
+      "note": "4과목 모두 필수. 디지털교육은 24학번부터 필수 이수",
+      "allowUndergrad": false,
+      "groups": [
+        {
+          "id": "tl-1",
+          "requiredCount": 4,
+          "courses": [
+            { "id": "tl-special", "name": "특수교육학개론", "credits": 2 },
+            { "id": "tl-practice", "name": "교직실무", "credits": 2 },
+            { "id": "tl-violence", "name": "학교폭력예방및학생의이해", "credits": 2, "aka": "구 학교폭력예방의이론과실제" },
+            { "id": "tl-digital", "name": "디지털교육", "credits": 1, "aka": "2024년도 신설과목" }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "practicum",
+      "title": "교육실습",
+      "category": "TEACHING",
+      "requiredCredits": 4,
+      "note": "교육봉사는 각 30시간 / 총 60시간 이상, 교육대학원 입학 후 활동만 인정",
+      "allowUndergrad": false,
+      "exemptible": true,
+      "exemptLabel": "2급 이상 교원자격증 소지 — 교육실습영역 면제 신청",
+      "exemptNote": "면제 신청 시 학교현장실습·교육봉사1·2가 모두 P 처리되며, 해당 과목을 수강신청하지 않는다",
+      "groups": [
+        {
+          "id": "pr-1",
+          "requiredCount": 3,
+          "courses": [
+            { "id": "pr-field", "name": "교육실습(학교현장실습)", "code": "21024173", "credits": 2, "aka": "전일제 4주 이상" },
+            { "id": "pr-service1", "name": "교육봉사1", "code": "21024174", "credits": 1, "aka": "30시간" },
+            { "id": "pr-service2", "name": "교육봉사2", "code": "21024175", "credits": 1, "aka": "30시간" }
+          ]
+        }
+      ]
+    }
+  ],
+  "extracurricular": {
+    "title": "비교과 이수 요건",
+    "note": "숙명포털 > 학사 > 졸업 > 교직이수표에서 이수 결과 확인",
+    "counters": [
+      { "id": "ec-aptitude", "name": "교직 적성 및 인성검사", "required": 2, "unit": "회", "note": "적격판정 2회 이상 (13학번부터), 한 학기 1회만 응시 가능" },
+      { "id": "ec-cpr", "name": "응급처치 및 심폐소생술", "required": 2, "unit": "회", "note": "2017년 8월 이후 졸업자는 2회 필수" },
+      { "id": "ec-gender", "name": "성인지 감수성 교육", "required": 2, "unit": "회", "note": "2022년 8월 이후 졸업자는 2회 필수, 1년 1회 원칙" }
+    ],
+    "documents": [
+      { "id": "ec-drug", "name": "마약류 중독여부", "note": "의사의 진단서 또는 건강검진 결과 통보서 제출" },
+      { "id": "ec-crime", "name": "성범죄경력 조회", "note": "결격 사유가 없어야 함" }
+    ]
+  },
+  "source": "2026-1학기 교육대학원 학사 & 교직 가이드 (숙명여대 교육대학원) p.23~24, 25~29, 30~31, 34~40, 41"
+}

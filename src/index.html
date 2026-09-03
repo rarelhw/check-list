@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>교직이수 체크리스트</title>
+<link rel="stylesheet" href="./styles.css">
+</head>
+<body>
+<header class="page-head">
+  <div class="wrap">
+    <p class="eyebrow" id="head-eyebrow"></p>
+    <h1>교직이수 체크리스트</h1>
+    <p class="lead">들은 수업을 체크하면, 남은 과목과 조건을 영역별로 알려줍니다.</p>
+  </div>
+</header>
+
+<main class="wrap">
+  <section class="card summary" aria-labelledby="summary-title">
+    <h2 id="summary-title">진행 현황</h2>
+    <div class="totals" id="totals"></div>
+    <div class="progress" id="overall-progress"></div>
+    <div class="badges" id="summary-badges"></div>
+    <div class="todo" id="summary-todo"></div>
+  </section>
+
+  <div id="sections"></div>
+
+  <section class="card" aria-labelledby="grade-title">
+    <h2 id="grade-title">성적기준</h2>
+    <p class="note" id="grade-note"></p>
+    <p class="note">교육대학원에서 취득한 성적만 포함됩니다. 실제 평균은 숙명포털 &gt; 학사 &gt; 졸업 &gt; 교직이수표에서 확인하세요.</p>
+  </section>
+</main>
+
+<footer class="wrap page-foot">
+  <p id="source-note"></p>
+  <p>이 페이지의 체크 상태는 이 브라우저에만 저장됩니다. 서버로 전송되지 않습니다.</p>
+  <p class="foot-actions">
+    <button type="button" id="reset" class="ghost">전체 초기화</button>
+    <span class="build-date">빌드: __BUILT_AT__</span>
+  </p>
+</footer>
+
+<script id="requirements-data" type="application/json"></script>
+<script src="./app.js"></script>
+</body>
+</html>
