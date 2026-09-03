@@ -95,7 +95,7 @@ li.course {
 li.course.checked { background: #fafdfb; border-color: #cfe7d8; }
 li.course.undergrad { background: #fafbff; border-color: #d5def7; }
 
-.course-main { flex: 1 1 220px; min-width: 0; }
+.course-main { flex: 1 1 240px; min-width: 0; }
 .course-name { font-weight: 600; }
 .course-meta { display: block; font-size: 12px; color: var(--muted); }
 
@@ -108,13 +108,6 @@ li.course.undergrad { background: #fafbff; border-color: #d5def7; }
 .status-group button[aria-pressed="true"] { background: var(--ok-bg); color: var(--ok-fg); font-weight: 700; }
 .status-group button[data-status="UNDERGRAD"][aria-pressed="true"] { background: var(--under-bg); color: var(--under-fg); }
 .status-group button[data-status="NONE"][aria-pressed="true"] { background: #eef0f3; color: var(--text); }
-
-input.memo {
-  flex: 1 1 150px; min-width: 120px;
-  border: 1px solid var(--line); border-radius: 7px; padding: 5px 8px;
-  font: inherit; font-size: 13px; color: var(--muted); background: #fff;
-}
-input.memo:focus { outline: 2px solid var(--accent); outline-offset: -1px; color: var(--text); }
 
 .remain {
   margin-top: 12px; padding: 12px 14px; border-radius: 8px;
@@ -155,7 +148,6 @@ button.ghost:hover { color: #b3261e; border-color: #f0c4c0; }
   li.course { align-items: flex-start; }
   .status-group { width: 100%; }
   .status-group button { flex: 1; }
-  input.memo { flex: 1 1 100%; }
 }
 
 @media print {
@@ -221,7 +213,6 @@ button.ghost:hover { color: #b3261e; border-color: #f0c4c0; }
       if (key === 'class') node.className = value;
       else if (key === 'text') node.textContent = value;
       else if (key === 'onclick') node.addEventListener('click', value);
-      else if (key === 'oninput') node.addEventListener('input', value);
       else if (key.startsWith('data-') || key.startsWith('aria-')) node.setAttribute(key, value);
       else node[key] = value;
     }
@@ -263,8 +254,7 @@ button.ghost:hover { color: #b3261e; border-color: #f0c4c0; }
   /* ---------- 판정 ---------- */
 
   function statusOf(id) {
-    const item = state.items[id];
-    return (item && item.status) || NONE;
+    return state.items[id] || NONE;
   }
 
   function isExempt(section) {
@@ -391,9 +381,7 @@ button.ghost:hover { color: #b3261e; border-color: #f0c4c0; }
           'data-status': option.status,
           'aria-pressed': String(current === option.status),
           onclick: () => {
-            const item = state.items[course.id] || { status: NONE, memo: '' };
-            item.status = option.status;
-            state.items[course.id] = item;
+            state.items[course.id] = option.status;
             saveState();
             render();
           },
@@ -419,19 +407,6 @@ button.ghost:hover { color: #b3261e; border-color: #f0c4c0; }
         el('span', { class: 'course-meta', text: meta }),
       ),
       statusButtons(section, course),
-      el('input', {
-        class: 'memo',
-        type: 'text',
-        placeholder: '메모 (예: 2학기 예정)',
-        value: (state.items[course.id] || {}).memo || '',
-        'aria-label': `${course.name} 메모`,
-        oninput: (event) => {
-          const item = state.items[course.id] || { status: NONE, memo: '' };
-          item.memo = event.target.value;
-          state.items[course.id] = item;
-          saveState();
-        },
-      }),
     );
   }
 

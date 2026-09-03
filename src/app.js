@@ -14,7 +14,6 @@
       if (key === 'class') node.className = value;
       else if (key === 'text') node.textContent = value;
       else if (key === 'onclick') node.addEventListener('click', value);
-      else if (key === 'oninput') node.addEventListener('input', value);
       else if (key.startsWith('data-') || key.startsWith('aria-')) node.setAttribute(key, value);
       else node[key] = value;
     }
@@ -56,8 +55,7 @@
   /* ---------- 판정 ---------- */
 
   function statusOf(id) {
-    const item = state.items[id];
-    return (item && item.status) || NONE;
+    return state.items[id] || NONE;
   }
 
   function isExempt(section) {
@@ -184,9 +182,7 @@
           'data-status': option.status,
           'aria-pressed': String(current === option.status),
           onclick: () => {
-            const item = state.items[course.id] || { status: NONE, memo: '' };
-            item.status = option.status;
-            state.items[course.id] = item;
+            state.items[course.id] = option.status;
             saveState();
             render();
           },
@@ -212,19 +208,6 @@
         el('span', { class: 'course-meta', text: meta }),
       ),
       statusButtons(section, course),
-      el('input', {
-        class: 'memo',
-        type: 'text',
-        placeholder: '메모 (예: 2학기 예정)',
-        value: (state.items[course.id] || {}).memo || '',
-        'aria-label': `${course.name} 메모`,
-        oninput: (event) => {
-          const item = state.items[course.id] || { status: NONE, memo: '' };
-          item.memo = event.target.value;
-          state.items[course.id] = item;
-          saveState();
-        },
-      }),
     );
   }
 
