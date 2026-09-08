@@ -33,6 +33,13 @@ body {
 .eyebrow { margin: 0; color: var(--accent); font-size: 13px; font-weight: 700; }
 .lead { margin: 0; color: var(--muted); }
 
+.tabs { display: flex; gap: 6px; margin-top: 12px; }
+.tabs a {
+  font-size: 13px; padding: 5px 12px; border-radius: 99px; text-decoration: none;
+  border: 1px solid var(--line); color: var(--muted); background: #fff;
+}
+.tabs a.on { background: var(--accent); border-color: var(--accent); color: #fff; font-weight: 600; }
+
 main { padding: 20px 16px 40px; }
 
 .card {

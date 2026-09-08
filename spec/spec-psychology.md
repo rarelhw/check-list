@@ -111,8 +111,14 @@ src/data/requirements-psychology.json  상담교육전공 (신규)
 
 - `sections` 배열에서 `subject-pedagogy`(교과교육영역)를 제거하고 `basic-courses`를 상담교육 표로 교체한다.
 - `teaching-theory` / `teaching-literacy` / `practicum` / `extracurricular` 는 컴퓨터교육 데이터와 동일하다.
-- `credits.undergradBase` 값만 전공별로 다르게 둔다.
-- 페이지를 별도 URL로 낼지, 한 페이지에서 전공을 고르게 할지는 결정 필요. *(→ 오픈 이슈 P-3)*
+- `credits.undergradBase` 값만 전공별로 다르게 둔다. 상담교육전공은 `0`이며, 이 경우 화면에
+  `학부 인정학점 확인 필요`로 표시하고 대학원 이수분만 집계한다.
+- **`storageKey` 를 전공별로 분리한다.** 두 페이지가 같은 오리진(`rarelhw.github.io`)이고
+  교직과목 항목 id가 공유되므로, 키를 나누지 않으면 한쪽 체크가 다른 쪽에 그대로 나타난다.
+  - 컴퓨터교육: `sm-teaching-checklist:v1` (기존 값 유지 — 저장된 체크를 잃지 않기 위해)
+  - 상담교육: `sm-teaching-checklist:psychology:v1`
+- 빌드는 같은 `src/index.html` 템플릿으로 두 페이지를 찍는다
+  (`docs/index.html`, `docs/psychology.html`). 상단 탭으로 서로 이동한다.
 
 ## 5. 오픈 이슈
 
@@ -120,7 +126,7 @@ src/data/requirements-psychology.json  상담교육전공 (신규)
 | --- | --- | --- |
 | P-1 | `상담실습` 인정과목이 `개편 예정` 상태 — 학수번호·과목명 미확정 | 항목은 두고 `학교 확인 필요` 표기, 교학팀 확인 후 확정 |
 | P-2 | 상담교육전공의 학부 기본 인정학점 (컴퓨터교육은 34학점) | 교직이수표의 `이수학점`으로 역산해서 확정 |
-| P-3 | 전공별 페이지 분리 방식 (별도 HTML vs 한 페이지에서 전공 선택) | 별도 HTML(`docs/psychology.html`) 우선 |
+| ~~P-3~~ | 전공별 페이지 분리 방식 | **확정: 별도 HTML `docs/psychology.html` + 상단 탭** (2026-09-08) |
 | P-4 | 기본이수 (2)분야를 실제로 `택6`으로 보는 게 맞는지 (기준표는 `5영역 7과목`인데 상담 표에는 분야가 (1)(2) 둘뿐) | 상담실습 1 + 나머지 6 = 7과목으로 구현, 교학팀 확인 |
 | P-5 | `21023153` 교과목명이 1급 표에는 `진로상담지도`, 기본이수 표에는 `진로상담`으로 다르게 적혀 있음 | `진로상담지도`로 표기, 확인 후 확정 |
 | P-6 | 전문상담교사(1급) 트랙을 페이지에 포함할지 | v1 제외 (부록 참조) |

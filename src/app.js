@@ -1,7 +1,8 @@
 (async function () {
   'use strict';
 
-  const STORAGE_KEY = 'sm-teaching-checklist:v1';
+  // 전공별로 키를 분리한다. 두 페이지가 같은 오리진이라 키를 공유하면 교직과목 체크가 섞인다.
+  const DEFAULT_STORAGE_KEY = 'sm-teaching-checklist:v1';
   const NONE = 'NONE';
   const GRAD = 'GRAD';
   const UNDERGRAD = 'UNDERGRAD';
@@ -35,7 +36,7 @@
 
   function loadState() {
     try {
-      const raw = localStorage.getItem(STORAGE_KEY);
+      const raw = localStorage.getItem(storageKey);
       return raw ? Object.assign(emptyState(), JSON.parse(raw)) : emptyState();
     } catch (err) {
       // 사생활 보호 모드 등에서 저장소 접근이 막혀도 페이지는 동작해야 한다
@@ -46,7 +47,7 @@
   function saveState() {
     state.updatedAt = new Date().toISOString();
     try {
-      localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
+      localStorage.setItem(storageKey, JSON.stringify(state));
     } catch (err) {
       /* 저장 실패는 무시 */
     }
@@ -97,10 +98,12 @@
     for (const g of evaluated.groups) {
       if (g.need === 0) continue;
       const names = g.rest.map((c) => c.name).join(', ');
-      if (g.group.label) {
+      const label = g.group.label ? `${g.group.label} — ` : '';
+      if (g.group.courses.length === g.group.requiredCount) {
+        // 전량 필수 그룹은 '택N' 문구가 어색하다 ((1) 상담실습 — 상담실습 중 택1)
+        lines.push(`${label}남은 ${g.need}과목: ${names}`);
+      } else if (g.group.label) {
         lines.push(`${g.group.label} — ${g.need}과목 필요 · ${names} 중 택${g.need}`);
-      } else if (g.group.courses.length === g.group.requiredCount) {
-        lines.push(`남은 ${g.need}과목 — ${names}`);
       } else {
         lines.push(
           `${g.group.requiredCount}과목 중 ${g.done}과목 이수 · ${g.need}과목 더 필요 — ${names} 중 택${g.need}`,
@@ -391,7 +394,11 @@
         'div',
         { class: 'total' },
         el('b', { text: `${major} / ${data.credits.majorTarget}학점` }),
-        el('span', { text: `전공 — 학부 인정 ${data.credits.undergradBase}학점 + 대학원 이수분` }),
+        el('span', {
+          text: data.credits.undergradBase
+            ? `전공 — 학부 인정 ${data.credits.undergradBase}학점 + 대학원 이수분`
+            : '전공 — 대학원 이수분만 집계 (학부 인정학점 확인 필요)',
+        }),
       ),
       el(
         'div',
@@ -456,10 +463,17 @@
   /* ---------- 시작 ---------- */
 
   const data = await loadData();
+  const storageKey = data.storageKey || DEFAULT_STORAGE_KEY;
   let state = loadState();
 
-  document.getElementById('head-eyebrow').textContent =
-    `${data.admissionYear}학년도 입학자 · ${data.major.name} · ${data.major.certType} · 표시과목 ${data.major.certSubject}`;
+  document.getElementById('head-eyebrow').textContent = [
+    `${data.admissionYear}학년도 입학자`,
+    data.major.name,
+    data.major.certType,
+    data.major.certSubject ? `표시과목 ${data.major.certSubject}` : null,
+  ]
+    .filter(Boolean)
+    .join(' · ');
   document.getElementById('grade-note').textContent =
     `전공과목 평균 ${data.grade.major}/100 이상 · 교직과목 평균 ${data.grade.teaching}/100 이상`;
   document.getElementById('source-note').textContent = `근거: ${data.source}`;

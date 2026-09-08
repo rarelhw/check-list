@@ -1,14 +1,14 @@
 {
   "version": 1,
   "admissionYear": 2026,
-  "storageKey": "sm-teaching-checklist:v1",
+  "storageKey": "sm-teaching-checklist:psychology:v1",
   "major": {
-    "name": "컴퓨터교육전공",
-    "certSubject": "정보·컴퓨터",
-    "certType": "중등학교 정교사(2급)"
+    "name": "상담교육전공",
+    "certSubject": "",
+    "certType": "전문상담교사(2급)"
   },
   "credits": {
-    "undergradBase": 34,
+    "undergradBase": 0,
     "majorTarget": 50,
     "teachingTarget": 23
   },
@@ -18,160 +18,91 @@
   },
   "sections": [
     {
-      "id": "subject-pedagogy",
-      "title": "교과교육영역",
-      "category": "MAJOR",
-      "requiredCredits": 6,
-      "note": "반드시 우리 교육대학원 과목으로 이수해야 함 (학부 인정 불가)",
-      "allowUndergrad": false,
-      "groups": [
-        {
-          "id": "sp-1",
-          "requiredCount": 3,
-          "courses": [
-            {
-              "id": "sp-theory",
-              "name": "교과교육론",
-              "credits": 2
-            },
-            {
-              "id": "sp-material",
-              "name": "교과교재연구및지도법",
-              "credits": 2
-            },
-            {
-              "id": "sp-logic",
-              "name": "논리및논술",
-              "credits": 2
-            }
-          ]
-        }
-      ]
-    },
-    {
       "id": "basic-courses",
       "title": "기본이수과목",
       "category": "MAJOR",
       "requiredCredits": 14,
-      "note": "컴퓨터교육전공은 6개 영역 7과목 이상. 학부에서 인정받은 과목을 대학원에서 중복 이수하면 대학원 과목만 인정",
+      "note": "상담교육전공은 교과교육영역이 없고 교과내용영역만 50학점 이상. 상담실습은 2026학년도 입학자부터 필수",
       "allowUndergrad": true,
       "groups": [
         {
-          "id": "bc-1",
-          "label": "(1) 컴퓨터(정보)교육론, 프로그래밍",
-          "hint": "3과목 중 택2",
-          "requiredCount": 2,
+          "id": "pc-1",
+          "label": "(1) 상담실습",
+          "hint": "필수",
+          "requiredCount": 1,
           "courses": [
             {
-              "id": "bc-info",
-              "name": "정보·컴퓨터교육론",
-              "code": "21024176",
-              "credits": 2
-            },
-            {
-              "id": "bc-prog",
-              "name": "프로그래밍교육론",
-              "code": "21023738",
-              "credits": 2
-            },
-            {
-              "id": "bc-proglang",
-              "name": "프로그래밍언어교육론",
-              "code": "21023740",
-              "credits": 2
+              "id": "pc-practice",
+              "name": "상담실습",
+              "credits": 2,
+              "aka": "인정과목 개편 예정 — 학수번호 미정, 교학팀 확인 필요"
             }
           ]
         },
         {
-          "id": "bc-2",
-          "label": "(2) 알고리즘, 이산수학, 인공지능",
-          "hint": "택1",
-          "requiredCount": 1,
+          "id": "pc-2",
+          "label": "(2) 상담·심리 지정과목",
+          "hint": "10과목 중 택6",
+          "requiredCount": 6,
           "courses": [
             {
-              "id": "bc-algo",
-              "name": "알고리즘교육론",
-              "code": "21023741",
+              "id": "pc-intro",
+              "name": "심리학개론",
+              "code": "21060925",
               "credits": 2
             },
             {
-              "id": "bc-ai",
-              "name": "인공지능교육론",
-              "code": "21060829",
-              "credits": 2
-            }
-          ]
-        },
-        {
-          "id": "bc-3",
-          "label": "(3) 자료구조, 데이터베이스",
-          "hint": "택1",
-          "requiredCount": 1,
-          "courses": [
-            {
-              "id": "bc-db",
-              "name": "데이타베이스교육론",
-              "code": "21023736",
-              "credits": 2
-            }
-          ]
-        },
-        {
-          "id": "bc-4",
-          "label": "(4) 운영체제, 네트워크",
-          "hint": "택1",
-          "requiredCount": 1,
-          "courses": [
-            {
-              "id": "bc-os",
-              "name": "운영체제교육론",
-              "code": "21023733",
+              "id": "pc-test",
+              "name": "심리검사실습",
+              "code": "21023151",
               "credits": 2
             },
             {
-              "id": "bc-network",
-              "name": "컴퓨터네트워크교육론",
-              "code": "21023735",
-              "credits": 2
-            }
-          ]
-        },
-        {
-          "id": "bc-5",
-          "label": "(5) 컴퓨터구조, 논리회로",
-          "hint": "택1",
-          "requiredCount": 1,
-          "courses": [
-            {
-              "id": "bc-arch",
-              "name": "컴퓨터구조교육론",
-              "code": "21023734",
-              "credits": 2
-            }
-          ]
-        },
-        {
-          "id": "bc-6",
-          "label": "(6) 정보통신윤리, 소프트웨어공학",
-          "hint": "택1",
-          "requiredCount": 1,
-          "courses": [
-            {
-              "id": "bc-se-proc",
-              "name": "소프트웨어공학처리론",
-              "code": "21024131",
+              "id": "pc-personality",
+              "name": "성격심리",
+              "code": "21023152",
               "credits": 2
             },
             {
-              "id": "bc-se-edu",
-              "name": "소프트웨어공학교육론",
-              "code": "21023737",
+              "id": "pc-special",
+              "name": "특수아상담",
+              "code": "21023353",
               "credits": 2
             },
             {
-              "id": "bc-ethics",
-              "name": "정보통신윤리",
-              "code": "21024130",
+              "id": "pc-group",
+              "name": "집단상담실습",
+              "code": "21023149",
+              "credits": 2
+            },
+            {
+              "id": "pc-family",
+              "name": "가족상담",
+              "code": "21023154",
+              "credits": 2
+            },
+            {
+              "id": "pc-career",
+              "name": "진로상담지도",
+              "code": "21023153",
+              "credits": 2
+            },
+            {
+              "id": "pc-theory",
+              "name": "상담이론과실제",
+              "code": "21023160",
+              "credits": 2
+            },
+            {
+              "id": "pc-youth",
+              "name": "청소년심리",
+              "code": "21060924",
+              "credits": 2
+            },
+            {
+              "id": "pc-abnormal",
+              "name": "이상심리",
+              "code": "21023159",
               "credits": 2
             }
           ]
@@ -283,11 +214,11 @@
       "title": "교육실습",
       "category": "TEACHING",
       "requiredCredits": 4,
-      "note": "교육봉사는 각 30시간 / 총 60시간 이상, 교육대학원 입학 후 활동만 인정",
+      "note": "실습교는 상담실이 있는 초·중·고·특수학교. 교육봉사는 각 30시간 / 총 60시간 이상, 교육대학원 입학 후 활동만 인정",
       "allowUndergrad": false,
       "exemptible": true,
-      "exemptLabel": "2급 이상 교원자격증 소지 — 교육실습영역 면제 신청",
-      "exemptNote": "면제 신청 시 학교현장실습·교육봉사1·2가 모두 P 처리되며, 해당 과목을 수강신청하지 않는다",
+      "exemptLabel": "교육실습영역 면제 신청 대상 (교원자격증 또는 상담 경력)",
+      "exemptNote": "2급 이상 교원자격증 소지자, 또는 상담관련자격증(청소년상담사 / 상담심리사 2급 이상 / 2급 전문상담사) 소지 + 관련 업무경력 1년 이상. 면제 시 3과목 모두 P 처리",
       "groups": [
         {
           "id": "pr-1",
