@@ -59,17 +59,20 @@
     return state.items[id] || NONE;
   }
 
-  function isExempt(section) {
-    return Boolean(section.exemptible && state.practicumExempt);
+  // 면제는 영역 전체(교육실습) 또는 특정 그룹(상담실습)에만 걸릴 수 있다
+  function isExempt(section, group) {
+    const exempt = section.exempt;
+    if (!exempt || !state[exempt.key]) return false;
+    return !exempt.groupId || (group != null && exempt.groupId === group.id);
   }
 
-  function isDone(section, courseId) {
-    return isExempt(section) || statusOf(courseId) !== NONE;
+  function isDone(section, group, course) {
+    return isExempt(section, group) || statusOf(course.id) !== NONE;
   }
 
   function evalGroup(section, group) {
-    const done = group.courses.filter((c) => isDone(section, c.id));
-    const rest = group.courses.filter((c) => !isDone(section, c.id));
+    const done = group.courses.filter((c) => isDone(section, group, c));
+    const rest = group.courses.filter((c) => !isDone(section, group, c));
     return {
       group,
       done: done.length,
@@ -91,11 +94,12 @@
   }
 
   function remainLines(section, evaluated) {
-    if (isExempt(section)) {
-      return ['교원자격증 소지 면제 적용 — 학교현장실습·교육봉사1·2 모두 P 처리됩니다.'];
-    }
     const lines = [];
     for (const g of evaluated.groups) {
+      if (isExempt(section, g.group)) {
+        lines.push(`${g.group.label ? `${g.group.label} — ` : ''}면제 적용`);
+        continue;
+      }
       if (g.need === 0) continue;
       const names = g.rest.map((c) => c.name).join(', ');
       const label = g.group.label ? `${g.group.label} — ` : '';
@@ -132,7 +136,7 @@
       if (section.category !== 'TEACHING') continue;
       for (const group of section.groups) {
         for (const course of group.courses) {
-          if (isDone(section, course.id)) earned += course.credits;
+          if (isDone(section, group, course)) earned += course.credits;
         }
       }
     }
@@ -164,7 +168,7 @@
 
   /* ---------- 렌더 ---------- */
 
-  function statusButtons(section, course) {
+  function statusButtons(section, group, course) {
     const options = [
       { status: NONE, label: '미이수' },
       { status: GRAD, label: section.allowUndergrad ? '대학원 이수' : '이수' },
@@ -172,7 +176,7 @@
     if (section.allowUndergrad) options.push({ status: UNDERGRAD, label: '학부 인정' });
 
     const current = statusOf(course.id);
-    const disabled = isExempt(section);
+    const disabled = isExempt(section, group);
 
     return el(
       'div',
@@ -194,11 +198,11 @@
     );
   }
 
-  function courseRow(section, course) {
+  function courseRow(section, group, course) {
     const status = statusOf(course.id);
     const meta = [course.code, `${course.credits}학점`, course.term, course.aka].filter(Boolean).join(' · ');
     const classes = ['course'];
-    if (isExempt(section) || status === GRAD) classes.push('checked');
+    if (isExempt(section, group) || status === GRAD) classes.push('checked');
     if (status === UNDERGRAD) classes.push('undergrad');
 
     return el(
@@ -210,19 +214,23 @@
         el('span', { class: 'course-name', text: course.name }),
         el('span', { class: 'course-meta', text: meta }),
       ),
-      statusButtons(section, course),
+      statusButtons(section, group, course),
     );
   }
 
   function remainBox(section, evaluated) {
     const lines = remainLines(section, evaluated);
     const ok = evaluated.satisfied;
+    const exemptApplied = Boolean(section.exempt && state[section.exempt.key]);
     return el(
       'div',
       { class: ok ? 'remain ok' : 'remain' },
       el('h3', { text: ok ? '충족' : '남은 일' }),
       ok
-        ? el('p', { style: 'margin:0', text: isExempt(section) ? lines[0] : '더 들을 과목이 없습니다.' })
+        ? el('p', {
+            style: 'margin:0',
+            text: exemptApplied ? section.exempt.appliedText : '더 들을 과목이 없습니다.',
+          })
         : el('ul', {}, lines.map((line) => el('li', { text: line }))),
     );
   }
@@ -245,13 +253,13 @@
 
     if (section.note) card.append(el('p', { class: 'note', text: section.note }));
 
-    if (section.exemptible) {
+    if (section.exempt) {
       const checkbox = el('input', {
         type: 'checkbox',
         id: `exempt-${section.id}`,
-        checked: state.practicumExempt,
+        checked: Boolean(state[section.exempt.key]),
         onclick: (event) => {
-          state.practicumExempt = event.target.checked;
+          state[section.exempt.key] = event.target.checked;
           saveState();
           render();
         },
@@ -264,8 +272,8 @@
           el(
             'label',
             { htmlFor: `exempt-${section.id}` },
-            section.exemptLabel,
-            el('span', { class: 'course-meta', text: section.exemptNote || '' }),
+            section.exempt.label,
+            el('span', { class: 'course-meta', text: section.exempt.note || '' }),
           ),
         ),
       );
@@ -289,7 +297,7 @@
           ),
         );
       }
-      block.append(el('ul', { class: 'courses' }, group.courses.map((c) => courseRow(section, c))));
+      block.append(el('ul', { class: 'courses' }, group.courses.map((c) => courseRow(section, group, c))));
       card.append(block);
     }
 

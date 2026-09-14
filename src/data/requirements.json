@@ -285,9 +285,6 @@
       "requiredCredits": 4,
       "note": "교육봉사는 각 30시간 / 총 60시간 이상, 교육대학원 입학 후 활동만 인정",
       "allowUndergrad": false,
-      "exemptible": true,
-      "exemptLabel": "2급 이상 교원자격증 소지 — 교육실습영역 면제 신청",
-      "exemptNote": "면제 신청 시 학교현장실습·교육봉사1·2가 모두 P 처리되며, 해당 과목을 수강신청하지 않는다",
       "groups": [
         {
           "id": "pr-1",
@@ -316,7 +313,13 @@
             }
           ]
         }
-      ]
+      ],
+      "exempt": {
+        "key": "practicumExempt",
+        "label": "2급 이상 교원자격증 소지 — 교육실습영역 면제 신청",
+        "note": "면제 신청 시 학교현장실습·교육봉사1·2가 모두 P 처리되며, 해당 과목을 수강신청하지 않는다",
+        "appliedText": "면제 적용 — 학교현장실습·교육봉사1·2 모두 P 처리됩니다."
+      }
     }
   ],
   "extracurricular": {
