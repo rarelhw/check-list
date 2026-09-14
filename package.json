@@ -5,6 +5,7 @@
   "type": "module",
   "description": "숙명여대 교육대학원 교직이수 체크리스트",
   "scripts": {
-    "build": "node scripts/build.mjs"
+    "build": "node scripts/build.mjs",
+    "serve": "node scripts/serve.mjs"
   }
 }

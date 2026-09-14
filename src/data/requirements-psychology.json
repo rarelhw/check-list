@@ -35,7 +35,8 @@
               "id": "pc-practice",
               "name": "상담실습",
               "credits": 2,
-              "aka": "인정과목 개편 예정 — 학수번호 미정, 교학팀 확인 필요"
+              "aka": "개설예정 — 학수번호 미정",
+              "term": "1·2학기"
             }
           ]
         },
@@ -49,61 +50,183 @@
               "id": "pc-intro",
               "name": "심리학개론",
               "code": "21060925",
-              "credits": 2
+              "credits": 2,
+              "term": "1학기"
             },
             {
               "id": "pc-test",
               "name": "심리검사실습",
               "code": "21023151",
-              "credits": 2
+              "credits": 2,
+              "term": "1학기",
+              "aka": "학위자격시험 필수과목 (26학번부터)"
             },
             {
               "id": "pc-personality",
               "name": "성격심리",
               "code": "21023152",
-              "credits": 2
+              "credits": 2,
+              "term": "2학기"
             },
             {
               "id": "pc-special",
               "name": "특수아상담",
               "code": "21023353",
-              "credits": 2
+              "credits": 2,
+              "term": "1학기"
             },
             {
               "id": "pc-group",
               "name": "집단상담실습",
               "code": "21023149",
-              "credits": 2
+              "credits": 2,
+              "term": "2학기"
             },
             {
               "id": "pc-family",
               "name": "가족상담",
               "code": "21023154",
-              "credits": 2
+              "credits": 2,
+              "term": "1학기"
             },
             {
               "id": "pc-career",
-              "name": "진로상담지도",
+              "name": "진로상담",
               "code": "21023153",
-              "credits": 2
+              "credits": 2,
+              "term": "1·2학기"
             },
             {
               "id": "pc-theory",
               "name": "상담이론과실제",
               "code": "21023160",
-              "credits": 2
+              "credits": 2,
+              "term": "1·2학기",
+              "aka": "학위자격시험 필수과목 (26학번부터)"
             },
             {
               "id": "pc-youth",
               "name": "청소년심리",
               "code": "21060924",
-              "credits": 2
+              "credits": 2,
+              "term": "1 또는 2학기"
             },
             {
               "id": "pc-abnormal",
               "name": "이상심리",
               "code": "21023159",
-              "credits": 2
+              "credits": 2,
+              "term": "2학기",
+              "aka": "학위자격시험 필수과목 (26학번부터)"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "major-elective",
+      "title": "전공선택 (교과내용영역)",
+      "category": "MAJOR",
+      "requiredCredits": 2,
+      "note": "전공 50학점을 채우기 위한 과목. 기본이수 7과목(14학점) + 학부 인정 34학점 = 48학점이라 최소 1과목(2학점)을 더 이수해야 한다",
+      "allowUndergrad": false,
+      "groups": [
+        {
+          "id": "me-1",
+          "hint": "1과목 이상",
+          "requiredCount": 1,
+          "courses": [
+            {
+              "id": "me-case",
+              "name": "상담실습및사례연구",
+              "code": "21023161",
+              "credits": 2,
+              "term": "1학기",
+              "aka": "전문상담교사(1급) 필수 과목"
+            },
+            {
+              "id": "me-interview",
+              "name": "상담면접실제",
+              "code": "21105659",
+              "credits": 2,
+              "term": "1학기"
+            },
+            {
+              "id": "me-child",
+              "name": "아동발달",
+              "code": "21023156",
+              "credits": 2,
+              "term": "1 또는 2학기"
+            },
+            {
+              "id": "me-youth-dev",
+              "name": "청년발달",
+              "code": "21023157",
+              "credits": 2,
+              "term": "1 또는 2학기"
+            },
+            {
+              "id": "me-adv-dev",
+              "name": "고급발달심리",
+              "code": "21105658",
+              "credits": 2,
+              "term": "1학기"
+            },
+            {
+              "id": "me-parent",
+              "name": "학부모상담",
+              "code": "21105660",
+              "credits": 2,
+              "term": "1학기"
+            },
+            {
+              "id": "me-addiction",
+              "name": "중독상담",
+              "code": "21105892",
+              "credits": 2,
+              "term": "1학기"
+            },
+            {
+              "id": "me-method",
+              "name": "상담연구방법",
+              "code": "21023212",
+              "credits": 2,
+              "term": "2학기"
+            },
+            {
+              "id": "me-youth-couns",
+              "name": "청소년상담",
+              "code": "21023605",
+              "credits": 2,
+              "term": "2학기"
+            },
+            {
+              "id": "me-cyber",
+              "name": "사이버상담",
+              "code": "21024132",
+              "credits": 2,
+              "term": "2학기"
+            },
+            {
+              "id": "me-learning",
+              "name": "학습상담",
+              "code": "21060933",
+              "credits": 2,
+              "term": "2학기"
+            },
+            {
+              "id": "me-relation",
+              "name": "인간관계론",
+              "code": "21060935",
+              "credits": 2,
+              "term": "1 또는 2학기"
+            },
+            {
+              "id": "me-media",
+              "name": "매체상담",
+              "credits": 2,
+              "term": "2학기",
+              "aka": "개설예정 — 학수번호 미정"
             }
           ]
         }
@@ -289,5 +412,5 @@
       }
     ]
   },
-  "source": "2026-1학기 교육대학원 학사 & 교직 가이드 (숙명여대 교육대학원) p.23~24, 25~29, 30~31, 34~40, 41"
+  "source": "2026-1학기 교육대학원 학사 & 교직 가이드 (숙명여대 교육대학원) p.23~24, 25~29, 30~31, 34~40, 41 / 상담교육전공 전공과목 이수 가이드 (2026. 8. 3. 기준)"
 }

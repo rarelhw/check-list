@@ -196,7 +196,7 @@
 
   function courseRow(section, course) {
     const status = statusOf(course.id);
-    const meta = [course.code, `${course.credits}학점`, course.aka].filter(Boolean).join(' · ');
+    const meta = [course.code, `${course.credits}학점`, course.term, course.aka].filter(Boolean).join(' · ');
     const classes = ['course'];
     if (isExempt(section) || status === GRAD) classes.push('checked');
     if (status === UNDERGRAD) classes.push('undergrad');
