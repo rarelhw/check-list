@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>역전파를 한 칸씩: 손실에서 입력까지</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+KR:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --paper:#f4f6fb; --card:#ffffff; --ink:#18233f; --muted:#68718c; --line:#d8deeb;
+  --node:#1b2546; --hidden:#3d4b73; --box:#e6ebf6; --node-text:#ffffff;
+  --orange:#f2a20c; --orange-soft:#fff1d6; --orange-ink:#8a5600; --on-orange:#2a1a00;
+  box-sizing:border-box;
+  padding-top:env(safe-area-inset-top,0px); padding-bottom:env(safe-area-inset-bottom,0px);
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    color-scheme:dark;
+    --paper:#0f1527; --card:#171f38; --ink:#e7ebf6; --muted:#98a1bb; --line:#2b3456;
+    --node:#2f3f72; --hidden:#45568b; --box:#222c4d; --node-text:#ffffff;
+    --orange:#f5ab2f; --orange-soft:#3a2c10; --orange-ink:#ffd38a; --on-orange:#2a1a00;
+  }
+}
+:root[data-theme="dark"]{
+  color-scheme:dark;
+  --paper:#0f1527; --card:#171f38; --ink:#e7ebf6; --muted:#98a1bb; --line:#2b3456;
+  --node:#2f3f72; --hidden:#45568b; --box:#222c4d; --node-text:#ffffff;
+  --orange:#f5ab2f; --orange-soft:#3a2c10; --orange-ink:#ffd38a; --on-orange:#2a1a00;
+}
+*,*::before,*::after{box-sizing:inherit}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+body{margin:0;background:var(--paper);color:var(--ink);
+  font-family:"IBM Plex Sans KR","Apple SD Gothic Neo","Malgun Gothic",system-ui,sans-serif;
+  line-height:1.6;font-variant-numeric:tabular-nums}
+.wrap{max-width:1120px;margin:0 auto;padding:26px 18px 48px}
+h1{font-size:clamp(1.45rem,3.2vw,2.1rem);line-height:1.25;margin:0 0 6px;letter-spacing:-0.02em}
+.lead{color:var(--muted);margin:0 0 18px;max-width:66ch}
+.panel{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:18px}
+button,select,input{font:inherit;color:var(--ink)}
+button,select{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:8px 14px;cursor:pointer}
+button.primary{background:var(--node);color:var(--node-text);border-color:var(--node);font-weight:600}
+button:disabled{opacity:.4;cursor:default}
+button:focus-visible,select:focus-visible,input:focus-visible{outline:3px solid var(--orange);outline-offset:2px}
+
+.nav{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin-bottom:12px}
+.dots{display:flex;flex-wrap:wrap;gap:6px;flex:1 1 auto}
+.dot{padding:6px 11px;border-radius:999px;font-size:.9rem}
+.dot[aria-current="step"]{background:var(--orange);border-color:var(--orange);color:var(--on-orange);font-weight:700}
+.dot.past{border-color:var(--orange);color:var(--orange-ink)}
+
+.stage{overflow-x:auto;margin:0 -4px}
+.net{display:block;width:100%;min-width:760px;height:auto}
+svg text{font-family:inherit}
+
+/* svg states */
+.edge{stroke:var(--node);stroke-width:2.5;opacity:.8;transition:stroke .3s,stroke-width .3s,opacity .3s}
+.edge.faint{stroke-dasharray:6 6;opacity:.3}
+.edge.active{stroke:var(--orange);stroke-width:6;opacity:1;stroke-dasharray:12 9;animation:back .9s linear infinite}
+@keyframes back{to{stroke-dashoffset:21}}
+.chip rect{fill:var(--card);stroke:var(--line);stroke-width:1.5;transition:fill .3s,stroke .3s}
+.chip text{fill:var(--ink);font-weight:700;font-size:15px}
+.chip.faint{opacity:.55}
+.chip.done rect{stroke:var(--orange);fill:var(--orange-soft)}
+.chip.done text{fill:var(--orange-ink)}
+.chip.active rect{fill:var(--orange);stroke:var(--orange)}
+.chip.active text{fill:var(--on-orange)}
+.chip.src rect{stroke:var(--orange);stroke-width:4}
+.tag{transition:opacity .35s, transform .35s}
+.tag rect{fill:var(--orange-soft);stroke:var(--orange);stroke-width:2}
+.tag text{fill:var(--orange-ink);font-weight:700;font-size:16px}
+.tag.off{opacity:0}
+.tag.active rect{fill:var(--orange)}
+.tag.active text{fill:var(--on-orange)}
+.tag.src rect{stroke-width:4.5}
+.ring{fill:none;stroke:var(--orange);stroke-width:7;opacity:0;transition:opacity .3s}
+.ring.on{opacity:1}
+.mult{font-size:15px;font-weight:700;fill:var(--orange-ink);transition:opacity .3s}
+.mult.off{opacity:0}
+.mult.active{fill:var(--orange)}
+.boxv{fill:var(--box);stroke:var(--node);stroke-width:1.5}
+.nodev{font-weight:700;font-size:17px}
+.lbl{fill:var(--muted);font-size:13px}
+.lbl.strong{fill:var(--ink);font-weight:700;font-size:14px}
+.loss rect{fill:var(--orange-soft);stroke:var(--orange);stroke-width:2}
+
+.below{display:grid;gap:14px;margin-top:14px}
+@media(min-width:880px){.below{grid-template-columns:1.6fr 1fr}}
+.step-title{font-size:1.2rem;font-weight:700;margin:0 0 8px}
+.eq{margin:4px 0}
+.hl{color:var(--orange-ink);font-weight:700;background:var(--orange-soft);border-radius:5px;padding:0 4px}
+.mean{margin-top:10px;padding:10px 12px;border-left:4px solid var(--orange);background:var(--paper);border-radius:0 10px 10px 0}
+.rules{list-style:none;margin:0;padding:0;display:grid;gap:8px}
+.rules li{border:1px solid var(--line);border-radius:10px;padding:9px 12px;transition:background .3s,border-color .3s}
+.rules li b{display:block}
+.rules li span{font-size:.9rem;color:var(--muted)}
+.rules li.on{border:2px solid var(--orange);background:var(--orange-soft)}
+.rules li.on span{color:var(--ink)}
+h2{font-size:1.02rem;margin:0 0 10px}
+.edit{margin-top:14px}
+.edit-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(130px,1fr));gap:10px}
+.edit label{display:flex;flex-direction:column;font-size:.85rem;color:var(--muted);gap:3px}
+.edit input,.edit select{border:1px solid var(--line);border-radius:8px;padding:6px 8px;background:var(--paper);width:100%}
+.hint{color:var(--muted);font-size:.88rem}
+.tbl{border-collapse:collapse;margin-top:8px;font-size:.93rem;min-width:300px}
+.tbl td,.tbl th{padding:4px 12px 4px 0;text-align:right;border-bottom:1px solid var(--line)}
+.tbl td:first-child,.tbl th:first-child{text-align:left}
+.tbl th{color:var(--muted);font-weight:600}
+@media (prefers-reduced-motion: reduce){.edge.active{animation:none}*{transition:none!important}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>역전파를 한 칸씩: 손실에서 입력까지</h1>
+  <p class="lead">교재 9장 보충의 신경망입니다. ‘다음’을 누를 때마다 손실 쪽에서 한 칸씩 왼쪽으로 가며 꼬리표(손실이 그 값에 얼마나 민감한가)를 곱해 나갑니다. 주황 점선이 움직이는 선이 이번 단계에서 곱하는 길입니다.</p>
+
+  <div class="panel">
+    <div class="nav">
+      <button id="prev" type="button">◀ 이전</button>
+      <div class="dots" id="dots" role="group" aria-label="단계"></div>
+      <button id="play" type="button">자동 재생</button>
+      <button class="primary" id="next" type="button">다음 ▶</button>
+    </div>
+    <div class="stage">
+      <svg class="net" id="net" viewBox="0 0 1000 450" role="img" aria-label="역전파 단계별 신경망 그림"></svg>
+    </div>
+  </div>
+
+  <div class="below">
+    <section class="panel" aria-live="polite">
+      <p class="step-title" id="stitle"></p>
+      <div id="sbody"></div>
+    </section>
+    <section class="panel">
+      <h2>역전파는 이 네 가지 규칙의 반복</h2>
+      <ul class="rules" id="rules">
+        <li data-r="start"><b>출발: ∂L/∂ŷ = −2 × (정답 − ŷ)</b><span>손실 L = (정답 − ŷ)²을 ŷ로 미분한 값</span></li>
+        <li data-r="sig"><b>시그모이드를 지날 때: × 출력 × (1 − 출력)</b><span>꼬리표에 시그모이드의 기울기를 곱함 (최대 0.25)</span></li>
+        <li data-r="w"><b>가중치의 기울기 = 꼬리표 × 그 선으로 들어온 값</b><span>곱셈의 미분: 상대편 값을 곱함</span></li>
+        <li data-r="h"><b>앞 뉴런의 꼬리표 = 꼬리표 × 그 선의 가중치</b><span>같은 곱셈인데, 이번엔 상대편이 가중치</span></li>
+      </ul>
+    </section>
+  </div>
+
+  <section class="panel edit" aria-labelledby="edit-h">
+    <h2 id="edit-h">숫자를 바꿔 보기</h2>
+    <p class="hint">값을 바꾸면 순전파와 모든 꼬리표가 즉시 다시 계산됩니다. x₂를 0이 아닌 값으로 바꾸면 점선 가중치에도 기울기가 생깁니다.</p>
+    <div class="edit-grid" id="edit"></div>
+    <div style="margin-top:12px;display:flex;gap:10px;flex-wrap:wrap">
+      <button id="restore" type="button">교재 값으로 되돌리기</button>
+    </div>
+  </section>
+</div>
+
+<script>
+(function(){
+  const DEFAULT = {x1:1,x2:0,t:1,w11:.5,w21:-.4,w12:.3,w22:.8,v1:.6,v2:-.2,lr:1};
+  let S = Object.assign({}, DEFAULT);
+  let step = 0, timer = null;
+  const LAST = 7;
+  const sig = x => 1/(1+Math.exp(-x));
+  const $ = id => document.getElementById(id);
+
+  function compute(s){
+    const a1 = s.w11*s.x1 + s.w21*s.x2, a2 = s.w12*s.x1 + s.w22*s.x2;
+    const h1 = sig(a1), h2 = sig(a2);
+    const z = s.v1*h1 + s.v2*h2, y = sig(z), L = (s.t-y)**2;
+    const dy = -2*(s.t-y), sy = y*(1-y), dz = dy*sy;
+    const gv1 = dz*h1, gv2 = dz*h2, dh1 = dz*s.v1, dh2 = dz*s.v2;
+    const s1 = h1*(1-h1), s2 = h2*(1-h2), da1 = dh1*s1, da2 = dh2*s2;
+    return {a1,a2,h1,h2,z,y,L,dy,sy,dz,gv1,gv2,dh1,dh2,s1,s2,da1,da2,
+      g:{w11:da1*s.x1, w21:da1*s.x2, w12:da2*s.x1, w22:da2*s.x2, v1:gv1, v2:gv2}};
+  }
+  const MINUS = "−";
+  const num = (n,d=3) => { const r = Math.abs(n).toFixed(d); return (n<0 && Number(r)!==0 ? MINUS : "") + r; };
+  const sg = (n,d) => { if (n === 0) return "0"; if (d === undefined) d = Math.abs(n) < 0.05 ? 4 : 3; const r = Math.abs(n).toFixed(d); if (Number(r)===0) return "0"; return (n<0?MINUS:"+") + r; };
+  const wv = n => { const r = Math.round(n*1000)/1000; return (r<0?MINUS:"") + Math.abs(r); };
+  const p = n => n < 0 ? "(" + num(n) + ")" : num(n);
+
+  // ---------- build svg ----------
+  const NS = "http://www.w3.org/2000/svg", svg = $("net");
+  const mk = (tag, a, parent=svg) => { const e = document.createElementNS(NS, tag); for (const k in a) e.setAttribute(k, a[k]); parent.appendChild(e); return e; };
+  const P = {x1:[70,120], x2:[70,360], a1:[330,120], a2:[330,360], h1:[480,120], h2:[480,360], z:[670,240], y:[810,240], L:[935,240]};
+
+  const EDGES = {
+    w11:["x1","a1"], w12:["x1","a2"], w21:["x2","a1"], w22:["x2","a2"],
+    a1h1:["a1","h1"], a2h2:["a2","h2"], v1:["h1","z"], v2:["h2","z"], zy:["z","y"], yL:["y","L"]
+  };
+  const edgeEl = {};
+  for (const k in EDGES){ const [a,b] = EDGES[k]; edgeEl[k] = mk("line",{x1:P[a][0],y1:P[a][1],x2:P[b][0],y2:P[b][1],class:"edge"}); }
+
+  // sigma labels + multipliers
+  mk("text",{x:410,y:108,"text-anchor":"middle",class:"lbl strong"}).textContent = "σ";
+  mk("text",{x:410,y:348,"text-anchor":"middle",class:"lbl strong"}).textContent = "σ";
+  mk("text",{x:740,y:228,"text-anchor":"middle",class:"lbl strong"}).textContent = "σ";
+  const multEl = {
+    a1h1: mk("text",{x:410,y:144,"text-anchor":"middle",class:"mult off"}),
+    a2h2: mk("text",{x:410,y:386,"text-anchor":"middle",class:"mult off"}),
+    zy:   mk("text",{x:740,y:268,"text-anchor":"middle",class:"mult off"})
+  };
+
+  // rings (behind nodes)
+  const ringEl = {};
+  ["x1","x2","h1","h2"].forEach(k => ringEl[k] = mk("circle",{cx:P[k][0],cy:P[k][1],r:46,class:"ring"}));
+
+  // boxes
+  const boxVal = {};
+  [["a1","가중합"],["a2","가중합"],["z","가중합 z"]].forEach(([k,lab]) => {
+    const [cx,cy] = P[k];
+    mk("rect",{x:cx-45,y:cy-23,width:90,height:46,rx:4,class:"boxv"});
+    boxVal[k] = mk("text",{x:cx,y:cy+6,"text-anchor":"middle",class:"nodev",fill:"var(--ink)"});
+    mk("text",{x:cx,y:cy+(k==="a2"?-32:42),"text-anchor":"middle",class:"lbl"}).textContent = lab;
+  });
+  // nodes
+  const nodeVal = {};
+  [["x1","x₁","var(--node)",36],["x2","x₂","var(--node)",36],["h1","h₁","var(--hidden)",36],["h2","h₂","var(--hidden)",36],["y","예측 ŷ","var(--orange)",40]].forEach(([k,lab,fill,r]) => {
+    const [cx,cy] = P[k];
+    mk("circle",{cx,cy,r,fill});
+    nodeVal[k] = mk("text",{x:cx,y:cy+6,"text-anchor":"middle",class:"nodev",fill:k==="y"?"var(--on-orange)":"var(--node-text)"});
+    const ly = k==="h2" ? cy+40 : cy+(r+22);
+    const lx = (k==="h1"||k==="h2") ? cx+52 : cx;
+    mk("text",{x:lx,y:k==="h1"?cy-30:ly,"text-anchor":"middle",class:"lbl strong"}).textContent = lab;
+  });
+  // loss box
+  const lossG = mk("g",{class:"loss"});
+  mk("rect",{x:P.L[0]-55,y:P.L[1]-36,width:110,height:72,rx:8},lossG);
+  mk("text",{x:P.L[0],y:P.L[1]-8,"text-anchor":"middle",class:"lbl strong"},lossG).textContent = "손실 L";
+  const lossVal = mk("text",{x:P.L[0],y:P.L[1]+20,"text-anchor":"middle",class:"nodev",fill:"var(--ink)"},lossG);
+
+  // chips (weights)
+  const CHIP_POS = {w11:[190,120], w12:[148,192], w21:[148,288], w22:[190,360], v1:[575,180], v2:[575,300]};
+  const chipEl = {};
+  for (const k in CHIP_POS){
+    const [cx,cy] = CHIP_POS[k];
+    const g = mk("g",{class:"chip"});
+    const r = mk("rect",{x:cx-30,y:cy-15,width:60,height:30,rx:8},g);
+    const t = mk("text",{x:cx,y:cy+5,"text-anchor":"middle"},g);
+    chipEl[k] = {g,r,t,cx,cy};
+  }
+  // tags (꼬리표)
+  const TAG_POS = {y:[810,182], z:[690,190], h1:[480,58], h2:[480,424], a1:[330,66], a2:[330,416]};
+  const tagEl = {};
+  for (const k in TAG_POS){
+    const [cx,cy] = TAG_POS[k];
+    const g = mk("g",{class:"tag off"});
+    const r = mk("rect",{x:cx-40,y:cy-15,height:30,width:80,rx:9},g);
+    const t = mk("text",{x:cx,y:cy+6,"text-anchor":"middle"},g);
+    tagEl[k] = {g,r,t,cx,cy};
+  }
+  const fit = (o, pad=14) => { const w = Math.max(48, o.t.getComputedTextLength() + pad*2); o.r.setAttribute("width", w); o.r.setAttribute("x", o.cx - w/2); };
+
+  // ---------- steps ----------
+  // when each element first appears / becomes active
+  const TAG_STEP = {y:1, z:2, h1:4, h2:4, a1:5, a2:5};
+  const CHIP_STEP = {v1:3, v2:3, w11:6, w12:6, w21:6, w22:6};
+  const MULT_STEP = {zy:2, a1h1:5, a2h2:5};
+  const STEP = {
+    0:{edges:[], rings:[], src:[], rule:null, name:"순전파"},
+    1:{edges:["yL"], rings:[], src:[], rule:"start", name:"1"},
+    2:{edges:["zy"], rings:[], src:["tag:y"], rule:"sig", name:"2"},
+    3:{edges:["v1","v2"], rings:["h1","h2"], src:["tag:z"], rule:"w", name:"3"},
+    4:{edges:["v1","v2"], rings:[], src:["tag:z","chip:v1","chip:v2"], rule:"h", name:"4"},
+    5:{edges:["a1h1","a2h2"], rings:[], src:["tag:h1","tag:h2"], rule:"sig", name:"5"},
+    6:{edges:["w11","w12","w21","w22"], rings:["x1","x2"], src:["tag:a1","tag:a2"], rule:"w", name:"6"},
+    7:{edges:[], rings:[], src:[], rule:null, name:"고치기"}
+  };
+
+  function text(f){
+    const s = S, g = f.g;
+    const sgnWord = n => n < 0 ? "<b>줄어듭니다</b>" : n > 0 ? "<b>늘어납니다</b>" : "변하지 않습니다";
+    switch(step){
+      case 0: return ["순전파: 입력에서 손실까지 (계산만, 고치지 않음)",
+        `<p class="eq">h₁ = σ(${wv(s.w11)}×${wv(s.x1)} + ${p(s.w21)}×${wv(s.x2)}) = σ(${num(f.a1)}) = <b>${num(f.h1)}</b></p>
+         <p class="eq">h₂ = σ(${wv(s.w12)}×${wv(s.x1)} + ${p(s.w22)}×${wv(s.x2)}) = σ(${num(f.a2)}) = <b>${num(f.h2)}</b></p>
+         <p class="eq">z = ${wv(s.v1)}×${num(f.h1)} + ${p(s.v2)}×${num(f.h2)} = <b>${num(f.z)}</b>, ŷ = σ(z) = <b>${num(f.y)}</b></p>
+         <p class="eq">L = (${wv(s.t)} − ${num(f.y)})² = <b>${num(f.L)}</b></p>
+         <div class="mean">역전파는 이 값들을 그대로 둔 채, 오른쪽 끝 손실에서 출발해 왼쪽으로 한 칸씩 갑니다. ‘다음’을 눌러 보세요.</div>`];
+      case 1: return ["1/6 손실 쪽에서 출발",
+        `<p class="eq">L = (정답 − ŷ)² → ∂L/∂ŷ = −2 × (정답 − ŷ)</p>
+         <p class="eq">= −2 × (${wv(s.t)} − ${num(f.y,4)}) = <span class="hl">${sg(f.dy)}</span></p>
+         <div class="mean">ŷ 위에 붙은 꼬리표 ${sg(f.dy)}: 예측이 아주 조금 오르면 손실은 그 ${num(Math.abs(f.dy))}배만큼 ${sgnWord(f.dy)}. 이 값을 들고 한 칸씩 왼쪽으로 갑니다.</div>`];
+      case 2: return ["2/6 출력층 시그모이드를 지나",
+        `<p class="eq">ŷ = σ(z)이므로 ∂ŷ/∂z = ŷ × (1 − ŷ) = ${num(f.y)} × ${num(1-f.y)} = <b>${num(f.sy)}</b></p>
+         <p class="eq">∂L/∂z = (ŷ의 꼬리표) × ${num(f.sy)} = ${sg(f.dy)} × ${num(f.sy)} = <span class="hl">${sg(f.dz,4)}</span></p>
+         <div class="mean">z의 꼬리표 ${sg(f.dz,4)}는 다음 두 단계에서 계속 다시 씁니다. 거꾸로 곱해 둔 값이라서, 앞에서 처음부터 다시 곱할 필요가 없습니다.</div>`];
+      case 3: return ["3/6 은닉 → 출력 가중치의 기울기",
+        `<p class="eq">z = v₁×h₁ + v₂×h₂이므로, v₁이 조금 늘면 z는 h₁배만큼 늡니다.</p>
+         <p class="eq">v₁: ${sg(f.dz,4)} × h₁ ${num(f.h1)} = <span class="hl">${sg(g.v1)}</span></p>
+         <p class="eq">v₂: ${sg(f.dz,4)} × h₂ ${num(f.h2)} = <span class="hl">${sg(g.v2)}</span></p>
+         <div class="mean">같은 꼬리표에 그 선으로 <b>들어온 값</b>(동그라미 친 h₁, h₂)만 바꿔 곱했습니다. v₁을 늘리면 손실이 ${sgnWord(g.v1)}</div>`];
+      case 4: return ["4/6 은닉층으로 넘어가기",
+        `<p class="eq">같은 식 z = v₁×h₁ + v₂×h₂. 이번엔 h₁이 조금 오르면 z는 v₁배만큼 오릅니다.</p>
+         <p class="eq">h₁: ${sg(f.dz,4)} × v₁ ${wv(s.v1)} = <span class="hl">${sg(f.dh1)}</span></p>
+         <p class="eq">h₂: ${sg(f.dz,4)} × v₂ ${p(s.v2)} = <span class="hl">${sg(f.dh2)}</span></p>
+         <div class="mean">3단계와 같은 곱셈인데 상대편이 바뀌었습니다. 가중치의 기울기에는 <b>들어온 값</b>을, 뉴런의 꼬리표에는 <b>선의 가중치</b>를 곱합니다. h₁이 오르면 손실이 ${sgnWord(f.dh1)} h₂가 오르면 ${sgnWord(f.dh2)}</div>`];
+      case 5: return ["5/6 은닉층 시그모이드를 지나",
+        `<p class="eq">h = σ(가중합)이므로 출력층에서처럼 h × (1 − h)를 곱합니다.</p>
+         <p class="eq">h₁: ${num(f.h1)} × ${num(1-f.h1)} = ${num(f.s1)} → ${sg(f.dh1)} × ${num(f.s1)} = <span class="hl">${sg(f.da1)}</span></p>
+         <p class="eq">h₂: ${num(f.h2)} × ${num(1-f.h2)} = ${num(f.s2,4)} → ${sg(f.dh2)} × ${num(f.s2,4)} = <span class="hl">${sg(f.da2)}</span></p>
+         <div class="mean">시그모이드 기울기는 커 봐야 0.25입니다. 앞쪽으로 올수록 1보다 작은 수를 거듭 곱해 꼬리표가 작아집니다. 이것이 기울기 소멸의 씨앗입니다.</div>`];
+      case 6: return ["6/6 입력 → 은닉 가중치의 기울기",
+        `<p class="eq">가중합 = 가중치 × 입력의 합. 가중치가 조금 늘면 가중합은 그 선의 입력값배만큼 늡니다.</p>
+         <p class="eq">x₁→h₁: ${sg(f.da1)} × ${wv(s.x1)} = <span class="hl">${sg(g.w11)}</span> &nbsp; x₁→h₂: ${sg(f.da2)} × ${wv(s.x1)} = <span class="hl">${sg(g.w12)}</span></p>
+         <p class="eq">x₂→h₁: ${sg(f.da1)} × ${wv(s.x2)} = <span class="hl">${sg(g.w21)}</span> &nbsp; x₂→h₂: ${sg(f.da2)} × ${wv(s.x2)} = <span class="hl">${sg(g.w22)}</span></p>
+         <p class="eq"><b>x₁→h₁을 한 줄로:</b> ${sg(f.dy)} × ${num(f.sy)} × ${wv(s.v1)} × ${num(f.s1)} × ${wv(s.x1)} = ${sg(g.w11)}</p>
+         <div class="mean">‘역’전파 = 손실에서 거꾸로 곱해 오며 먼저 구한 곱을 이어 쓰기. 그래서 기울기 여섯 개가 한 번에 나옵니다.${s.x2===0?" x₂ = 0이라 x₂에서 나가는 두 선은 이번 데이터로는 고칠 것이 없습니다.":""}</div>`];
+      case 7: {
+        const nw = newWeights(f), f2 = compute(Object.assign({}, S, nw));
+        const rows = ["v1","v2","w11","w12","w21","w22"].map(k => {
+          const lab = {v1:"v₁ (h₁→출력)",v2:"v₂ (h₂→출력)",w11:"x₁→h₁",w12:"x₁→h₂",w21:"x₂→h₁",w22:"x₂→h₂"}[k];
+          return `<tr><td>${lab}</td><td>${wv(S[k])}</td><td>${sg(g[k])}</td><td><b>${num(nw[k],4)}</b></td></tr>`;
+        }).join("");
+        return ["다음: 구한 기울기로 가중치 고치기",
+          `<p class="eq">새 가중치 = 가중치 − 학습률 × 기울기 &nbsp; (학습률 <b>${S.lr}</b>, 아래 ‘숫자를 바꿔 보기’에서 조절)</p>
+           <div style="overflow-x:auto"><table class="tbl"><thead><tr><th>가중치</th><th>지금</th><th>기울기</th><th>고친 값</th></tr></thead><tbody>${rows}</tbody></table></div>
+           <p class="eq">고친 값으로 다시 순전파하면 손실 ${num(f.L,4)} → <span class="hl">${num(f2.L,4)}</span></p>
+           <div class="mean">기울기가 음수면 가중치를 키우고, 양수면 줄입니다. 순전파 → 역전파 → 고치기를 반복하는 것이 학습입니다.
+           <div style="margin-top:8px"><button class="primary" id="apply" type="button">이 값으로 고치고 순전파부터 다시</button></div></div>`];
+      }
+    }
+  }
+  function newWeights(f){ const o = {}; for (const k of ["v1","v2","w11","w12","w21","w22"]) o[k] = S[k] - S.lr*f.g[k]; return o; }
+
+  function render(){
+    const f = compute(S), cfg = STEP[step];
+    // values
+    nodeVal.x1.textContent = wv(S.x1); nodeVal.x2.textContent = wv(S.x2);
+    nodeVal.h1.textContent = num(f.h1); nodeVal.h2.textContent = num(f.h2); nodeVal.y.textContent = num(f.y);
+    boxVal.a1.textContent = num(f.a1); boxVal.a2.textContent = num(f.a2); boxVal.z.textContent = num(f.z);
+    lossVal.textContent = num(f.L);
+    const x2zero = S.x2 === 0;
+    // edges
+    for (const k in edgeEl){
+      const e = edgeEl[k];
+      e.setAttribute("class", "edge" + (cfg.edges.includes(k) ? " active" : (x2zero && (k==="w21"||k==="w22") ? " faint" : "")));
+    }
+    // rings
+    for (const k in ringEl) ringEl[k].setAttribute("class", "ring" + (cfg.rings.includes(k) ? " on" : ""));
+    // mults
+    const multVal = {zy:f.sy, a1h1:f.s1, a2h2:f.s2};
+    for (const k in multEl){
+      const s0 = MULT_STEP[k];
+      multEl[k].textContent = "× " + num(multVal[k], k==="a2h2"?4:3);
+      multEl[k].setAttribute("class", "mult" + (step < s0 || step === 7 && false ? " off" : step === s0 ? " active" : ""));
+    }
+    // tags
+    const tagVal = {y:[f.dy,3], z:[f.dz,4], h1:[f.dh1], h2:[f.dh2], a1:[f.da1], a2:[f.da2]};
+    for (const k in tagEl){
+      const o = tagEl[k], s0 = TAG_STEP[k];
+      o.t.textContent = sg(...tagVal[k]);
+      let c = "tag";
+      if (step < s0) c += " off"; else if (step === s0) c += " active";
+      if (cfg.src.includes("tag:"+k)) c += " src";
+      o.g.setAttribute("class", c); fit(o, 12);
+    }
+    // chips
+    const nw = step === 7 ? newWeights(f) : null;
+    for (const k in chipEl){
+      const o = chipEl[k], s0 = CHIP_STEP[k];
+      let label = wv(S[k]), c = "chip";
+      if (step === 7){ label = wv(S[k]) + " → " + num(nw[k],3); c += " active"; }
+      else if (step >= s0){ label = wv(S[k]) + "  |  " + sg(f.g[k]); c += step === s0 ? " active" : " done"; }
+      if (x2zero && (k==="w21"||k==="w22") && step < s0) c += " faint";
+      if (cfg.src.includes("chip:"+k)) c += " src";
+      o.t.textContent = label; o.g.setAttribute("class", c); fit(o, 12);
+    }
+    // text
+    const [title, body] = text(f);
+    $("stitle").textContent = title; $("sbody").innerHTML = body;
+    const ap = $("apply");
+    if (ap) ap.addEventListener("click", () => { Object.assign(S, newWeights(compute(S))); syncInputs(); go(0); });
+    // rules
+    document.querySelectorAll("#rules li").forEach(li => li.classList.toggle("on", li.dataset.r === cfg.rule));
+    // nav
+    document.querySelectorAll(".dot").forEach((d,i) => { if (i===step) d.setAttribute("aria-current","step"); else d.removeAttribute("aria-current"); d.classList.toggle("past", i < step); });
+    $("prev").disabled = step === 0; $("next").disabled = step === LAST;
+  }
+
+  // nav
+  const dots = $("dots");
+  for (let i=0;i<=LAST;i++){
+    const b = document.createElement("button"); b.type = "button"; b.className = "dot";
+    b.textContent = STEP[i].name; b.setAttribute("aria-label", i===0?"순전파":i===LAST?"가중치 고치기":"역전파 "+i+"단계");
+    b.addEventListener("click", () => { stop(); go(i); }); dots.appendChild(b);
+  }
+  function go(i){ step = Math.max(0, Math.min(LAST, i)); render(); }
+  function stop(){ if (timer){ clearInterval(timer); timer = null; $("play").textContent = "자동 재생"; } }
+  $("prev").addEventListener("click", () => { stop(); go(step-1); });
+  $("next").addEventListener("click", () => { stop(); go(step+1); });
+  $("play").addEventListener("click", () => {
+    if (timer){ stop(); return; }
+    if (step === LAST) go(0);
+    $("play").textContent = "멈춤";
+    timer = setInterval(() => { if (step >= LAST) stop(); else go(step+1); }, 3200);
+  });
+  document.addEventListener("keydown", e => {
+    if (e.target.matches("input,select")) return;
+    if (e.key === "ArrowRight"){ stop(); go(step+1); }
+    if (e.key === "ArrowLeft"){ stop(); go(step-1); }
+  });
+
+  // edit panel
+  const FIELDS = [["x1","입력 x₁"],["x2","입력 x₂"],["t","정답"],["w11","x₁→h₁ 가중치"],["w21","x₂→h₁ 가중치"],["w12","x₁→h₂ 가중치"],["w22","x₂→h₂ 가중치"],["v1","v₁ (h₁→출력)"],["v2","v₂ (h₂→출력)"],["lr","학습률"]];
+  const inputs = {};
+  FIELDS.forEach(([k,lab]) => {
+    const l = document.createElement("label"); l.textContent = lab;
+    const inp = document.createElement("input"); inp.type = "number"; inp.step = k==="lr" ? "0.5" : "0.1"; inp.value = S[k];
+    inp.addEventListener("input", () => { const v = parseFloat(inp.value); if (!Number.isNaN(v)){ S[k] = v; render(); } });
+    l.appendChild(inp); $("edit").appendChild(l); inputs[k] = inp;
+  });
+  function syncInputs(){ for (const k in inputs) inputs[k].value = Math.round(S[k]*10000)/10000; }
+  $("restore").addEventListener("click", () => { S = Object.assign({}, DEFAULT); syncInputs(); render(); });
+
+  if (document.fonts && document.fonts.ready) document.fonts.ready.then(render);
+  render();
+})();
+</script>
+</body>
+</html>
