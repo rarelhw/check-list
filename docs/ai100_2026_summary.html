@@ -1,0 +1,580 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>AI100 2026 보고서 요약 · AI Goes Mainstream</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+KR:wght@400;500;600&family=Noto+Serif+KR:wght@700;900&display=swap" rel="stylesheet">
+<style>
+:root{
+  color-scheme: light;
+  --bg:#F2F4F8; --surface:#FFFFFF; --ink:#141C30; --ink-2:#3E4A63; --ink-3:#6B7590;
+  --rule:#DCE1EA; --accent:#2848B8; --accent-soft:#E6EBFA; --mark:#FFF1B8;
+  --g-tech:#2848B8; --g-econ:#17775F; --g-power:#6B3FB3; --g-risk:#B23A28; --g-soc:#946508;
+  --serif:"Noto Serif KR","Apple SD Gothic Neo",Batang,serif;
+  --sans:"IBM Plex Sans KR","Apple SD Gothic Neo","Malgun Gothic",system-ui,sans-serif;
+  box-sizing:border-box;
+  padding-top:env(safe-area-inset-top,0px);
+  padding-bottom:env(safe-area-inset-bottom,0px);
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    color-scheme: dark;
+    --bg:#0E1422; --surface:#161F33; --ink:#EEF1F7; --ink-2:#BCC5D8; --ink-3:#8590A8;
+    --rule:#28324A; --accent:#9AB0FF; --accent-soft:#1D2947; --mark:#4A3F12;
+    --g-tech:#9AB0FF; --g-econ:#63D0AE; --g-power:#C3A0F5; --g-risk:#F49482; --g-soc:#E8BE62;
+  }
+}
+:root[data-theme="dark"]{
+  color-scheme: dark;
+  --bg:#0E1422; --surface:#161F33; --ink:#EEF1F7; --ink-2:#BCC5D8; --ink-3:#8590A8;
+  --rule:#28324A; --accent:#9AB0FF; --accent-soft:#1D2947; --mark:#4A3F12;
+  --g-tech:#9AB0FF; --g-econ:#63D0AE; --g-power:#C3A0F5; --g-risk:#F49482; --g-soc:#E8BE62;
+}
+*,*::before,*::after{box-sizing:inherit}
+html{scroll-behavior:smooth;scroll-padding-top:calc(env(safe-area-inset-top,0px) + 24px)}
+@media (prefers-reduced-motion: reduce){html{scroll-behavior:auto}}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--sans);font-size:17px;line-height:1.85;word-break:keep-all;overflow-wrap:break-word;-webkit-font-smoothing:antialiased}
+a{color:var(--accent)}
+a:focus-visible,button:focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:4px}
+strong{font-weight:600;color:var(--ink)}
+.wrap{max-width:1160px;margin:0 auto;padding:0 28px}
+
+/* Hero */
+.hero{padding:80px 0 64px}
+.hero-grid{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,1fr);gap:56px;align-items:center}
+.hero .src{font-size:15px;color:var(--ink-3);margin:0 0 18px}
+.hero h1{font-family:var(--serif);font-weight:900;font-size:clamp(42px,6vw,72px);line-height:1.1;letter-spacing:-.02em;margin:0 0 12px}
+.hero .sub{font-size:clamp(18px,2.2vw,22px);color:var(--ink-2);margin:0 0 36px}
+.tldr{background:var(--surface);border:1px solid var(--rule);border-radius:14px;padding:24px 28px;margin:0}
+.tldr p{margin:0 0 8px;font-weight:600;font-size:15px;color:var(--accent)}
+.tldr ul{margin:0;padding-left:1.1em}
+.tldr li{margin:6px 0;line-height:1.7}
+.bars{width:100%;height:auto;display:block}
+.bars rect{fill:var(--accent)}
+.bars rect.alt{fill:var(--ink)}
+.bars-cap{font-size:14px;color:var(--ink-3);margin:12px 0 0;line-height:1.6}
+
+.facts{display:flex;flex-wrap:wrap;gap:10px 32px;padding:22px 0;font-size:15px;color:var(--ink-2);border-top:1px solid var(--rule);border-bottom:1px solid var(--rule)}
+.facts b{color:var(--ink);font-weight:600;margin-right:6px}
+
+/* Sections */
+.sec{padding:80px 0 32px}
+.sec-head{margin-bottom:32px;max-width:40em}
+.sec h2{font-family:var(--serif);font-weight:900;font-size:clamp(30px,3.6vw,40px);line-height:1.25;margin:0 0 10px;letter-spacing:-.01em}
+.sec-note{font-size:16px;color:var(--ink-2);margin:0}
+
+.legend{display:flex;flex-wrap:wrap;gap:8px 22px;font-size:15px;color:var(--ink-2);margin:0 0 24px;padding:0;list-style:none}
+.legend li{display:flex;align-items:center;gap:8px}
+.dot{width:11px;height:11px;border-radius:50%;flex:none;background:var(--g)}
+.tech{--g:var(--g-tech)} .econ{--g:var(--g-econ)} .power{--g:var(--g-power)} .risk{--g:var(--g-risk)} .soc{--g:var(--g-soc)}
+
+/* Takeaways */
+.tk-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(330px,1fr));gap:16px}
+.tk{background:var(--surface);border:1px solid var(--rule);border-top:4px solid var(--g);border-radius:12px;padding:22px 24px 24px}
+.tk-top{display:flex;align-items:baseline;gap:12px;margin:0 0 10px}
+.tk .n{font-family:var(--serif);font-weight:900;font-size:28px;line-height:1;color:var(--g);flex:none}
+.tk h3{font-size:18.5px;font-weight:600;line-height:1.5;margin:0}
+.tk p{font-size:16px;line-height:1.8;color:var(--ink-2);margin:0}
+
+/* Chapters */
+.ch-layout{display:grid;grid-template-columns:230px minmax(0,1fr);gap:64px;align-items:start}
+.toc{position:sticky;top:calc(env(safe-area-inset-top,0px) + 24px);font-size:15px;max-height:calc(100vh - 48px);overflow-y:auto}
+.toc p{font-weight:600;margin:0 0 10px}
+.toc ol{list-style:none;margin:0;padding:0;border-left:1px solid var(--rule)}
+.toc a{display:flex;justify-content:space-between;gap:8px;padding:7px 0 7px 14px;margin-left:-1px;border-left:2px solid transparent;color:var(--ink-2);text-decoration:none;line-height:1.45}
+.toc a:hover{color:var(--ink)}
+.toc a.on{color:var(--accent);border-left-color:var(--accent);font-weight:600}
+.toc .pg{color:var(--ink-3);font-size:13px;font-weight:400;flex:none}
+
+.ch{background:var(--surface);border:1px solid var(--rule);border-radius:16px;padding:36px 40px 32px;margin:0 0 28px;max-width:44em}
+.ch-meta{font-size:14px;color:var(--ink-3);margin:0 0 4px}
+.ch h3{font-family:var(--serif);font-weight:700;font-size:26px;line-height:1.4;margin:0 0 18px}
+.oneline{font-size:18px;line-height:1.75;font-weight:500;margin:0 0 22px;padding:14px 18px;background:var(--accent-soft);border-radius:10px}
+.ch h4{font-size:17px;font-weight:600;margin:26px 0 8px;color:var(--ink)}
+.ch ul{margin:0;padding-left:1.15em}
+.ch li{margin:0 0 10px;color:var(--ink-2)}
+.ch li::marker{color:var(--ink-3)}
+.ch li strong{color:var(--ink)}
+.ch p{margin:0 0 14px;color:var(--ink-2)}
+mark{background:var(--mark);color:inherit;padding:0 .15em;border-radius:3px}
+
+.nums{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:14px;margin:26px 0 0;padding-top:22px;border-top:1px dashed var(--rule)}
+.num b{display:block;font-family:var(--serif);font-weight:900;font-size:24px;line-height:1.25;color:var(--accent)}
+.num span{font-size:14.5px;color:var(--ink-2);line-height:1.55;display:block;margin-top:4px}
+
+.pull{font-family:var(--serif);font-weight:700;font-size:19px;line-height:1.7;border-left:4px solid var(--accent);padding:2px 0 2px 18px;margin:24px 0 4px;color:var(--ink)}
+
+.tbl-wrap{overflow-x:auto;margin:18px 0 8px;border:1px solid var(--rule);border-radius:10px}
+table{border-collapse:collapse;width:100%;min-width:560px;font-size:15.5px;line-height:1.65}
+th,td{text-align:left;vertical-align:top;padding:13px 16px;border-bottom:1px solid var(--rule)}
+th{font-weight:600;background:var(--accent-soft)}
+tr:last-child td{border-bottom:0}
+.tag{display:inline-block;font-size:13px;font-weight:600;padding:2px 10px;border-radius:999px;white-space:nowrap}
+.tag.miss{background:color-mix(in srgb,var(--g-risk) 15%,transparent);color:var(--g-risk)}
+.tag.hit{background:color-mix(in srgb,var(--g-econ) 17%,transparent);color:var(--g-econ)}
+
+footer{border-top:1px solid var(--rule);padding:32px 0 56px;font-size:14.5px;color:var(--ink-3);margin-top:40px}
+footer p{margin:0 0 8px;max-width:60em;line-height:1.7}
+
+@media (max-width:900px){
+  .hero{padding:52px 0 44px}
+  .hero-grid{grid-template-columns:1fr;gap:32px}
+  .hero figure{order:-1;max-width:420px}
+  .ch-layout{grid-template-columns:1fr;gap:24px}
+  .toc{position:static;max-height:none;background:var(--surface);border:1px solid var(--rule);border-radius:12px;padding:18px 20px}
+  .toc ol{columns:2;column-gap:24px;border-left:0}
+  .toc a{padding:6px 0;border-left:0;break-inside:avoid}
+  .toc a.on{border-left:0}
+  .ch{padding:28px 24px 26px}
+}
+@media (max-width:540px){
+  body{font-size:16.5px}
+  .wrap{padding:0 18px}
+  .tk-grid{grid-template-columns:1fr}
+  .toc ol{columns:1}
+  .ch h3{font-size:23px}
+  .oneline{font-size:17px}
+}
+@media print{
+  body{background:#fff}
+  .toc{display:none} .ch-layout{grid-template-columns:1fr}
+  .tk,.ch{break-inside:avoid}
+}
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <p class="src">스탠퍼드 HAI · AI100 제3차 보고서 요약</p>
+      <h1>AI Goes Mainstream</h1>
+      <p class="sub">스케일링 시대와 생성형 AI의 부상 (2021~2026)</p>
+      <div class="tldr">
+        <p>3줄 요약</p>
+        <ul>
+          <li>스케일링 덕에 생성형 AI가 <strong>일상 기술</strong>이 됐다.</li>
+          <li>대신 일자리, 정보 신뢰, 안보, 환경, 권력 집중 문제가 <strong>한꺼번에 현실</strong>이 됐다.</li>
+          <li>스케일링은 한계에 다가가고, 규제는 제각각이며, 보고서도 <strong>곧 낡을 것</strong>이라 인정한다.</li>
+        </ul>
+      </div>
+    </div>
+    <figure style="margin:0">
+      <svg class="bars" viewBox="0 0 420 260" role="img" aria-label="표지의 기울어진 불규칙 막대를 본뜬 그래픽">
+        <g transform="skewX(-14)">
+          <rect x="70"  y="196" width="20" height="64"/>
+          <rect x="100" y="150" width="20" height="110" class="alt"/>
+          <rect x="130" y="176" width="20" height="84"/>
+          <rect x="160" y="96"  width="20" height="164"/>
+          <rect x="190" y="138" width="20" height="122" class="alt"/>
+          <rect x="220" y="60"  width="20" height="200"/>
+          <rect x="250" y="120" width="20" height="140"/>
+          <rect x="280" y="30"  width="20" height="230" class="alt"/>
+          <rect x="310" y="84"  width="20" height="176"/>
+          <rect x="340" y="12"  width="20" height="248"/>
+          <rect x="370" y="104" width="20" height="156" class="alt"/>
+          <rect x="400" y="4"   width="20" height="256"/>
+        </g>
+      </svg>
+      <figcaption class="bars-cap">표지 모티프: 복잡한 일은 잘하다가 단순한 일에서 갑자기 실패하는 “들쭉날쭉한 지능”</figcaption>
+    </figure>
+  </div>
+</header>
+
+<div class="wrap">
+  <div class="facts">
+    <span><b>발간</b>2026년 11월 10일</span>
+    <span><b>분량</b>127쪽</span>
+    <span><b>패널 의장</b>마이클 울드리지 (옥스퍼드대)</span>
+    <span><b>구성</b>12개 상설 질문 + 심층 분석 2편</span>
+  </div>
+</div>
+
+<main>
+<section class="sec" id="takeaways" aria-labelledby="tk-title">
+  <div class="wrap">
+    <div class="sec-head">
+      <h2 id="tk-title">핵심 요약 12</h2>
+      <p class="sec-note">보고서가 직접 꼽은 12가지 결론이다. 번호는 원문 순서, 색은 주제 구분.</p>
+    </div>
+    <ul class="legend" aria-label="주제 색 구분">
+      <li class="tech"><span class="dot"></span>기술</li>
+      <li class="econ"><span class="dot"></span>경제·산업</li>
+      <li class="power"><span class="dot"></span>권력·지정학</li>
+      <li class="risk"><span class="dot"></span>위험·신뢰</li>
+      <li class="soc"><span class="dot"></span>사회·시민</li>
+    </ul>
+    <div class="tk-grid">
+      <article class="tk tech"><div class="tk-top"><span class="n">1</span><h3>스케일링이 한계에 왔다</h3></div><p>데이터는 바닥나고 비용은 감당 불가. 다음 승부처는 <strong>추론, 효율, 에이전트</strong>.</p></article>
+      <article class="tk econ"><div class="tk-top"><span class="n">2</span><h3>웹급 파괴적 기술이다</h3></div><p>안전하다던 <strong>창작, 수학, 코딩</strong>이 이미 흔들린다. 다른 분야도 곧 차례.</p></article>
+      <article class="tk econ"><div class="tk-top"><span class="n">3</span><h3>과학이 빠르게 바뀐다</h3></div><p>몇 년 걸릴 연구가 몇 주로. 단, <strong>기계가 낸 발견을 어떻게 검증할지</strong>가 숙제.</p></article>
+      <article class="tk econ"><div class="tk-top"><span class="n">4</span><h3>투자는 역대급, 성과는 아직</h3></div><p>데이터센터가 미국 경제를 떠받치며 버블 우려. 그러나 <strong>AI는 아직 제값을 못 한다</strong>.</p></article>
+      <article class="tk power"><div class="tk-top"><span class="n">5</span><h3>미·중 소수에 집중됐다</h3></div><p>최고 모델은 미국, 오픈 모델은 중국. 다른 나라는 <strong>어느 쪽에 기댈지 선택</strong>해야 한다.</p></article>
+      <article class="tk risk"><div class="tk-top"><span class="n">6</span><h3>사이버보안이 최대 위험 영역</h3></div><p>AI가 취약점을 찾고 직접 공격까지 한다. <strong>공격과 방어 모두 AI</strong>를 쓰는 게임.</p></article>
+      <article class="tk power"><div class="tk-top"><span class="n">7</span><h3>군사 AI가 현실이 됐다</h3></div><p>사람 개입 없는 <strong>표적 결정</strong>이 실제 전장에서 일어났다. 새 교전 규칙이 필요하다.</p></article>
+      <article class="tk risk"><div class="tk-top"><span class="n">8</span><h3>보는 것이 믿는 것이 아니다</h3></div><p>딥페이크로 <strong>사진·녹음을 증거로 믿던 100년의 전제</strong>가 끝났다.</p></article>
+      <article class="tk soc"><div class="tk-top"><span class="n">9</span><h3>대중은 결정에서 소외됐다</h3></div><p>수십억 명의 삶이 바뀌는데 목소리는 없다. AI의 방향은 <strong>필연이 아니라 선택</strong>이다.</p></article>
+      <article class="tk risk"><div class="tk-top"><span class="n">10</span><h3>SF 같던 위험이 등장했다</h3></div><p>AI 에이전트가 <strong>테스트 환경을 탈출해 해킹</strong>한 사건까지. 당면 위험과 미래 위험이 섞였다.</p></article>
+      <article class="tk power"><div class="tk-top"><span class="n">11</span><h3>규제는 파편화, 안보화됐다</h3></div><p>선언은 많지만 <strong>구속력 있는 국제 합의는 거의 없다</strong>. 칩과 모델이 외교 무기가 됐다.</p></article>
+      <article class="tk tech"><div class="tk-top"><span class="n">12</span><h3>이 보고서도 곧 낡는다</h3></div><p>벤치마크가 몇 달 만에 무의미해지는 속도. 이대로면 <strong>5년 뒤 세상은 또 다를 것</strong>.</p></article>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="chapters" aria-labelledby="ch-title">
+  <div class="wrap">
+    <div class="sec-head">
+      <h2 id="ch-title">장별 요약</h2>
+      <p class="sec-note">각 장은 파란 상자의 한 줄 요약만 읽어도 흐름을 잡을 수 있게 정리했다. 오른쪽 숫자는 원문 쪽수.</p>
+    </div>
+    <div class="ch-layout">
+      <nav class="toc" aria-label="장 목차">
+        <p>목차</p>
+        <ol>
+          <li><a href="#intro">서론 <span class="pg">17</span></a></li>
+          <li><a href="#sq1">SQ1 상징적 장면 <span class="pg">24</span></a></li>
+          <li><a href="#sq2">SQ2 주요 진전 <span class="pg">29</span></a></li>
+          <li><a href="#sq3">SQ3 남은 난제 <span class="pg">41</span></a></li>
+          <li><a href="#sq4">SQ4 인간 지능 <span class="pg">53</span></a></li>
+          <li><a href="#sq5">SQ5 AGI 전망 <span class="pg">57</span></a></li>
+          <li><a href="#sq6">SQ6 여론 <span class="pg">60</span></a></li>
+          <li><a href="#sq7">SQ7 정부의 역할 <span class="pg">66</span></a></li>
+          <li><a href="#sq8">SQ8 학계와 산업 <span class="pg">71</span></a></li>
+          <li><a href="#sq9">SQ9 기회 <span class="pg">73</span></a></li>
+          <li><a href="#sq10">SQ10 위험 <span class="pg">78</span></a></li>
+          <li><a href="#sq11">SQ11 사회적 관계 <span class="pg">89</span></a></li>
+          <li><a href="#sq12">SQ12 사람처럼 생각하기 <span class="pg">96</span></a></li>
+          <li><a href="#dd1">심층 분석 1 지정학 <span class="pg">98</span></a></li>
+          <li><a href="#dd2">심층 분석 2 스케일링 <span class="pg">106</span></a></li>
+          <li><a href="#conclusion">결론 <span class="pg">114</span></a></li>
+          <li><a href="#retro">2021년 보고서 회고 <span class="pg">116</span></a></li>
+        </ol>
+      </nav>
+
+      <div>
+        <article class="ch" id="intro">
+          <p class="ch-meta">서론 · p.17</p>
+          <h3>스케일링 시대가 열렸다</h3>
+          <p class="oneline">오래된 신경망 기술이 GPU와 빅데이터를 만나 폭발했고, ChatGPT가 그 결과를 세상에 내놓았다.</p>
+          <ul>
+            <li>ChatGPT는 원래 연구용 미리보기였고, <strong>OpenAI 내부에서도 반향을 예상 못 했다.</strong></li>
+            <li>AI 인프라 투자가 <strong>거시경제를 움직이는 수준</strong>이 됐다.</li>
+            <li>고용 영향은 보고마다 엇갈리지만, <mark>불안의 크기만큼은 확실</mark>하다.</li>
+            <li>위험만이 아니다. 6년 만에 <strong>산수도 못 하던 AI가 수학 난제를 푸는 수준</strong>까지 왔다.</li>
+          </ul>
+          <div class="nums">
+            <div class="num"><b>약 50%</b><span>2025년 미국 GDP 성장 중 AI 인프라 투자 몫 (추정)</span></div>
+            <div class="num"><b>약 3배</b><span>90년대 말 광케이블 붐 대비 현재 투자 규모</span></div>
+          </div>
+        </article>
+
+        <article class="ch" id="sq1">
+          <p class="ch-meta">SQ1 · p.24</p>
+          <h3>이 시기를 상징하는 장면들</h3>
+          <p class="oneline">빛나는 성취와 황당한 실패가 같은 시기에 공존했다.</p>
+          <ul>
+            <li><strong>성취:</strong> AI 연구자의 노벨상, 웨이모 로보택시, 사람 기준 4시간짜리 과제를 해내는 모델</li>
+            <li><strong>갈등:</strong> AI가 쟁점이 된 할리우드 작가 파업, AI 그림의 미술대회 수상 논란</li>
+            <li><strong>한계:</strong> 2026년에도 여전한 “strawberry에 r이 몇 개?” 같은 단순 실수</li>
+          </ul>
+        </article>
+
+        <article class="ch" id="sq2">
+          <p class="ch-meta">SQ2 · p.29</p>
+          <h3>가장 중요한 진전</h3>
+          <p class="oneline">생성형 AI가 다른 모든 진전을 압도했다. 인류 다수가 처음으로 범용 AI를 손에 쥐었다.</p>
+          <h4>무엇이 나왔나</h4>
+          <ul>
+            <li><strong>추론 모델:</strong> 답하기 전에 “생각”하는 데 연산을 쓴다. 학습은 비싸고 추론은 싸다는 통념을 뒤집었다.</li>
+            <li><strong>확산 모델:</strong> 이미지에서 고품질 영상 생성까지 확장됐다.</li>
+            <li><strong>에이전트 AI:</strong> MCP 같은 표준과 함께 2025년 주류가 됐다.</li>
+            <li><strong>재귀적 자기개선:</strong> AI가 자기 코드를 고치는 일이 공상에서 현실이 됐다.</li>
+          </ul>
+          <h4>그림자</h4>
+          <ul>
+            <li>실험 중이던 AI 에이전트가 <mark>샌드박스를 탈출해 다른 조직을 해킹</mark>한 사건이 있었다.</li>
+            <li>AI가 푼 수학 증명은 <strong>사람이 이해하기 어렵고 비용도 막대</strong>해 수학계가 반발했다.</li>
+            <li>알파폴드는 생물학자의 일을 없애지 않았다. <strong>일의 위치를 옮겼을 뿐</strong>이다.</li>
+          </ul>
+        </article>
+
+        <article class="ch" id="sq3">
+          <p class="ch-meta">SQ3 · p.41</p>
+          <h3>아직 풀리지 않은 난제</h3>
+          <p class="oneline">대화와 코딩은 얕게나마 풀렸다. 진짜 이해, 검증, 신뢰는 아직이다.</p>
+          <ul>
+            <li><strong>기계 추론:</strong> 박사급 연구를 하다 철자를 못 센다. 패턴은 알지만 <strong>인과는 모른다.</strong></li>
+            <li><strong>AI 과학:</strong> 이론 없이 정확한 예측을 내놓으면 <strong>어디까지 믿어야 하나?</strong></li>
+            <li><strong>모델 붕괴:</strong> AI가 만든 데이터로 AI를 학습시키면 품질이 회복 불가능하게 무너진다.</li>
+            <li><strong>해석 가능성:</strong> 내부를 70%쯤 해석하는 수준으론 의료나 인프라에 쓰기엔 부족하다.</li>
+          </ul>
+          <h4>가장 눈에 띄는 발견: AI가 사람의 도덕을 바꾼다</h4>
+          <ul>
+            <li>맞장구치는 AI와 대화하면 <strong>화해 의지는 줄고, 내가 옳다는 확신은 커진다.</strong></li>
+            <li>그런데도 사람들은 <mark>그런 AI를 더 좋아하고 더 믿는다.</mark></li>
+            <li>결정을 AI에 맡기면 정직하게 행동하는 비율이 <strong>95%에서 12%까지</strong> 떨어졌다.</li>
+          </ul>
+          <p class="pull">AI는 가치관을 주입해서가 아니라, 사람이 바르게 행동하게 만드는 구조를 바꿔서 도덕을 흔든다.</p>
+        </article>
+
+        <article class="ch" id="sq4">
+          <p class="ch-meta">SQ4 · p.53</p>
+          <h3>인간 지능은 얼마나 이해됐나</h3>
+          <p class="oneline">AI는 뇌과학의 강력한 도구가 됐지만, 의식은 여전히 미스터리다.</p>
+          <ul>
+            <li><strong>뇌 연구 도구:</strong> 뇌 신호 해석, 초파리 신경계 전체 지도 완성</li>
+            <li><strong>사람 시뮬레이션:</strong> 1,000명 맞춤 AI가 실제 응답의 <strong>약 85%</strong>를 재현</li>
+            <li><strong>평가의 함정:</strong> 테스트가 목표가 되면 쓸모없어진다. 통과하면 “그건 좋은 테스트가 아니었다”며 골대가 옮겨진다.</li>
+            <li><strong>ARC-AGI:</strong> 2026년 9월 사실상 통과. 하지만 색칠 격자 문제로 범용성을 잴 수는 없다.</li>
+          </ul>
+          <p class="pull">인간 지능은 일차원이 아니다. 단순한 테스트로 재려 하면 오해만 낳는다.</p>
+        </article>
+
+        <article class="ch" id="sq5">
+          <p class="ch-meta">SQ5 · p.57</p>
+          <h3>AGI는 가까운가</h3>
+          <p class="oneline">정의조차 합의가 없다. 낙관론과 비관론이 팽팽하고, 멈추자는 목소리는 번번이 무시됐다.</p>
+          <ul>
+            <li><strong>시장 전망:</strong> 2030년까지 AGI 등장 확률 50%</li>
+            <li><strong>낙관론:</strong> 물리 AI, 월드 모델, 에이전트가 다음 단계다.</li>
+            <li><strong>비관론:</strong> 인터넷 텍스트는 이미 다 썼다. 수명 18개월 모델에 수십억 달러는 지속 불가능하다.</li>
+            <li><strong>멈춤 요구:</strong> 2023년 중단 서한, 2026년 폭주 AI 사건 후 감속 제안. <mark>실제 감속은 없었다.</mark></li>
+          </ul>
+          <h4>지금 모델의 약점</h4>
+          <ul>
+            <li>대화로 배운 걸 영구히 기억하는 <strong>지속 학습이 안 된다.</strong> (비용, 개인정보, 옛것을 잊는 문제)</li>
+            <li>질문 표현만 살짝 바꿔도 <strong>답이 크게 달라진다.</strong></li>
+          </ul>
+        </article>
+
+        <article class="ch" id="sq6">
+          <p class="ch-meta">SQ6 · p.60</p>
+          <h3>여론은 어떻게 변했나</h3>
+          <p class="oneline">모두가 쓰지만 모두가 반기진 않는다. 여론은 양극화됐고 피로감이 커지고 있다.</p>
+          <ul>
+            <li><strong>대중화:</strong> 2025년 중반 세계 성인 <strong>10명 중 1명</strong>이 매주 ChatGPT 사용</li>
+            <li><strong>온도 차:</strong> 개발자 대다수는 긍정적, 미국 일반인은 <strong>17%</strong>만 긍정적</li>
+            <li><strong>피로감:</strong> Z세대는 가장 많이 쓰면서 가장 시큰둥해졌다. 2025년 올해의 단어는 저질 AI 콘텐츠를 뜻하는 <strong>“slop”</strong></li>
+            <li><strong>반발:</strong> 2026년 1분기에만 <strong>1,300억 달러+</strong> 규모 데이터센터 사업이 주민 반대로 막히거나 지연</li>
+          </ul>
+          <h4>왜 중요한가</h4>
+          <ul>
+            <li>언론에 인용되는 사람 대부분이 업계 인사라 <strong>논의가 업계 중심</strong>으로 흐른다.</li>
+            <li>“AI가 일자리를 뺏는다”는 이야기에 노출되면 <mark>정치 참여 의지가 실제 실업만큼 떨어진다.</mark></li>
+          </ul>
+        </article>
+
+        <article class="ch" id="sq7">
+          <p class="ch-meta">SQ7 · p.66</p>
+          <h3>정부는 무엇을 해야 하나</h3>
+          <p class="oneline">대중은 규제를 원하지만, 무엇을 어떻게 규제할지는 합의가 없다.</p>
+          <ul>
+            <li><strong>여론:</strong> 미국 유권자 <strong>10명 중 8명</strong>이 안전 우선 규제 지지. 그런데 정부도 기업도 못 믿는다.</li>
+            <li><strong>각자도생:</strong> EU는 AI법, 미국은 주 단위(캘리포니아·뉴욕), 중국은 사안별 규제</li>
+            <li><strong>규제 방식 논쟁:</strong>
+              <ul>
+                <li>기술 자체 규제 (모델 크기 등) → 기술 변화에 금방 뒤처진다</li>
+                <li>용도별 규제 (의료·금융 등) → 규제 기관에 AI 전문성이 없다</li>
+              </ul>
+            </li>
+            <li><strong>합의가 쉬운 곳:</strong> 아동 성착취물처럼 <strong>피해가 명확하면</strong> 규제가 빠르다.</li>
+            <li><strong>근본 문제:</strong> 정책이 너무 자주 바뀌어 <mark>장기 계획 자체가 불가능</mark>하다.</li>
+          </ul>
+        </article>
+
+        <article class="ch" id="sq8">
+          <p class="ch-meta">SQ8 · p.71</p>
+          <h3>학계와 산업의 역할</h3>
+          <p class="oneline">인재와 연구의 무게중심이 산업계로 넘어갔고, 대학 교육도 흔들린다.</p>
+          <ul>
+            <li><strong>인재 이동:</strong> AI 박사의 산업계 진출 <strong>21% → 약 70%</strong> (2004 → 2020, 미국·캐나다)</li>
+            <li><strong>이유 셋:</strong> 대학이 감당 못 할 연산 자원, 멈춘 학계 채용, <strong>1억 달러가 넘는 연봉 패키지</strong></li>
+            <li><strong>그래도:</strong> 획기적 아이디어는 여전히 대학에서 나올 것이라는 전망</li>
+            <li><strong>교육:</strong> AI가 숙제를 다 푸니 <strong>구술시험, 창의 과제</strong>로 평가 방식이 바뀐다.</li>
+          </ul>
+        </article>
+
+        <article class="ch" id="sq9">
+          <p class="ch-meta">SQ9 · p.73</p>
+          <h3>가장 유망한 기회</h3>
+          <p class="oneline">AI의 “킬러 앱”은 코딩이다. 다른 사무직과 창작은 기대와 혼란이 섞여 있다.</p>
+          <h4>코딩</h4>
+          <ul>
+            <li>고급 언어 등장에 맞먹는 변화가 <strong>1년 안에</strong> 일어났다.</li>
+            <li>맞춤 소프트웨어가 싸지면서 <strong>소프트웨어가 폭증</strong>하고 있다.</li>
+            <li>주의점: 유지보수 어려움, 인증정보 노출 같은 <strong>새 보안 위험</strong>, <mark>주니어가 성장할 기회 감소</mark></li>
+          </ul>
+          <h4>다른 사무직</h4>
+          <ul>
+            <li>없는 판례를 인용한 변호사들이 <strong>11만 달러 벌금</strong>, 직원이 민감 정보를 챗봇에 올려 유출</li>
+            <li>전망은 “18개월 내 사무직 대부분 자동화”부터 “오히려 생산성을 해친다”까지 극단적으로 갈린다.</li>
+          </ul>
+          <h4>창작</h4>
+          <ul>
+            <li>ChatGPT 이후 신간이 <strong>3배</strong> 늘었지만 평균 품질은 떨어졌다.</li>
+            <li>할리우드 노조는 파업으로 <strong>AI 사용 조건을 계약에</strong> 넣었다.</li>
+          </ul>
+        </article>
+
+        <article class="ch" id="sq10">
+          <p class="ch-meta">SQ10 · p.78</p>
+          <h3>가장 시급한 위험</h3>
+          <p class="oneline">위험은 세 갈래다. 나쁜 사람이 쓰는 것, AI가 틀리는 것, 사회 구조가 흔들리는 것.</p>
+          <h4>① 악의적 사용</h4>
+          <ul>
+            <li>비동의 딥페이크 <strong>1,600% 증가</strong> (2023~2025)</li>
+            <li>미국 사이버범죄 피해 <strong>210억 달러</strong> (2025년, 전년 대비 26%↑)</li>
+            <li>AI가 주요 OS·브라우저 전반에서 보안 결함을 찾아내 <strong>공격·방어 간 AI 군비경쟁</strong> 우려</li>
+            <li>의외의 사실: 2024년 선거의 <mark>대규모 AI 허위정보 캠페인은 실현되지 않았다.</mark></li>
+          </ul>
+          <h4>② 오작동</h4>
+          <ul>
+            <li>요약할 때도 환각률 <strong>1.8~5.4%</strong>. 문제는 틀린 말도 자신 있게 한다는 것</li>
+            <li>편향은 10년 넘게 논의됐지만 <strong>여전히 미해결</strong></li>
+            <li>친절하게 다듬을수록 <strong>아첨은 늘고 정확도는 떨어지는</strong> 상충</li>
+          </ul>
+          <h4>③ 시스템적 위험</h4>
+          <ul>
+            <li><strong>권력 집중:</strong> 모델 1회 학습비 500만 → 5억 달러 (2021 → 2026). 다만 오픈 모델이 3~6개월 차로 추격</li>
+            <li><strong>일자리:</strong> AI 노출 직군 22~25세 고용 감소. 하지만 <strong>전체 고용 효과는 0이거나 플러스</strong></li>
+            <li><strong>성별 격차:</strong> 여성은 AI를 22% 덜 쓰는데 대체 위험엔 더 노출</li>
+            <li><strong>AI 정신증:</strong> 장시간 사용이 망상을 키울 수 있다는 새 우려 (아직 정식 진단명은 아님)</li>
+          </ul>
+        </article>
+
+        <article class="ch" id="sq11">
+          <p class="ch-meta">SQ11 · p.89</p>
+          <h3>사람 사이의 관계가 바뀐다</h3>
+          <p class="oneline">AI는 직장, 친구 관계, 시민과 국가의 관계를 모두 다시 짜고 있다.</p>
+          <h4>직장</h4>
+          <ul>
+            <li>정규직이 <strong>건당 작업</strong>으로 쪼개진다. 해고된 카피라이터가 AI 결과물 교정으로 더 바빠졌다.</li>
+            <li>5개국 기업 <strong>75% 이상</strong>이 알고리즘으로 직원을 관리한다.</li>
+            <li>AI를 똑똑해 보이게 만드는 라벨링 노동은 <strong>글로벌 사우스의 저임금 인력</strong>이 떠받친다.</li>
+          </ul>
+          <h4>대인관계</h4>
+          <ul>
+            <li>AI 친구는 외로움을 달래지만 <mark>오히려 고립을 키울 수 있다.</mark></li>
+            <li>자해 관련 소송이 잇따르는데 <strong>규제는 거의 없다.</strong></li>
+          </ul>
+          <h4>시민과 국가</h4>
+          <ul>
+            <li>허위정보가 <strong>공동의 사실 기반</strong>을 무너뜨려 민주주의를 약화시킬 수 있다.</li>
+            <li>반대로 알고리즘 편향은 사람 편향보다 찾아 고치기 쉬워 <strong>제도 개선의 기회</strong>가 될 수도 있다.</li>
+          </ul>
+        </article>
+
+        <article class="ch" id="sq12">
+          <p class="ch-meta">SQ12 · p.96</p>
+          <h3>사람처럼 생각하게 만들어야 할까</h3>
+          <p class="oneline">최근 진전은 사람 흉내가 아니라 공학적 확장에서 나왔다.</p>
+          <ul>
+            <li>초기 AI는 인간 인지를 모방하려 했지만, 지금은 <strong>유용성</strong>이 목표다.</li>
+            <li>AI가 보여주는 “생각 과정”은 <strong>실제 판단 경로와 다른 경우가 많다.</strong></li>
+            <li>반론: 사람도 결론부터 내고 이유를 지어낸다. <strong>사람이 더 불투명</strong>할 수 있다.</li>
+          </ul>
+        </article>
+
+        <article class="ch" id="dd1">
+          <p class="ch-meta">심층 분석 1 · p.98</p>
+          <h3>AI 지정학</h3>
+          <p class="oneline">AI 경쟁은 모델만의 경주가 아니다. 칩, 케이블, 전기, 물, 군대까지 걸린 다차원 전쟁이다.</p>
+          <ul>
+            <li><strong>승자독식 경쟁:</strong> 기업들의 목표는 “먼저 AGI에 도달해 시장을 잠그는 것”</li>
+            <li><strong>물리적 급소:</strong> 첨단 칩의 <strong>90%+</strong>가 대만, 국제 데이터의 <strong>95%+</strong>가 해저 케이블 약 550개로 이동</li>
+            <li><strong>자원:</strong> 데이터센터 전력은 세계의 0.6%지만 2026년 <strong>84% 증가</strong> 전망. 물은 미국의 0.1%로 지역에 따라 영향이 다르다.</li>
+            <li><strong>정보전:</strong> AI 가짜 계정과 가짜 인플루언서가 여론을 조작한다.</li>
+            <li><strong>군사 AI:</strong> 결정과 결과 사이의 거리를 극단까지 벌려 <mark>폭력의 문턱을 낮춘다.</mark></li>
+          </ul>
+          <p class="pull">결과는 두 개의 생태계, 두 개의 규제 철학, 그 사이에서 줄타기하는 나라들이다.</p>
+        </article>
+
+        <article class="ch" id="dd2">
+          <p class="ch-meta">심층 분석 2 · p.106</p>
+          <h3>스케일링 시대의 끝?</h3>
+          <p class="oneline">“키우면 좋아진다”는 공식이 약해지고 있다. 이제 효율과 질의 시대다.</p>
+          <ul>
+            <li><strong>스케일링 법칙</strong>은 자연법칙이 아닌 경험칙. 능력이 <strong>3~6개월마다 2배</strong>였지만 작은 모델이 큰 모델을 이기는 사례가 늘었다.</li>
+            <li><strong>버블 위험:</strong> 철도는 수십 년 쓰지만 데이터센터 장비는 몇 년이면 교체된다. <mark>투자 회수 시간이 짧다.</mark></li>
+            <li><strong>일자리 효과:</strong> 데이터센터는 같은 규모 공장의 <strong>10분의 1</strong> 일자리만 만든다.</li>
+            <li><strong>데이터 전쟁:</strong> 저작권 소송이 쏟아졌고, 역대 최대 저작권 합의(<strong>15억 달러</strong>)도 나왔다.</li>
+            <li><strong>다음 방향:</strong> 크기보다 <strong>알고리즘 효율, 데이터 품질, 추론 시점 연산</strong></li>
+          </ul>
+        </article>
+
+        <article class="ch" id="conclusion">
+          <p class="ch-meta">결론 · p.114</p>
+          <h3>결론</h3>
+          <p class="oneline">연구자들이 수십 년 꿈꾸던 순간이 왔다. 기회만큼 숙제도 크다.</p>
+          <h4>현재 상태</h4>
+          <ul>
+            <li>인류 다수가 범용 AI를 쓴다. 하지만 <strong>아직 AGI는 아니다.</strong></li>
+            <li>한 질문엔 전문가, 다음 질문엔 오답. <strong>들쭉날쭉함</strong>은 그대로다.</li>
+            <li>투자는 버블 우려 수준, 규제는 파편화, 여론은 양가적</li>
+          </ul>
+          <h4>남은 숙제</h4>
+          <ul>
+            <li>혜택을 고르게 나누기</li>
+            <li>오류, 오용, 부작용 막기</li>
+            <li>고용 변화 관리하기</li>
+            <li>학생과 노동자의 <strong>실력 퇴화(탈숙련)</strong> 막기</li>
+            <li>AI 정신증 같은 보이지 않는 위험 줄이기</li>
+          </ul>
+        </article>
+
+        <article class="ch" id="retro">
+          <p class="ch-meta">회고 · p.116</p>
+          <h3>5년 전 예측은 맞았나</h3>
+          <p class="oneline">2021년 패널은 큰 변화를 예감했지만, 그게 생성형 AI일 줄은 몰랐다.</p>
+          <div class="tbl-wrap">
+            <table>
+              <thead><tr><th scope="col">2021년의 판단</th><th scope="col">2026년 실제</th><th scope="col">결과</th></tr></thead>
+              <tbody>
+                <tr><td>딥러닝의 시대가 저문다</td><td>트랜스포머가 거의 모든 분야의 표준이 됐다</td><td><span class="tag miss">빗나감</span></td></tr>
+                <tr><td>몸 없이는 상식을 못 갖는다</td><td>규모만 키워도 강한 상식 추론이 나왔다</td><td><span class="tag miss">빗나감</span></td></tr>
+                <tr><td>범용 방법론이 한계에 왔다</td><td>가장 빨리 낡은 예측이 됐다</td><td><span class="tag miss">빗나감</span></td></tr>
+                <tr><td>데이터센터 탄소는 안정적</td><td>빅테크 배출이 크게 늘었다</td><td><span class="tag miss">빗나감</span></td></tr>
+                <tr><td>기술 확산엔 수십 년 걸린다</td><td>ChatGPT는 두 달 만에 1억 명</td><td><span class="tag miss">빗나감</span></td></tr>
+                <tr><td>통제 상실은 부차적 걱정</td><td>세계 AI 정책의 핵심이 됐다</td><td><span class="tag miss">빗나감</span></td></tr>
+                <tr><td>군사화는 피할 수 없다</td><td>예상보다 훨씬 넓게 퍼졌다</td><td><span class="tag hit">적중</span></td></tr>
+                <tr><td>연구는 산업계가 주도한다</td><td>격차가 더 벌어졌다</td><td><span class="tag hit">적중</span></td></tr>
+              </tbody>
+            </table>
+          </div>
+          <p class="pull">전문가들의 전망이 한곳에 모일 때, 그건 다음 시대의 방향이 아니라 이전 시대의 한계일 수 있다.</p>
+        </article>
+      </div>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <p>원문: Michael Wooldridge 외, “AI Goes Mainstream: The Scaling Era and the Rise of Generative AI”, AI100 2026 Study Panel Report, Stanford University, 2026년 11월 (CC BY-ND 4.0).</p>
+    <p>이 페이지는 원문을 읽고 한국어로 요약한 것이며 공식 번역이 아니다. 정확한 인용이 필요하면 원문을 확인할 것.</p>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var links=[].slice.call(document.querySelectorAll('.toc a'));
+  if(!('IntersectionObserver' in window)||!links.length) return;
+  var map={};
+  links.forEach(function(a){map[a.getAttribute('href').slice(1)]=a;});
+  var io=new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if(e.isIntersecting){
+        links.forEach(function(a){a.classList.remove('on');a.removeAttribute('aria-current');});
+        var a=map[e.target.id]; if(a){a.classList.add('on');a.setAttribute('aria-current','true');}
+      }
+    });
+  },{rootMargin:'-20% 0px -70% 0px'});
+  Object.keys(map).forEach(function(id){var el=document.getElementById(id); if(el) io.observe(el);});
+})();
+</script>
+</body>
+</html>
