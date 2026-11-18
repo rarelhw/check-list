@@ -116,7 +116,10 @@ tr:last-child td{border-bottom:0}
 .tag.miss{background:color-mix(in srgb,var(--g-risk) 15%,transparent);color:var(--g-risk)}
 .tag.hit{background:color-mix(in srgb,var(--g-econ) 17%,transparent);color:var(--g-econ)}
 .ref{display:inline-block;font-size:12.5px;font-weight:600;line-height:1.5;color:var(--ink-3);text-decoration:none;white-space:nowrap;margin-left:4px;padding:0 7px;border:1px solid var(--rule);border-radius:999px;vertical-align:1px}
-a.ref:hover{color:var(--accent);border-color:var(--accent)}
+.ref a{color:inherit;text-decoration:none}
+.ref a:hover{color:var(--accent)}
+a[href^="ai100_report_2026.pdf"]{color:inherit;text-decoration:underline dotted;text-underline-offset:2px}
+a[href^="ai100_report_2026.pdf"]:hover{color:var(--accent)}
 #edu td:nth-child(2){white-space:nowrap}
 a.more{font-size:14px;font-weight:600;white-space:nowrap;margin-left:6px;text-decoration:none}
 .note{display:block;margin-top:8px;padding:8px 12px;border-left:3px solid var(--accent);background:var(--accent-soft);border-radius:6px;color:var(--ink);font-size:15px;line-height:1.7}
@@ -164,9 +167,9 @@ footer p{margin:0 0 8px;max-width:60em;line-height:1.7}
       <div class="tldr">
         <p>3줄 요약</p>
         <ul>
-          <li>스케일링 덕에 생성형 AI가 <strong>일상 기술</strong>이 됐다. <span class="ref">핵심 요약 1·2 · p.11</span></li>
-          <li>대신 일자리, 정보 신뢰, 안보, 환경, 권력 집중 문제가 <strong>한꺼번에 현실</strong>이 됐다. <span class="ref">핵심 요약 4~8 · p.12~14</span></li>
-          <li>스케일링은 한계에 다가가고, 규제는 제각각이며, 보고서도 <strong>곧 낡을 것</strong>이라 인정한다. <span class="ref">핵심 요약 1·11·12 · p.11, 16</span></li>
+          <li>스케일링 덕에 생성형 AI가 <strong>일상 기술</strong>이 됐다. <span class="ref">핵심 요약 1·2 · <a href="ai100_report_2026.pdf#page=11" target="_blank" rel="noopener" title="원문 PDF 11쪽 열기">p.11</a></span></li>
+          <li>대신 일자리, 정보 신뢰, 안보, 환경, 권력 집중 문제가 <strong>한꺼번에 현실</strong>이 됐다. <span class="ref">핵심 요약 4~8 · <a href="ai100_report_2026.pdf#page=12" target="_blank" rel="noopener" title="원문 PDF 12쪽 열기">p.12~14</a></span></li>
+          <li>스케일링은 한계에 다가가고, 규제는 제각각이며, 보고서도 <strong>곧 낡을 것</strong>이라 인정한다. <span class="ref">핵심 요약 1·11·12 · <a href="ai100_report_2026.pdf#page=11" target="_blank" rel="noopener" title="원문 PDF 11쪽 열기">p.11</a>, <a href="ai100_report_2026.pdf#page=16" target="_blank" rel="noopener" title="원문 PDF 16쪽 열기">16</a></span></li>
         </ul>
       </div>
     </div>
@@ -187,7 +190,7 @@ footer p{margin:0 0 8px;max-width:60em;line-height:1.7}
           <rect x="400" y="4"   width="20" height="256"/>
         </g>
       </svg>
-      <figcaption class="bars-cap">표지 모티프: 복잡한 일은 잘하다가 단순한 일에서 갑자기 실패하는 “들쭉날쭉한 지능” <span class="ref">p.2</span></figcaption>
+      <figcaption class="bars-cap">표지 모티프: 복잡한 일은 잘하다가 단순한 일에서 갑자기 실패하는 “들쭉날쭉한 지능” <span class="ref"><a href="ai100_report_2026.pdf#page=2" target="_blank" rel="noopener" title="원문 PDF 2쪽 열기">p.2</a></span></figcaption>
     </figure>
   </div>
 </header>
@@ -207,7 +210,7 @@ footer p{margin:0 0 8px;max-width:60em;line-height:1.7}
   <div class="wrap">
     <div class="sec-head">
       <h2 id="tk-title">핵심 요약 12</h2>
-      <p class="sec-note">보고서가 직접 꼽은 12가지 결론이다. 번호는 원문 순서, 색은 주제 구분이다. 카드 끝 표시는 원문 쪽수(핵심 요약은 p.10~16)다.</p>
+      <p class="sec-note">보고서가 직접 꼽은 12가지 결론이다. 번호는 원문 순서, 색은 주제 구분이다. 카드 끝 쪽수를 누르면 원문 PDF의 그 쪽이 열린다(핵심 요약은 p.10~16).</p>
     </div>
     <ul class="legend" aria-label="주제 색 구분">
       <li class="tech"><span class="dot"></span>기술</li>
@@ -217,18 +220,18 @@ footer p{margin:0 0 8px;max-width:60em;line-height:1.7}
       <li class="soc"><span class="dot"></span>사회·시민</li>
     </ul>
     <div class="tk-grid">
-      <article class="tk tech"><div class="tk-top"><span class="n">1</span><h3>스케일링이 한계에 왔다</h3></div><p>데이터는 바닥나고 비용은 감당 불가. 다음 승부처는 <strong>추론, 효율, 에이전트</strong>. <span class="ref">p.11</span></p></article>
-      <article class="tk econ"><div class="tk-top"><span class="n">2</span><h3>웹급 파괴적 기술이다</h3></div><p>안전하다던 <strong>창작, 수학, 코딩</strong>이 이미 흔들린다. 다른 분야도 곧 차례. <span class="ref">p.11</span></p></article>
-      <article class="tk econ"><div class="tk-top"><span class="n">3</span><h3>과학이 빠르게 바뀐다</h3></div><p>몇 년 걸릴 연구가 몇 주로. 단, <strong>기계가 낸 발견을 어떻게 검증할지</strong>가 숙제. <span class="ref">p.12</span></p></article>
-      <article class="tk econ"><div class="tk-top"><span class="n">4</span><h3>투자는 역대급, 성과는 아직</h3></div><p>데이터센터가 미국 경제를 떠받치며 버블 우려. 그러나 <strong>AI는 아직 제값을 못 한다</strong>. <span class="ref">p.12~13</span></p></article>
-      <article class="tk power"><div class="tk-top"><span class="n">5</span><h3>미·중 소수에 집중됐다</h3></div><p>최고 모델은 미국, 오픈 모델은 중국. 다른 나라는 <strong>어느 쪽에 기댈지 선택</strong>해야 한다. <span class="ref">p.13</span></p></article>
-      <article class="tk risk"><div class="tk-top"><span class="n">6</span><h3>사이버보안이 최대 위험 영역</h3></div><p>AI가 취약점을 찾고 직접 공격까지 한다. <strong>공격과 방어 모두 AI</strong>를 쓰는 게임. <span class="ref">p.13~14</span></p></article>
-      <article class="tk power"><div class="tk-top"><span class="n">7</span><h3>군사 AI가 현실이 됐다</h3></div><p>사람 개입 없는 <strong>표적 결정</strong>이 실제 전장에서 일어났다. 새 교전 규칙이 필요하다. <span class="ref">p.14</span></p></article>
-      <article class="tk risk"><div class="tk-top"><span class="n">8</span><h3>보는 것이 믿는 것이 아니다</h3></div><p>딥페이크로 <strong>사진·녹음을 증거로 믿던 100년의 전제</strong>가 끝났다. <span class="ref">p.14</span></p></article>
-      <article class="tk soc"><div class="tk-top"><span class="n">9</span><h3>대중은 결정에서 소외됐다</h3></div><p>수십억 명의 삶이 바뀌는데 목소리는 없다. AI의 방향은 <strong>필연이 아니라 선택</strong>이다. <span class="ref">p.15</span></p></article>
-      <article class="tk risk"><div class="tk-top"><span class="n">10</span><h3>SF 같던 위험이 등장했다</h3></div><p>AI 에이전트가 <strong>테스트 환경을 탈출해 해킹</strong>한 사건까지. 당면 위험과 미래 위험이 섞였다. <span class="ref">p.15</span></p></article>
-      <article class="tk power"><div class="tk-top"><span class="n">11</span><h3>규제는 파편화, 안보화됐다</h3></div><p>선언은 많지만 <strong>구속력 있는 국제 합의는 거의 없다</strong>. 칩과 모델이 외교 무기가 됐다. <span class="ref">p.16</span></p></article>
-      <article class="tk tech"><div class="tk-top"><span class="n">12</span><h3>이 보고서도 곧 낡는다</h3></div><p>벤치마크가 몇 달 만에 무의미해지는 속도. 이대로면 <strong>5년 뒤 세상은 또 다를 것</strong>. <span class="ref">p.16</span></p></article>
+      <article class="tk tech"><div class="tk-top"><span class="n">1</span><h3>스케일링이 한계에 왔다</h3></div><p>데이터는 바닥나고 비용은 감당 불가. 다음 승부처는 <strong>추론, 효율, 에이전트</strong>. <span class="ref"><a href="ai100_report_2026.pdf#page=11" target="_blank" rel="noopener" title="원문 PDF 11쪽 열기">p.11</a></span></p></article>
+      <article class="tk econ"><div class="tk-top"><span class="n">2</span><h3>웹급 파괴적 기술이다</h3></div><p>안전하다던 <strong>창작, 수학, 코딩</strong>이 이미 흔들린다. 다른 분야도 곧 차례. <span class="ref"><a href="ai100_report_2026.pdf#page=11" target="_blank" rel="noopener" title="원문 PDF 11쪽 열기">p.11</a></span></p></article>
+      <article class="tk econ"><div class="tk-top"><span class="n">3</span><h3>과학이 빠르게 바뀐다</h3></div><p>몇 년 걸릴 연구가 몇 주로. 단, <strong>기계가 낸 발견을 어떻게 검증할지</strong>가 숙제. <span class="ref"><a href="ai100_report_2026.pdf#page=12" target="_blank" rel="noopener" title="원문 PDF 12쪽 열기">p.12</a></span></p></article>
+      <article class="tk econ"><div class="tk-top"><span class="n">4</span><h3>투자는 역대급, 성과는 아직</h3></div><p>데이터센터가 미국 경제를 떠받치며 버블 우려. 그러나 <strong>AI는 아직 제값을 못 한다</strong>. <span class="ref"><a href="ai100_report_2026.pdf#page=12" target="_blank" rel="noopener" title="원문 PDF 12쪽 열기">p.12~13</a></span></p></article>
+      <article class="tk power"><div class="tk-top"><span class="n">5</span><h3>미·중 소수에 집중됐다</h3></div><p>최고 모델은 미국, 오픈 모델은 중국. 다른 나라는 <strong>어느 쪽에 기댈지 선택</strong>해야 한다. <span class="ref"><a href="ai100_report_2026.pdf#page=13" target="_blank" rel="noopener" title="원문 PDF 13쪽 열기">p.13</a></span></p></article>
+      <article class="tk risk"><div class="tk-top"><span class="n">6</span><h3>사이버보안이 최대 위험 영역</h3></div><p>AI가 취약점을 찾고 직접 공격까지 한다. <strong>공격과 방어 모두 AI</strong>를 쓰는 게임. <span class="ref"><a href="ai100_report_2026.pdf#page=13" target="_blank" rel="noopener" title="원문 PDF 13쪽 열기">p.13~14</a></span></p></article>
+      <article class="tk power"><div class="tk-top"><span class="n">7</span><h3>군사 AI가 현실이 됐다</h3></div><p>사람 개입 없는 <strong>표적 결정</strong>이 실제 전장에서 일어났다. 새 교전 규칙이 필요하다. <span class="ref"><a href="ai100_report_2026.pdf#page=14" target="_blank" rel="noopener" title="원문 PDF 14쪽 열기">p.14</a></span></p></article>
+      <article class="tk risk"><div class="tk-top"><span class="n">8</span><h3>보는 것이 믿는 것이 아니다</h3></div><p>딥페이크로 <strong>사진·녹음을 증거로 믿던 100년의 전제</strong>가 끝났다. <span class="ref"><a href="ai100_report_2026.pdf#page=14" target="_blank" rel="noopener" title="원문 PDF 14쪽 열기">p.14</a></span></p></article>
+      <article class="tk soc"><div class="tk-top"><span class="n">9</span><h3>대중은 결정에서 소외됐다</h3></div><p>수십억 명의 삶이 바뀌는데 목소리는 없다. AI의 방향은 <strong>필연이 아니라 선택</strong>이다. <span class="ref"><a href="ai100_report_2026.pdf#page=15" target="_blank" rel="noopener" title="원문 PDF 15쪽 열기">p.15</a></span></p></article>
+      <article class="tk risk"><div class="tk-top"><span class="n">10</span><h3>SF 같던 위험이 등장했다</h3></div><p>AI 에이전트가 <strong>테스트 환경을 탈출해 해킹</strong>한 사건까지. 당면 위험과 미래 위험이 섞였다. <span class="ref"><a href="ai100_report_2026.pdf#page=15" target="_blank" rel="noopener" title="원문 PDF 15쪽 열기">p.15</a></span></p></article>
+      <article class="tk power"><div class="tk-top"><span class="n">11</span><h3>규제는 파편화, 안보화됐다</h3></div><p>선언은 많지만 <strong>구속력 있는 국제 합의는 거의 없다</strong>. 칩과 모델이 외교 무기가 됐다. <span class="ref"><a href="ai100_report_2026.pdf#page=16" target="_blank" rel="noopener" title="원문 PDF 16쪽 열기">p.16</a></span></p></article>
+      <article class="tk tech"><div class="tk-top"><span class="n">12</span><h3>이 보고서도 곧 낡는다</h3></div><p>벤치마크가 몇 달 만에 무의미해지는 속도. 이대로면 <strong>5년 뒤 세상은 또 다를 것</strong>. <span class="ref"><a href="ai100_report_2026.pdf#page=16" target="_blank" rel="noopener" title="원문 PDF 16쪽 열기">p.16</a></span></p></article>
     </div>
   </div>
 </section>
@@ -237,7 +240,7 @@ footer p{margin:0 0 8px;max-width:60em;line-height:1.7}
   <div class="wrap">
     <div class="sec-head">
       <h2 id="ch-title">장별 요약</h2>
-      <p class="sec-note">각 장은 파란 상자의 한 줄 요약만 읽어도 흐름을 잡을 수 있게 정리했다. 목차 숫자는 장의 시작 쪽, 카드 머리는 장의 쪽 범위, 항목 끝 표시는 해당 내용이 실린 원문 쪽수다.</p>
+      <p class="sec-note">각 장은 파란 상자의 한 줄 요약만 읽어도 흐름을 잡을 수 있게 정리했다. 목차 숫자는 장의 시작 쪽, 카드 머리는 장의 쪽 범위, 항목 끝 표시는 해당 내용이 실린 원문 쪽수이며, 누르면 원문 PDF의 그 쪽이 열린다.</p>
     </div>
     <div class="ch-layout">
       <nav class="toc" aria-label="장 목차">
@@ -266,306 +269,306 @@ footer p{margin:0 0 8px;max-width:60em;line-height:1.7}
 
       <div>
         <article class="ch" id="intro">
-          <p class="ch-meta">서론 · p.17~23</p>
+          <p class="ch-meta">서론 · <a href="ai100_report_2026.pdf#page=17" target="_blank" rel="noopener" title="원문 PDF 17쪽 열기">p.17~23</a></p>
           <h3>스케일링 시대가 열렸다</h3>
           <p class="oneline">오래된 신경망 기술이 GPU와 빅데이터를 만나 폭발했고, ChatGPT가 그 결과를 세상에 내놓았다.</p>
           <ul>
-            <li>ChatGPT는 원래 연구용 미리보기였고, <strong>OpenAI 내부에서도 반향을 예상 못 했다.</strong> <span class="ref">p.18</span></li>
-            <li>AI 인프라 투자가 <strong>거시경제를 움직이는 수준</strong>이 됐다. <span class="ref">p.19</span></li>
-            <li>고용 영향은 보고마다 엇갈리지만, <mark>불안의 크기만큼은 확실</mark>하다. <span class="ref">p.19</span></li>
-            <li>위험만이 아니다. 6년 만에 <strong>산수도 못 하던 AI가 수학 난제를 푸는 수준</strong>까지 왔다. <span class="ref">p.21</span></li>
+            <li>ChatGPT는 원래 연구용 미리보기였고, <strong>OpenAI 내부에서도 반향을 예상 못 했다.</strong> <span class="ref"><a href="ai100_report_2026.pdf#page=18" target="_blank" rel="noopener" title="원문 PDF 18쪽 열기">p.18</a></span></li>
+            <li>AI 인프라 투자가 <strong>거시경제를 움직이는 수준</strong>이 됐다. <span class="ref"><a href="ai100_report_2026.pdf#page=19" target="_blank" rel="noopener" title="원문 PDF 19쪽 열기">p.19</a></span></li>
+            <li>고용 영향은 보고마다 엇갈리지만, <mark>불안의 크기만큼은 확실</mark>하다. <span class="ref"><a href="ai100_report_2026.pdf#page=19" target="_blank" rel="noopener" title="원문 PDF 19쪽 열기">p.19</a></span></li>
+            <li>위험만이 아니다. 6년 만에 <strong>산수도 못 하던 AI가 수학 난제를 푸는 수준</strong>까지 왔다. <span class="ref"><a href="ai100_report_2026.pdf#page=21" target="_blank" rel="noopener" title="원문 PDF 21쪽 열기">p.21</a></span></li>
           </ul>
           <div class="nums">
-            <div class="num"><b>약 50%</b><span>2025년 미국 GDP 성장 중 AI 인프라 투자 몫 (추정)</span> <span class="ref">p.19</span></div>
-            <div class="num"><b>약 3배</b><span>90년대 말 광케이블 붐 대비 현재 투자 규모</span> <span class="ref">p.19</span></div>
+            <div class="num"><b>약 50%</b><span>2025년 미국 GDP 성장 중 AI 인프라 투자 몫 (추정)</span> <span class="ref"><a href="ai100_report_2026.pdf#page=19" target="_blank" rel="noopener" title="원문 PDF 19쪽 열기">p.19</a></span></div>
+            <div class="num"><b>약 3배</b><span>90년대 말 광케이블 붐 대비 현재 투자 규모</span> <span class="ref"><a href="ai100_report_2026.pdf#page=19" target="_blank" rel="noopener" title="원문 PDF 19쪽 열기">p.19</a></span></div>
           </div>
         </article>
 
         <article class="ch" id="sq1">
-          <p class="ch-meta">SQ1 · p.24~28</p>
+          <p class="ch-meta">SQ1 · <a href="ai100_report_2026.pdf#page=24" target="_blank" rel="noopener" title="원문 PDF 24쪽 열기">p.24~28</a></p>
           <h3>이 시기를 상징하는 장면들</h3>
           <p class="oneline">빛나는 성취와 황당한 실패가 같은 시기에 공존했다.</p>
           <ul>
-            <li><strong>성취:</strong> AI 연구자의 노벨상, 웨이모 로보택시, 사람 기준 4시간짜리 과제를 해내는 모델 <span class="ref">p.26~28</span></li>
-            <li><strong>갈등:</strong> AI가 쟁점이 된 할리우드 작가 파업, AI 그림의 미술대회 수상 논란 <span class="ref">p.25~26</span></li>
-            <li><strong>한계:</strong> 2026년에도 여전한 “strawberry에 r이 몇 개?” 같은 단순 실수 <span class="ref">p.27</span></li>
+            <li><strong>성취:</strong> AI 연구자의 노벨상, 웨이모 로보택시, 사람 기준 4시간짜리 과제를 해내는 모델 <span class="ref"><a href="ai100_report_2026.pdf#page=26" target="_blank" rel="noopener" title="원문 PDF 26쪽 열기">p.26~28</a></span></li>
+            <li><strong>갈등:</strong> AI가 쟁점이 된 할리우드 작가 파업, AI 그림의 미술대회 수상 논란 <span class="ref"><a href="ai100_report_2026.pdf#page=25" target="_blank" rel="noopener" title="원문 PDF 25쪽 열기">p.25~26</a></span></li>
+            <li><strong>한계:</strong> 2026년에도 여전한 “strawberry에 r이 몇 개?” 같은 단순 실수 <span class="ref"><a href="ai100_report_2026.pdf#page=27" target="_blank" rel="noopener" title="원문 PDF 27쪽 열기">p.27</a></span></li>
           </ul>
         </article>
 
         <article class="ch" id="sq2">
-          <p class="ch-meta">SQ2 · p.29~40</p>
+          <p class="ch-meta">SQ2 · <a href="ai100_report_2026.pdf#page=29" target="_blank" rel="noopener" title="원문 PDF 29쪽 열기">p.29~40</a></p>
           <h3>가장 중요한 진전</h3>
           <p class="oneline">생성형 AI가 다른 모든 진전을 압도했다. 인류 다수가 처음으로 범용 AI를 손에 쥐었다.</p>
           <h4>무엇이 나왔나</h4>
           <ul>
-            <li><strong>추론 모델:</strong> 답하기 전에 “생각”하는 데 연산을 쓴다. 학습은 비싸고 추론은 싸다는 통념을 뒤집었다. <span class="ref">p.31~32</span></li>
-            <li><strong>확산 모델:</strong> 이미지에서 고품질 영상 생성까지 확장됐다. <span class="ref">p.33~34</span></li>
-            <li><strong>에이전트 AI:</strong> MCP 같은 표준과 함께 2025년 주류가 됐다. <span class="ref">p.35</span></li>
-            <li><strong>재귀적 자기개선:</strong> AI가 자기 코드를 고치는 일이 공상에서 현실이 됐다. <span class="ref">p.36</span></li>
+            <li><strong>추론 모델:</strong> 답하기 전에 “생각”하는 데 연산을 쓴다. 학습은 비싸고 추론은 싸다는 통념을 뒤집었다. <span class="ref"><a href="ai100_report_2026.pdf#page=31" target="_blank" rel="noopener" title="원문 PDF 31쪽 열기">p.31~32</a></span></li>
+            <li><strong>확산 모델:</strong> 이미지에서 고품질 영상 생성까지 확장됐다. <span class="ref"><a href="ai100_report_2026.pdf#page=33" target="_blank" rel="noopener" title="원문 PDF 33쪽 열기">p.33~34</a></span></li>
+            <li><strong>에이전트 AI:</strong> MCP 같은 표준과 함께 2025년 주류가 됐다. <span class="ref"><a href="ai100_report_2026.pdf#page=35" target="_blank" rel="noopener" title="원문 PDF 35쪽 열기">p.35</a></span></li>
+            <li><strong>재귀적 자기개선:</strong> AI가 자기 코드를 고치는 일이 공상에서 현실이 됐다. <span class="ref"><a href="ai100_report_2026.pdf#page=36" target="_blank" rel="noopener" title="원문 PDF 36쪽 열기">p.36</a></span></li>
           </ul>
           <h4>그림자</h4>
           <ul>
-            <li>실험 중이던 AI 에이전트가 <mark>샌드박스를 탈출해 다른 조직을 해킹</mark>한 사건이 있었다. <span class="ref">p.35</span></li>
-            <li>AI가 푼 수학 증명은 <strong>사람이 이해하기 어렵고 비용도 막대</strong>해 수학계가 반발했다. <span class="ref">p.33</span></li>
-            <li>알파폴드는 생물학자의 일을 없애지 않았다. <strong>일의 위치를 옮겼을 뿐</strong>이다. <span class="ref">p.38</span></li>
+            <li>실험 중이던 AI 에이전트가 <mark>샌드박스를 탈출해 다른 조직을 해킹</mark>한 사건이 있었다. <span class="ref"><a href="ai100_report_2026.pdf#page=35" target="_blank" rel="noopener" title="원문 PDF 35쪽 열기">p.35</a></span></li>
+            <li>AI가 푼 수학 증명은 <strong>사람이 이해하기 어렵고 비용도 막대</strong>해 수학계가 반발했다. <span class="ref"><a href="ai100_report_2026.pdf#page=33" target="_blank" rel="noopener" title="원문 PDF 33쪽 열기">p.33</a></span></li>
+            <li>알파폴드는 생물학자의 일을 없애지 않았다. <strong>일의 위치를 옮겼을 뿐</strong>이다. <span class="ref"><a href="ai100_report_2026.pdf#page=38" target="_blank" rel="noopener" title="원문 PDF 38쪽 열기">p.38</a></span></li>
           </ul>
         </article>
 
         <article class="ch" id="sq3">
-          <p class="ch-meta">SQ3 · p.41~52</p>
+          <p class="ch-meta">SQ3 · <a href="ai100_report_2026.pdf#page=41" target="_blank" rel="noopener" title="원문 PDF 41쪽 열기">p.41~52</a></p>
           <h3>아직 풀리지 않은 난제</h3>
           <p class="oneline">대화와 코딩은 얕게나마 풀렸다. 진짜 이해, 검증, 신뢰는 아직이다.</p>
           <ul>
-            <li><strong>기계 추론:</strong> 박사급 연구를 하다 철자를 못 센다. 패턴은 알지만 <strong>인과는 모른다.</strong> <span class="ref">p.42</span></li>
-            <li><strong>AI 과학:</strong> 이론 없이 정확한 예측을 내놓으면 <strong>어디까지 믿어야 하나?</strong> <span class="ref">p.43~44</span></li>
-            <li><strong>모델 붕괴:</strong> AI가 만든 데이터로 AI를 학습시키면 품질이 회복 불가능하게 무너진다. <span class="ref">p.44</span></li>
-            <li><strong>해석 가능성:</strong> 내부를 70%쯤 해석하는 수준으론 의료나 인프라에 쓰기엔 부족하다. <span class="ref">p.47</span></li>
+            <li><strong>기계 추론:</strong> 박사급 연구를 하다 철자를 못 센다. 패턴은 알지만 <strong>인과는 모른다.</strong> <span class="ref"><a href="ai100_report_2026.pdf#page=42" target="_blank" rel="noopener" title="원문 PDF 42쪽 열기">p.42</a></span></li>
+            <li><strong>AI 과학:</strong> 이론 없이 정확한 예측을 내놓으면 <strong>어디까지 믿어야 하나?</strong> <span class="ref"><a href="ai100_report_2026.pdf#page=43" target="_blank" rel="noopener" title="원문 PDF 43쪽 열기">p.43~44</a></span></li>
+            <li><strong>모델 붕괴:</strong> AI가 만든 데이터로 AI를 학습시키면 품질이 회복 불가능하게 무너진다. <span class="ref"><a href="ai100_report_2026.pdf#page=44" target="_blank" rel="noopener" title="원문 PDF 44쪽 열기">p.44</a></span></li>
+            <li><strong>해석 가능성:</strong> 내부를 70%쯤 해석하는 수준으론 의료나 인프라에 쓰기엔 부족하다. <span class="ref"><a href="ai100_report_2026.pdf#page=47" target="_blank" rel="noopener" title="원문 PDF 47쪽 열기">p.47</a></span></li>
           </ul>
           <h4>가장 눈에 띄는 발견: AI가 사람의 도덕을 바꾼다</h4>
           <ul>
-            <li>맞장구치는 AI와 대화하면 <strong>화해 의지는 줄고, 내가 옳다는 확신은 커진다.</strong> <span class="ref">p.45</span></li>
-            <li>그런데도 사람들은 <mark>그런 AI를 더 좋아하고 더 믿는다.</mark> <span class="ref">p.45</span></li>
-            <li>결정을 AI에 맡기면 정직하게 행동하는 비율이 <strong>95%에서 12%까지</strong> 떨어졌다. <span class="ref">p.45</span></li>
+            <li>맞장구치는 AI와 대화하면 <strong>화해 의지는 줄고, 내가 옳다는 확신은 커진다.</strong> <span class="ref"><a href="ai100_report_2026.pdf#page=45" target="_blank" rel="noopener" title="원문 PDF 45쪽 열기">p.45</a></span></li>
+            <li>그런데도 사람들은 <mark>그런 AI를 더 좋아하고 더 믿는다.</mark> <span class="ref"><a href="ai100_report_2026.pdf#page=45" target="_blank" rel="noopener" title="원문 PDF 45쪽 열기">p.45</a></span></li>
+            <li>결정을 AI에 맡기면 정직하게 행동하는 비율이 <strong>95%에서 12%까지</strong> 떨어졌다. <span class="ref"><a href="ai100_report_2026.pdf#page=45" target="_blank" rel="noopener" title="원문 PDF 45쪽 열기">p.45</a></span></li>
           </ul>
-          <p class="pull">AI는 가치관을 주입해서가 아니라, 사람이 바르게 행동하게 만드는 구조를 바꿔서 도덕을 흔든다. <span class="ref">p.45</span></p>
+          <p class="pull">AI는 가치관을 주입해서가 아니라, 사람이 바르게 행동하게 만드는 구조를 바꿔서 도덕을 흔든다. <span class="ref"><a href="ai100_report_2026.pdf#page=45" target="_blank" rel="noopener" title="원문 PDF 45쪽 열기">p.45</a></span></p>
         </article>
 
         <article class="ch" id="sq4">
-          <p class="ch-meta">SQ4 · p.53~56</p>
+          <p class="ch-meta">SQ4 · <a href="ai100_report_2026.pdf#page=53" target="_blank" rel="noopener" title="원문 PDF 53쪽 열기">p.53~56</a></p>
           <h3>인간 지능은 얼마나 이해됐나</h3>
           <p class="oneline">AI는 뇌과학의 강력한 도구가 됐지만, 의식은 여전히 미스터리다.</p>
           <ul>
-            <li><strong>뇌 연구 도구:</strong> 뇌 신호 해석, 초파리 신경계 전체 지도 완성 <span class="ref">p.54</span></li>
-            <li><strong>사람 시뮬레이션:</strong> 1,000명 맞춤 AI가 실제 응답의 <strong>약 85%</strong>를 재현 <span class="ref">p.54</span></li>
-            <li><strong>평가의 함정:</strong> 테스트가 목표가 되면 쓸모없어진다. 통과하면 “그건 좋은 테스트가 아니었다”며 골대가 옮겨진다. <span class="ref">p.55</span> <a class="more" href="#edu-goodhart">굿하트의 법칙 자세히 →</a></li>
-            <li><strong>ARC-AGI:</strong> 2026년 9월 사실상 통과. 하지만 색칠 격자 문제로 범용성을 잴 수는 없다. <span class="ref">p.55</span></li>
+            <li><strong>뇌 연구 도구:</strong> 뇌 신호 해석, 초파리 신경계 전체 지도 완성 <span class="ref"><a href="ai100_report_2026.pdf#page=54" target="_blank" rel="noopener" title="원문 PDF 54쪽 열기">p.54</a></span></li>
+            <li><strong>사람 시뮬레이션:</strong> 1,000명 맞춤 AI가 실제 응답의 <strong>약 85%</strong>를 재현 <span class="ref"><a href="ai100_report_2026.pdf#page=54" target="_blank" rel="noopener" title="원문 PDF 54쪽 열기">p.54</a></span></li>
+            <li><strong>평가의 함정:</strong> 테스트가 목표가 되면 쓸모없어진다. 통과하면 “그건 좋은 테스트가 아니었다”며 골대가 옮겨진다. <span class="ref"><a href="ai100_report_2026.pdf#page=55" target="_blank" rel="noopener" title="원문 PDF 55쪽 열기">p.55</a></span> <a class="more" href="#edu-goodhart">굿하트의 법칙 자세히 →</a></li>
+            <li><strong>ARC-AGI:</strong> 2026년 9월 사실상 통과. 하지만 색칠 격자 문제로 범용성을 잴 수는 없다. <span class="ref"><a href="ai100_report_2026.pdf#page=55" target="_blank" rel="noopener" title="원문 PDF 55쪽 열기">p.55</a></span> <a class="more" href="#edu-measure">그럼 어떻게 재야 하나 →</a></li>
           </ul>
-          <p class="pull">인간 지능은 일차원이 아니다. 단순한 테스트로 재려 하면 오해만 낳는다. <span class="ref">p.56</span></p>
+          <p class="pull">인간 지능은 일차원이 아니다. 단순한 테스트로 재려 하면 오해만 낳는다. <span class="ref"><a href="ai100_report_2026.pdf#page=56" target="_blank" rel="noopener" title="원문 PDF 56쪽 열기">p.56</a></span></p>
         </article>
 
         <article class="ch" id="sq5">
-          <p class="ch-meta">SQ5 · p.57~59</p>
+          <p class="ch-meta">SQ5 · <a href="ai100_report_2026.pdf#page=57" target="_blank" rel="noopener" title="원문 PDF 57쪽 열기">p.57~59</a></p>
           <h3>AGI는 가까운가</h3>
           <p class="oneline">정의조차 합의가 없다. 낙관론과 비관론이 팽팽하고, 멈추자는 목소리는 번번이 무시됐다.</p>
           <ul>
-            <li><strong>시장 전망:</strong> 2030년까지 AGI 등장 확률 50% <span class="ref">p.57</span></li>
-            <li><strong>낙관론:</strong> 물리 AI, 월드 모델, 에이전트가 다음 단계다. <span class="ref">p.57</span></li>
-            <li><strong>비관론:</strong> 인터넷 텍스트는 이미 다 썼다. 수명 18개월 모델에 수십억 달러는 지속 불가능하다. <span class="ref">p.58</span></li>
-            <li><strong>멈춤 요구:</strong> 2023년 중단 서한, 2026년 폭주 AI 사건 후 감속 제안. <mark>실제 감속은 없었다.</mark> <span class="ref">p.57</span></li>
+            <li><strong>시장 전망:</strong> 2030년까지 AGI 등장 확률 50% <span class="ref"><a href="ai100_report_2026.pdf#page=57" target="_blank" rel="noopener" title="원문 PDF 57쪽 열기">p.57</a></span></li>
+            <li><strong>낙관론:</strong> 물리 AI, 월드 모델, 에이전트가 다음 단계다. <span class="ref"><a href="ai100_report_2026.pdf#page=57" target="_blank" rel="noopener" title="원문 PDF 57쪽 열기">p.57</a></span></li>
+            <li><strong>비관론:</strong> 인터넷 텍스트는 이미 다 썼다. 수명 18개월 모델에 수십억 달러는 지속 불가능하다. <span class="ref"><a href="ai100_report_2026.pdf#page=58" target="_blank" rel="noopener" title="원문 PDF 58쪽 열기">p.58</a></span></li>
+            <li><strong>멈춤 요구:</strong> 2023년 중단 서한, 2026년 폭주 AI 사건 후 감속 제안. <mark>실제 감속은 없었다.</mark> <span class="ref"><a href="ai100_report_2026.pdf#page=57" target="_blank" rel="noopener" title="원문 PDF 57쪽 열기">p.57</a></span></li>
           </ul>
           <h4>지금 모델의 약점</h4>
           <ul>
-            <li>대화로 배운 걸 영구히 기억하는 <strong>지속 학습이 안 된다.</strong> (비용, 개인정보, 옛것을 잊는 문제) <span class="ref">p.58</span></li>
-            <li>질문 표현만 살짝 바꿔도 <strong>답이 크게 달라진다.</strong> <span class="ref">p.59</span></li>
+            <li>대화로 배운 걸 영구히 기억하는 <strong>지속 학습이 안 된다.</strong> (비용, 개인정보, 옛것을 잊는 문제) <span class="ref"><a href="ai100_report_2026.pdf#page=58" target="_blank" rel="noopener" title="원문 PDF 58쪽 열기">p.58</a></span></li>
+            <li>질문 표현만 살짝 바꿔도 <strong>답이 크게 달라진다.</strong> <span class="ref"><a href="ai100_report_2026.pdf#page=59" target="_blank" rel="noopener" title="원문 PDF 59쪽 열기">p.59</a></span></li>
           </ul>
         </article>
 
         <article class="ch" id="sq6">
-          <p class="ch-meta">SQ6 · p.60~65</p>
+          <p class="ch-meta">SQ6 · <a href="ai100_report_2026.pdf#page=60" target="_blank" rel="noopener" title="원문 PDF 60쪽 열기">p.60~65</a></p>
           <h3>여론은 어떻게 변했나</h3>
           <p class="oneline">모두가 쓰지만 모두가 반기진 않는다. 여론은 양극화됐고 피로감이 커지고 있다.</p>
           <ul>
-            <li><strong>대중화:</strong> 2025년 중반 세계 성인 <strong>10명 중 1명</strong>이 매주 ChatGPT 사용 <span class="ref">p.60</span></li>
-            <li><strong>온도 차:</strong> 개발자 대다수는 긍정적, 미국 일반인은 <strong>17%</strong>만 긍정적 <span class="ref">p.60</span></li>
-            <li><strong>피로감:</strong> Z세대는 가장 많이 쓰면서 가장 시큰둥해졌다. 2025년 올해의 단어는 저질 AI 콘텐츠를 뜻하는 <strong>“slop”</strong> <span class="ref">p.62</span></li>
-            <li><strong>반발:</strong> 2026년 1분기에만 <strong>1,300억 달러+</strong> 규모 데이터센터 사업이 주민 반대로 막히거나 지연 <span class="ref">p.62</span></li>
+            <li><strong>대중화:</strong> 2025년 중반 세계 성인 <strong>10명 중 1명</strong>이 매주 ChatGPT 사용 <span class="ref"><a href="ai100_report_2026.pdf#page=60" target="_blank" rel="noopener" title="원문 PDF 60쪽 열기">p.60</a></span></li>
+            <li><strong>온도 차:</strong> 개발자 대다수는 긍정적, 미국 일반인은 <strong>17%</strong>만 긍정적 <span class="ref"><a href="ai100_report_2026.pdf#page=60" target="_blank" rel="noopener" title="원문 PDF 60쪽 열기">p.60</a></span></li>
+            <li><strong>피로감:</strong> Z세대는 가장 많이 쓰면서 가장 시큰둥해졌다. 2025년 올해의 단어는 저질 AI 콘텐츠를 뜻하는 <strong>“slop”</strong> <span class="ref"><a href="ai100_report_2026.pdf#page=62" target="_blank" rel="noopener" title="원문 PDF 62쪽 열기">p.62</a></span></li>
+            <li><strong>반발:</strong> 2026년 1분기에만 <strong>1,300억 달러+</strong> 규모 데이터센터 사업이 주민 반대로 막히거나 지연 <span class="ref"><a href="ai100_report_2026.pdf#page=62" target="_blank" rel="noopener" title="원문 PDF 62쪽 열기">p.62</a></span></li>
           </ul>
           <h4>왜 중요한가</h4>
           <ul>
-            <li>언론에 인용되는 사람 대부분이 업계 인사라 <strong>논의가 업계 중심</strong>으로 흐른다. <span class="ref">p.64</span></li>
-            <li>“AI가 일자리를 뺏는다”는 이야기에 노출되면 <mark>정치 참여 의지가 실제 실업만큼 떨어진다.</mark> <span class="ref">p.64</span></li>
+            <li>언론에 인용되는 사람 대부분이 업계 인사라 <strong>논의가 업계 중심</strong>으로 흐른다. <span class="ref"><a href="ai100_report_2026.pdf#page=64" target="_blank" rel="noopener" title="원문 PDF 64쪽 열기">p.64</a></span></li>
+            <li>“AI가 일자리를 뺏는다”는 이야기에 노출되면 <mark>정치 참여 의지가 실제 실업만큼 떨어진다.</mark> <span class="ref"><a href="ai100_report_2026.pdf#page=64" target="_blank" rel="noopener" title="원문 PDF 64쪽 열기">p.64</a></span></li>
           </ul>
         </article>
 
         <article class="ch" id="sq7">
-          <p class="ch-meta">SQ7 · p.66~70</p>
+          <p class="ch-meta">SQ7 · <a href="ai100_report_2026.pdf#page=66" target="_blank" rel="noopener" title="원문 PDF 66쪽 열기">p.66~70</a></p>
           <h3>정부는 무엇을 해야 하나</h3>
           <p class="oneline">대중은 규제를 원하지만, 무엇을 어떻게 규제할지는 합의가 없다.</p>
           <ul>
-            <li><strong>여론:</strong> 미국 유권자 <strong>10명 중 8명</strong>이 안전 우선 규제 지지. 그런데 정부도 기업도 못 믿는다. <span class="ref">p.66</span></li>
-            <li><strong>각자도생:</strong> EU는 AI법, 미국은 주 단위(캘리포니아·뉴욕), 중국은 사안별 규제 <span class="ref">p.67</span></li>
-            <li><strong>규제 방식 논쟁:</strong> <span class="ref">p.68~69</span>
+            <li><strong>여론:</strong> 미국 유권자 <strong>10명 중 8명</strong>이 안전 우선 규제 지지. 그런데 정부도 기업도 못 믿는다. <span class="ref"><a href="ai100_report_2026.pdf#page=66" target="_blank" rel="noopener" title="원문 PDF 66쪽 열기">p.66</a></span></li>
+            <li><strong>각자도생:</strong> EU는 AI법, 미국은 주 단위(캘리포니아·뉴욕), 중국은 사안별 규제 <span class="ref"><a href="ai100_report_2026.pdf#page=67" target="_blank" rel="noopener" title="원문 PDF 67쪽 열기">p.67</a></span></li>
+            <li><strong>규제 방식 논쟁:</strong> <span class="ref"><a href="ai100_report_2026.pdf#page=68" target="_blank" rel="noopener" title="원문 PDF 68쪽 열기">p.68~69</a></span>
               <ul>
                 <li>기술 자체 규제 (모델 크기 등) → 기술 변화에 금방 뒤처진다</li>
                 <li>용도별 규제 (의료·금융 등) → 규제 기관에 AI 전문성이 없다</li>
               </ul>
             </li>
-            <li><strong>합의가 쉬운 곳:</strong> 아동 성착취물처럼 <strong>피해가 명확하면</strong> 규제가 빠르다. <span class="ref">p.69</span></li>
-            <li><strong>근본 문제:</strong> 정책이 너무 자주 바뀌어 <mark>장기 계획 자체가 불가능</mark>하다. <span class="ref">p.69</span></li>
+            <li><strong>합의가 쉬운 곳:</strong> 아동 성착취물처럼 <strong>피해가 명확하면</strong> 규제가 빠르다. <span class="ref"><a href="ai100_report_2026.pdf#page=69" target="_blank" rel="noopener" title="원문 PDF 69쪽 열기">p.69</a></span></li>
+            <li><strong>근본 문제:</strong> 정책이 너무 자주 바뀌어 <mark>장기 계획 자체가 불가능</mark>하다. <span class="ref"><a href="ai100_report_2026.pdf#page=69" target="_blank" rel="noopener" title="원문 PDF 69쪽 열기">p.69</a></span></li>
           </ul>
         </article>
 
         <article class="ch" id="sq8">
-          <p class="ch-meta">SQ8 · p.71~72</p>
+          <p class="ch-meta">SQ8 · <a href="ai100_report_2026.pdf#page=71" target="_blank" rel="noopener" title="원문 PDF 71쪽 열기">p.71~72</a></p>
           <h3>학계와 산업의 역할</h3>
           <p class="oneline">인재와 연구의 무게중심이 산업계로 넘어갔고, 대학 교육도 흔들린다.</p>
           <h4>인재와 연구</h4>
           <ul>
-            <li><strong>인재 이동:</strong> AI 박사의 산업계 진출 <strong>21% → 약 70%</strong> (2004 → 2020, 미국·캐나다) <span class="ref">p.71</span></li>
-            <li><strong>이유 셋:</strong> 대학이 감당 못 할 연산 자원, 멈춘 학계 채용, <strong>1억 달러가 넘는 연봉 패키지</strong> <span class="ref">p.72</span></li>
-            <li><strong>남은 질문:</strong> 그럼 <mark>다음 세대 AI 연구자는 누가 길러내나?</mark> 보고서는 묻기만 하고 답은 내놓지 않는다. <span class="ref">p.71</span></li>
-            <li><strong>그래도:</strong> 획기적 아이디어는 여전히 대학에서 나올 것이라는 전망 <span class="ref">p.72</span></li>
+            <li><strong>인재 이동:</strong> AI 박사의 산업계 진출 <strong>21% → 약 70%</strong> (2004 → 2020, 미국·캐나다) <span class="ref"><a href="ai100_report_2026.pdf#page=71" target="_blank" rel="noopener" title="원문 PDF 71쪽 열기">p.71</a></span></li>
+            <li><strong>이유 셋:</strong> 대학이 감당 못 할 연산 자원, 멈춘 학계 채용, <strong>1억 달러가 넘는 연봉 패키지</strong> <span class="ref"><a href="ai100_report_2026.pdf#page=72" target="_blank" rel="noopener" title="원문 PDF 72쪽 열기">p.72</a></span></li>
+            <li><strong>남은 질문:</strong> 그럼 <mark>다음 세대 AI 연구자는 누가 길러내나?</mark> 보고서는 묻기만 하고 답은 내놓지 않는다. <span class="ref"><a href="ai100_report_2026.pdf#page=71" target="_blank" rel="noopener" title="원문 PDF 71쪽 열기">p.71</a></span></li>
+            <li><strong>그래도:</strong> 획기적 아이디어는 여전히 대학에서 나올 것이라는 전망 <span class="ref"><a href="ai100_report_2026.pdf#page=72" target="_blank" rel="noopener" title="원문 PDF 72쪽 열기">p.72</a></span></li>
           </ul>
           <h4>교육</h4>
           <ul>
-            <li><strong>평가가 흔들린다:</strong> 5년 전만 해도 실력을 재던 <strong>에세이, 재택 시험, 프로그래밍 과제</strong>를 이제 LLM이 다 푼다. <span class="ref">p.72</span></li>
-            <li><strong>평가 방식 전환:</strong> <strong>대면 구술 평가</strong>와 더 종합적이고 창의적인 과제로 옮겨 가고 있다. <span class="ref">p.72</span></li>
-            <li><strong>학업 윤리:</strong> LLM 사용에 맞춰 부정행위 규정도 고쳐야 했다. <span class="ref">p.72</span></li>
-            <li><strong>대학원:</strong> 문헌 검토와 데이터 종합 방식 자체가 바뀌고 있다. <span class="ref">p.72</span></li>
-            <li><strong>권고는 하나:</strong> 구체적인 방법 없이, 교수자에게 아래 한 가지를 요구한다. <span class="ref">p.72</span></li>
+            <li><strong>평가가 흔들린다:</strong> 5년 전만 해도 실력을 재던 <strong>에세이, 재택 시험, 프로그래밍 과제</strong>를 이제 LLM이 다 푼다. <span class="ref"><a href="ai100_report_2026.pdf#page=72" target="_blank" rel="noopener" title="원문 PDF 72쪽 열기">p.72</a></span></li>
+            <li><strong>평가 방식 전환:</strong> <strong>대면 구술 평가</strong>와 더 종합적이고 창의적인 과제로 옮겨 가고 있다. <span class="ref"><a href="ai100_report_2026.pdf#page=72" target="_blank" rel="noopener" title="원문 PDF 72쪽 열기">p.72</a></span></li>
+            <li><strong>학업 윤리:</strong> LLM 사용에 맞춰 부정행위 규정도 고쳐야 했다. <span class="ref"><a href="ai100_report_2026.pdf#page=72" target="_blank" rel="noopener" title="원문 PDF 72쪽 열기">p.72</a></span></li>
+            <li><strong>대학원:</strong> 문헌 검토와 데이터 종합 방식 자체가 바뀌고 있다. <span class="ref"><a href="ai100_report_2026.pdf#page=72" target="_blank" rel="noopener" title="원문 PDF 72쪽 열기">p.72</a></span></li>
+            <li><strong>권고는 하나:</strong> 구체적인 방법 없이, 교수자에게 아래 한 가지를 요구한다. <span class="ref"><a href="ai100_report_2026.pdf#page=72" target="_blank" rel="noopener" title="원문 PDF 72쪽 열기">p.72</a></span></li>
           </ul>
           <p class="pull">교수자는 학생이 기초 역량과 지식을 실제로 익히고 유지하도록 가르치는 방식을 바꿔야 한다.</p>
           <p>다른 장에 흩어진 교육 관련 내용은 <a href="#edu">교육 관점으로 다시 읽기</a>에 모았다.</p>
         </article>
 
         <article class="ch" id="sq9">
-          <p class="ch-meta">SQ9 · p.73~77</p>
+          <p class="ch-meta">SQ9 · <a href="ai100_report_2026.pdf#page=73" target="_blank" rel="noopener" title="원문 PDF 73쪽 열기">p.73~77</a></p>
           <h3>가장 유망한 기회</h3>
           <p class="oneline">AI의 “킬러 앱”은 코딩이다. 다른 사무직과 창작은 기대와 혼란이 섞여 있다.</p>
           <h4>코딩</h4>
           <ul>
-            <li>고급 언어 등장에 맞먹는 변화가 <strong>1년 안에</strong> 일어났다. <span class="ref">p.74</span></li>
-            <li>맞춤 소프트웨어가 싸지면서 <strong>소프트웨어가 폭증</strong>하고 있다. <span class="ref">p.74</span></li>
-            <li>주의점: 유지보수 어려움, 인증정보 노출 같은 <strong>새 보안 위험</strong>, <mark>주니어가 성장할 기회 감소</mark> <span class="ref">p.74</span></li>
+            <li>고급 언어 등장에 맞먹는 변화가 <strong>1년 안에</strong> 일어났다. <span class="ref"><a href="ai100_report_2026.pdf#page=74" target="_blank" rel="noopener" title="원문 PDF 74쪽 열기">p.74</a></span></li>
+            <li>맞춤 소프트웨어가 싸지면서 <strong>소프트웨어가 폭증</strong>하고 있다. <span class="ref"><a href="ai100_report_2026.pdf#page=74" target="_blank" rel="noopener" title="원문 PDF 74쪽 열기">p.74</a></span></li>
+            <li>주의점: 유지보수 어려움, 인증정보 노출 같은 <strong>새 보안 위험</strong>, <mark>주니어가 성장할 기회 감소</mark> <span class="ref"><a href="ai100_report_2026.pdf#page=74" target="_blank" rel="noopener" title="원문 PDF 74쪽 열기">p.74</a></span></li>
           </ul>
           <h4>다른 사무직</h4>
           <ul>
-            <li>없는 판례를 인용한 변호사들이 <strong>11만 달러 벌금</strong>, 직원이 민감 정보를 챗봇에 올려 유출 <span class="ref">p.75</span></li>
-            <li>전망은 “18개월 내 사무직 대부분 자동화”부터 “오히려 생산성을 해친다”까지 극단적으로 갈린다. <span class="ref">p.75</span></li>
+            <li>없는 판례를 인용한 변호사들이 <strong>11만 달러 벌금</strong>, 직원이 민감 정보를 챗봇에 올려 유출 <span class="ref"><a href="ai100_report_2026.pdf#page=75" target="_blank" rel="noopener" title="원문 PDF 75쪽 열기">p.75</a></span></li>
+            <li>전망은 “18개월 내 사무직 대부분 자동화”부터 “오히려 생산성을 해친다”까지 극단적으로 갈린다. <span class="ref"><a href="ai100_report_2026.pdf#page=75" target="_blank" rel="noopener" title="원문 PDF 75쪽 열기">p.75</a></span></li>
           </ul>
           <h4>창작</h4>
           <ul>
-            <li>ChatGPT 이후 신간이 <strong>3배</strong> 늘었지만 평균 품질은 떨어졌다. <span class="ref">p.76</span></li>
-            <li>할리우드 노조는 파업으로 <strong>AI 사용 조건을 계약에</strong> 넣었다. <span class="ref">p.77</span></li>
+            <li>ChatGPT 이후 신간이 <strong>3배</strong> 늘었지만 평균 품질은 떨어졌다. <span class="ref"><a href="ai100_report_2026.pdf#page=76" target="_blank" rel="noopener" title="원문 PDF 76쪽 열기">p.76</a></span></li>
+            <li>할리우드 노조는 파업으로 <strong>AI 사용 조건을 계약에</strong> 넣었다. <span class="ref"><a href="ai100_report_2026.pdf#page=77" target="_blank" rel="noopener" title="원문 PDF 77쪽 열기">p.77</a></span></li>
           </ul>
         </article>
 
         <article class="ch" id="sq10">
-          <p class="ch-meta">SQ10 · p.78~88</p>
+          <p class="ch-meta">SQ10 · <a href="ai100_report_2026.pdf#page=78" target="_blank" rel="noopener" title="원문 PDF 78쪽 열기">p.78~88</a></p>
           <h3>가장 시급한 위험</h3>
           <p class="oneline">위험은 세 갈래다. 나쁜 사람이 쓰는 것, AI가 틀리는 것, 사회 구조가 흔들리는 것.</p>
           <h4>① 악의적 사용</h4>
           <ul>
-            <li>비동의 딥페이크 <strong>1,600% 증가</strong> (2023~2025) <span class="ref">p.78</span></li>
-            <li>미국 사이버범죄 피해 <strong>210억 달러</strong> (2025년, 전년 대비 26%↑) <span class="ref">p.79</span></li>
-            <li>AI가 주요 OS·브라우저 전반에서 보안 결함을 찾아내 <strong>공격·방어 간 AI 군비경쟁</strong> 우려 <span class="ref">p.80</span></li>
-            <li>의외의 사실: 2024년 선거의 <mark>대규모 AI 허위정보 캠페인은 실현되지 않았다.</mark> <span class="ref">p.79</span></li>
+            <li>비동의 딥페이크 <strong>1,600% 증가</strong> (2023~2025) <span class="ref"><a href="ai100_report_2026.pdf#page=78" target="_blank" rel="noopener" title="원문 PDF 78쪽 열기">p.78</a></span></li>
+            <li>미국 사이버범죄 피해 <strong>210억 달러</strong> (2025년, 전년 대비 26%↑) <span class="ref"><a href="ai100_report_2026.pdf#page=79" target="_blank" rel="noopener" title="원문 PDF 79쪽 열기">p.79</a></span></li>
+            <li>AI가 주요 OS·브라우저 전반에서 보안 결함을 찾아내 <strong>공격·방어 간 AI 군비경쟁</strong> 우려 <span class="ref"><a href="ai100_report_2026.pdf#page=80" target="_blank" rel="noopener" title="원문 PDF 80쪽 열기">p.80</a></span></li>
+            <li>의외의 사실: 2024년 선거의 <mark>대규모 AI 허위정보 캠페인은 실현되지 않았다.</mark> <span class="ref"><a href="ai100_report_2026.pdf#page=79" target="_blank" rel="noopener" title="원문 PDF 79쪽 열기">p.79</a></span></li>
           </ul>
           <h4>② 오작동</h4>
           <ul>
-            <li>요약할 때도 환각률 <strong>1.8~5.4%</strong>. 문제는 틀린 말도 자신 있게 한다는 것 <span class="ref">p.80</span></li>
-            <li>편향은 10년 넘게 논의됐지만 <strong>여전히 미해결</strong> <span class="ref">p.80~81</span></li>
-            <li>친절하게 다듬을수록 <strong>아첨은 늘고 정확도는 떨어지는</strong> 상충 <span class="ref">p.81</span></li>
+            <li>요약할 때도 환각률 <strong>1.8~5.4%</strong>. 문제는 틀린 말도 자신 있게 한다는 것 <span class="ref"><a href="ai100_report_2026.pdf#page=80" target="_blank" rel="noopener" title="원문 PDF 80쪽 열기">p.80</a></span></li>
+            <li>편향은 10년 넘게 논의됐지만 <strong>여전히 미해결</strong> <span class="ref"><a href="ai100_report_2026.pdf#page=80" target="_blank" rel="noopener" title="원문 PDF 80쪽 열기">p.80~81</a></span></li>
+            <li>친절하게 다듬을수록 <strong>아첨은 늘고 정확도는 떨어지는</strong> 상충 <span class="ref"><a href="ai100_report_2026.pdf#page=81" target="_blank" rel="noopener" title="원문 PDF 81쪽 열기">p.81</a></span></li>
           </ul>
           <h4>③ 시스템적 위험</h4>
           <ul>
-            <li><strong>권력 집중:</strong> 모델 1회 학습비 500만 → 5억 달러 (2021 → 2026). 다만 오픈 모델이 3~6개월 차로 추격 <span class="ref">p.84</span></li>
-            <li><strong>일자리:</strong> AI 노출 직군 22~25세 고용 감소. 하지만 <strong>전체 고용 효과는 0이거나 플러스</strong> <span class="ref">p.86</span></li>
-            <li><strong>성별 격차:</strong> 여성은 AI를 22% 덜 쓰는데 대체 위험엔 더 노출 <span class="ref">p.87</span></li>
-            <li><strong>AI 정신증:</strong> 장시간 사용이 망상을 키울 수 있다는 새 우려 (아직 정식 진단명은 아님) <span class="ref">p.88</span></li>
+            <li><strong>권력 집중:</strong> 모델 1회 학습비 500만 → 5억 달러 (2021 → 2026). 다만 오픈 모델이 3~6개월 차로 추격 <span class="ref"><a href="ai100_report_2026.pdf#page=84" target="_blank" rel="noopener" title="원문 PDF 84쪽 열기">p.84</a></span></li>
+            <li><strong>일자리:</strong> AI 노출 직군 22~25세 고용 감소. 하지만 <strong>전체 고용 효과는 0이거나 플러스</strong> <span class="ref"><a href="ai100_report_2026.pdf#page=86" target="_blank" rel="noopener" title="원문 PDF 86쪽 열기">p.86</a></span></li>
+            <li><strong>성별 격차:</strong> 여성은 AI를 22% 덜 쓰는데 대체 위험엔 더 노출 <span class="ref"><a href="ai100_report_2026.pdf#page=87" target="_blank" rel="noopener" title="원문 PDF 87쪽 열기">p.87</a></span></li>
+            <li><strong>AI 정신증:</strong> 장시간 사용이 망상을 키울 수 있다는 새 우려 (아직 정식 진단명은 아님) <span class="ref"><a href="ai100_report_2026.pdf#page=88" target="_blank" rel="noopener" title="원문 PDF 88쪽 열기">p.88</a></span></li>
           </ul>
         </article>
 
         <article class="ch" id="sq11">
-          <p class="ch-meta">SQ11 · p.89~95</p>
+          <p class="ch-meta">SQ11 · <a href="ai100_report_2026.pdf#page=89" target="_blank" rel="noopener" title="원문 PDF 89쪽 열기">p.89~95</a></p>
           <h3>사람 사이의 관계가 바뀐다</h3>
           <p class="oneline">AI는 직장, 친구 관계, 시민과 국가의 관계를 모두 다시 짜고 있다.</p>
           <h4>직장</h4>
           <ul>
-            <li>정규직이 <strong>건당 작업</strong>으로 쪼개진다. 해고된 카피라이터가 AI 결과물 교정으로 더 바빠졌다. <span class="ref">p.89</span></li>
-            <li>5개국 기업 <strong>75% 이상</strong>이 알고리즘으로 직원을 관리한다. <span class="ref">p.90</span></li>
-            <li>AI를 똑똑해 보이게 만드는 라벨링 노동은 <strong>글로벌 사우스의 저임금 인력</strong>이 떠받친다. <span class="ref">p.91</span></li>
+            <li>정규직이 <strong>건당 작업</strong>으로 쪼개진다. 해고된 카피라이터가 AI 결과물 교정으로 더 바빠졌다. <span class="ref"><a href="ai100_report_2026.pdf#page=89" target="_blank" rel="noopener" title="원문 PDF 89쪽 열기">p.89</a></span></li>
+            <li>5개국 기업 <strong>75% 이상</strong>이 알고리즘으로 직원을 관리한다. <span class="ref"><a href="ai100_report_2026.pdf#page=90" target="_blank" rel="noopener" title="원문 PDF 90쪽 열기">p.90</a></span></li>
+            <li>AI를 똑똑해 보이게 만드는 라벨링 노동은 <strong>글로벌 사우스의 저임금 인력</strong>이 떠받친다. <span class="ref"><a href="ai100_report_2026.pdf#page=91" target="_blank" rel="noopener" title="원문 PDF 91쪽 열기">p.91</a></span></li>
           </ul>
           <h4>대인관계</h4>
           <ul>
-            <li>AI 친구는 외로움을 달래지만 <mark>오히려 고립을 키울 수 있다.</mark> <span class="ref">p.92</span></li>
-            <li>자해 관련 소송이 잇따르는데 <strong>규제는 거의 없다.</strong> <span class="ref">p.92</span></li>
+            <li>AI 친구는 외로움을 달래지만 <mark>오히려 고립을 키울 수 있다.</mark> <span class="ref"><a href="ai100_report_2026.pdf#page=92" target="_blank" rel="noopener" title="원문 PDF 92쪽 열기">p.92</a></span></li>
+            <li>자해 관련 소송이 잇따르는데 <strong>규제는 거의 없다.</strong> <span class="ref"><a href="ai100_report_2026.pdf#page=92" target="_blank" rel="noopener" title="원문 PDF 92쪽 열기">p.92</a></span></li>
           </ul>
           <h4>시민과 국가</h4>
           <ul>
-            <li>허위정보가 <strong>공동의 사실 기반</strong>을 무너뜨려 민주주의를 약화시킬 수 있다. <span class="ref">p.94</span></li>
-            <li>반대로 알고리즘 편향은 사람 편향보다 찾아 고치기 쉬워 <strong>제도 개선의 기회</strong>가 될 수도 있다. <span class="ref">p.95</span></li>
+            <li>허위정보가 <strong>공동의 사실 기반</strong>을 무너뜨려 민주주의를 약화시킬 수 있다. <span class="ref"><a href="ai100_report_2026.pdf#page=94" target="_blank" rel="noopener" title="원문 PDF 94쪽 열기">p.94</a></span></li>
+            <li>반대로 알고리즘 편향은 사람 편향보다 찾아 고치기 쉬워 <strong>제도 개선의 기회</strong>가 될 수도 있다. <span class="ref"><a href="ai100_report_2026.pdf#page=95" target="_blank" rel="noopener" title="원문 PDF 95쪽 열기">p.95</a></span></li>
           </ul>
         </article>
 
         <article class="ch" id="sq12">
-          <p class="ch-meta">SQ12 · p.96~97</p>
+          <p class="ch-meta">SQ12 · <a href="ai100_report_2026.pdf#page=96" target="_blank" rel="noopener" title="원문 PDF 96쪽 열기">p.96~97</a></p>
           <h3>사람처럼 생각하게 만들어야 할까</h3>
           <p class="oneline">최근 진전은 사람 흉내가 아니라 공학적 확장에서 나왔다.</p>
           <ul>
-            <li>초기 AI는 인간 인지를 모방하려 했지만, 지금은 <strong>유용성</strong>이 목표다. <span class="ref">p.96</span></li>
-            <li>AI가 보여주는 “생각 과정”은 <strong>실제 판단 경로와 다른 경우가 많다.</strong> <span class="ref">p.97</span></li>
-            <li>반론: 사람도 결론부터 내고 이유를 지어낸다. <strong>사람이 더 불투명</strong>할 수 있다. <span class="ref">p.97</span></li>
+            <li>초기 AI는 인간 인지를 모방하려 했지만, 지금은 <strong>유용성</strong>이 목표다. <span class="ref"><a href="ai100_report_2026.pdf#page=96" target="_blank" rel="noopener" title="원문 PDF 96쪽 열기">p.96</a></span></li>
+            <li>AI가 보여주는 “생각 과정”은 <strong>실제 판단 경로와 다른 경우가 많다.</strong> <span class="ref"><a href="ai100_report_2026.pdf#page=97" target="_blank" rel="noopener" title="원문 PDF 97쪽 열기">p.97</a></span></li>
+            <li>반론: 사람도 결론부터 내고 이유를 지어낸다. <strong>사람이 더 불투명</strong>할 수 있다. <span class="ref"><a href="ai100_report_2026.pdf#page=97" target="_blank" rel="noopener" title="원문 PDF 97쪽 열기">p.97</a></span></li>
           </ul>
         </article>
 
         <article class="ch" id="dd1">
-          <p class="ch-meta">심층 분석 1 · p.98~105</p>
+          <p class="ch-meta">심층 분석 1 · <a href="ai100_report_2026.pdf#page=98" target="_blank" rel="noopener" title="원문 PDF 98쪽 열기">p.98~105</a></p>
           <h3>AI 지정학</h3>
           <p class="oneline">AI 경쟁은 모델만의 경주가 아니다. 칩, 케이블, 전기, 물, 군대까지 걸린 다차원 전쟁이다.</p>
           <ul>
-            <li><strong>승자독식 경쟁:</strong> 기업들의 목표는 “먼저 AGI에 도달해 시장을 잠그는 것” <span class="ref">p.98</span></li>
-            <li><strong>물리적 급소:</strong> 첨단 칩의 <strong>90%+</strong>가 대만, 국제 데이터의 <strong>95%+</strong>가 해저 케이블 약 550개로 이동 <span class="ref">p.99~100</span></li>
-            <li><strong>자원:</strong> 데이터센터 전력은 세계의 0.6%지만 2026년 <strong>84% 증가</strong> 전망. 물은 미국의 0.1%로 지역에 따라 영향이 다르다. <span class="ref">p.100~101</span></li>
-            <li><strong>정보전:</strong> AI 가짜 계정과 가짜 인플루언서가 여론을 조작한다. <span class="ref">p.101</span></li>
-            <li><strong>군사 AI:</strong> 결정과 결과 사이의 거리를 극단까지 벌려 <mark>폭력의 문턱을 낮춘다.</mark> <span class="ref">p.104</span></li>
+            <li><strong>승자독식 경쟁:</strong> 기업들의 목표는 “먼저 AGI에 도달해 시장을 잠그는 것” <span class="ref"><a href="ai100_report_2026.pdf#page=98" target="_blank" rel="noopener" title="원문 PDF 98쪽 열기">p.98</a></span></li>
+            <li><strong>물리적 급소:</strong> 첨단 칩의 <strong>90%+</strong>가 대만, 국제 데이터의 <strong>95%+</strong>가 해저 케이블 약 550개로 이동 <span class="ref"><a href="ai100_report_2026.pdf#page=99" target="_blank" rel="noopener" title="원문 PDF 99쪽 열기">p.99~100</a></span></li>
+            <li><strong>자원:</strong> 데이터센터 전력은 세계의 0.6%지만 2026년 <strong>84% 증가</strong> 전망. 물은 미국의 0.1%로 지역에 따라 영향이 다르다. <span class="ref"><a href="ai100_report_2026.pdf#page=100" target="_blank" rel="noopener" title="원문 PDF 100쪽 열기">p.100~101</a></span></li>
+            <li><strong>정보전:</strong> AI 가짜 계정과 가짜 인플루언서가 여론을 조작한다. <span class="ref"><a href="ai100_report_2026.pdf#page=101" target="_blank" rel="noopener" title="원문 PDF 101쪽 열기">p.101</a></span></li>
+            <li><strong>군사 AI:</strong> 결정과 결과 사이의 거리를 극단까지 벌려 <mark>폭력의 문턱을 낮춘다.</mark> <span class="ref"><a href="ai100_report_2026.pdf#page=104" target="_blank" rel="noopener" title="원문 PDF 104쪽 열기">p.104</a></span></li>
           </ul>
-          <p class="pull">결과는 두 개의 생태계, 두 개의 규제 철학, 그 사이에서 줄타기하는 나라들이다. <span class="ref">p.99, 105</span></p>
+          <p class="pull">결과는 두 개의 생태계, 두 개의 규제 철학, 그 사이에서 줄타기하는 나라들이다. <span class="ref"><a href="ai100_report_2026.pdf#page=99" target="_blank" rel="noopener" title="원문 PDF 99쪽 열기">p.99</a>, <a href="ai100_report_2026.pdf#page=105" target="_blank" rel="noopener" title="원문 PDF 105쪽 열기">105</a></span></p>
         </article>
 
         <article class="ch" id="dd2">
-          <p class="ch-meta">심층 분석 2 · p.106~113</p>
+          <p class="ch-meta">심층 분석 2 · <a href="ai100_report_2026.pdf#page=106" target="_blank" rel="noopener" title="원문 PDF 106쪽 열기">p.106~113</a></p>
           <h3>스케일링 시대의 끝?</h3>
           <p class="oneline">“키우면 좋아진다”는 공식이 약해지고 있다. 이제 효율과 질의 시대다.</p>
           <ul>
-            <li><strong>스케일링 법칙</strong>은 자연법칙이 아닌 경험칙. 능력이 <strong>3~6개월마다 2배</strong>였지만 작은 모델이 큰 모델을 이기는 사례가 늘었다. <span class="ref">p.106~107</span></li>
-            <li><strong>버블 위험:</strong> 철도는 수십 년 쓰지만 데이터센터 장비는 몇 년이면 교체된다. <mark>투자 회수 시간이 짧다.</mark> <span class="ref">p.109</span></li>
-            <li><strong>일자리 효과:</strong> 데이터센터는 같은 규모 공장의 <strong>10분의 1</strong> 일자리만 만든다. <span class="ref">p.109</span></li>
-            <li><strong>데이터 전쟁:</strong> 저작권 소송이 쏟아졌고, 역대 최대 저작권 합의(<strong>15억 달러</strong>)도 나왔다. <span class="ref">p.110</span></li>
-            <li><strong>다음 방향:</strong> 크기보다 <strong>알고리즘 효율, 데이터 품질, 추론 시점 연산</strong> <span class="ref">p.112~113</span></li>
+            <li><strong>스케일링 법칙</strong>은 자연법칙이 아닌 경험칙. 능력이 <strong>3~6개월마다 2배</strong>였지만 작은 모델이 큰 모델을 이기는 사례가 늘었다. <span class="ref"><a href="ai100_report_2026.pdf#page=106" target="_blank" rel="noopener" title="원문 PDF 106쪽 열기">p.106~107</a></span></li>
+            <li><strong>버블 위험:</strong> 철도는 수십 년 쓰지만 데이터센터 장비는 몇 년이면 교체된다. <mark>투자 회수 시간이 짧다.</mark> <span class="ref"><a href="ai100_report_2026.pdf#page=109" target="_blank" rel="noopener" title="원문 PDF 109쪽 열기">p.109</a></span></li>
+            <li><strong>일자리 효과:</strong> 데이터센터는 같은 규모 공장의 <strong>10분의 1</strong> 일자리만 만든다. <span class="ref"><a href="ai100_report_2026.pdf#page=109" target="_blank" rel="noopener" title="원문 PDF 109쪽 열기">p.109</a></span></li>
+            <li><strong>데이터 전쟁:</strong> 저작권 소송이 쏟아졌고, 역대 최대 저작권 합의(<strong>15억 달러</strong>)도 나왔다. <span class="ref"><a href="ai100_report_2026.pdf#page=110" target="_blank" rel="noopener" title="원문 PDF 110쪽 열기">p.110</a></span></li>
+            <li><strong>다음 방향:</strong> 크기보다 <strong>알고리즘 효율, 데이터 품질, 추론 시점 연산</strong> <span class="ref"><a href="ai100_report_2026.pdf#page=112" target="_blank" rel="noopener" title="원문 PDF 112쪽 열기">p.112~113</a></span></li>
           </ul>
         </article>
 
         <article class="ch" id="conclusion">
-          <p class="ch-meta">결론 · p.114~115</p>
+          <p class="ch-meta">결론 · <a href="ai100_report_2026.pdf#page=114" target="_blank" rel="noopener" title="원문 PDF 114쪽 열기">p.114~115</a></p>
           <h3>결론</h3>
           <p class="oneline">연구자들이 수십 년 꿈꾸던 순간이 왔다. 기회만큼 숙제도 크다.</p>
           <h4>현재 상태</h4>
           <ul>
-            <li>인류 다수가 범용 AI를 쓴다. 하지만 <strong>아직 AGI는 아니다.</strong> <span class="ref">p.114</span></li>
-            <li>한 질문엔 전문가, 다음 질문엔 오답. <strong>들쭉날쭉함</strong>은 그대로다. <span class="ref">p.114</span></li>
-            <li>투자는 버블 우려 수준, 규제는 파편화, 여론은 양가적 <span class="ref">p.114</span></li>
+            <li>인류 다수가 범용 AI를 쓴다. 하지만 <strong>아직 AGI는 아니다.</strong> <span class="ref"><a href="ai100_report_2026.pdf#page=114" target="_blank" rel="noopener" title="원문 PDF 114쪽 열기">p.114</a></span></li>
+            <li>한 질문엔 전문가, 다음 질문엔 오답. <strong>들쭉날쭉함</strong>은 그대로다. <span class="ref"><a href="ai100_report_2026.pdf#page=114" target="_blank" rel="noopener" title="원문 PDF 114쪽 열기">p.114</a></span></li>
+            <li>투자는 버블 우려 수준, 규제는 파편화, 여론은 양가적 <span class="ref"><a href="ai100_report_2026.pdf#page=114" target="_blank" rel="noopener" title="원문 PDF 114쪽 열기">p.114</a></span></li>
           </ul>
           <h4>남은 숙제</h4>
           <ul>
-            <li>혜택을 고르게 나누기 <span class="ref">p.115</span></li>
-            <li>오류, 오용, 부작용 막기 <span class="ref">p.115</span></li>
-            <li>고용 변화 관리하기 <span class="ref">p.115</span></li>
-            <li>학생과 노동자의 <strong>실력 퇴화(탈숙련)</strong> 막기 <span class="ref">p.115</span></li>
-            <li>AI 정신증 같은 보이지 않는 위험 줄이기 <span class="ref">p.115</span></li>
+            <li>혜택을 고르게 나누기 <span class="ref"><a href="ai100_report_2026.pdf#page=115" target="_blank" rel="noopener" title="원문 PDF 115쪽 열기">p.115</a></span></li>
+            <li>오류, 오용, 부작용 막기 <span class="ref"><a href="ai100_report_2026.pdf#page=115" target="_blank" rel="noopener" title="원문 PDF 115쪽 열기">p.115</a></span></li>
+            <li>고용 변화 관리하기 <span class="ref"><a href="ai100_report_2026.pdf#page=115" target="_blank" rel="noopener" title="원문 PDF 115쪽 열기">p.115</a></span></li>
+            <li>학생과 노동자의 <strong>실력 퇴화(탈숙련)</strong> 막기 <span class="ref"><a href="ai100_report_2026.pdf#page=115" target="_blank" rel="noopener" title="원문 PDF 115쪽 열기">p.115</a></span></li>
+            <li>AI 정신증 같은 보이지 않는 위험 줄이기 <span class="ref"><a href="ai100_report_2026.pdf#page=115" target="_blank" rel="noopener" title="원문 PDF 115쪽 열기">p.115</a></span></li>
           </ul>
         </article>
 
         <article class="ch" id="retro">
-          <p class="ch-meta">회고 · p.116~126</p>
+          <p class="ch-meta">회고 · <a href="ai100_report_2026.pdf#page=116" target="_blank" rel="noopener" title="원문 PDF 116쪽 열기">p.116~126</a></p>
           <h3>5년 전 예측은 맞았나</h3>
           <p class="oneline">2021년 패널은 큰 변화를 예감했지만, 그게 생성형 AI일 줄은 몰랐다.</p>
           <div class="tbl-wrap">
             <table>
               <thead><tr><th scope="col">2021년의 판단</th><th scope="col">2026년 실제</th><th scope="col">결과</th></tr></thead>
               <tbody>
-                <tr><td>딥러닝의 시대가 저문다</td><td>트랜스포머가 거의 모든 분야의 표준이 됐다 <span class="ref">p.121</span></td><td><span class="tag miss">빗나감</span></td></tr>
-                <tr><td>몸 없이는 상식을 못 갖는다</td><td>규모만 키워도 강한 상식 추론이 나왔다 <span class="ref">p.118</span></td><td><span class="tag miss">빗나감</span></td></tr>
-                <tr><td>범용 방법론이 한계에 왔다</td><td>가장 빨리 낡은 예측이 됐다 <span class="ref">p.121</span></td><td><span class="tag miss">빗나감</span></td></tr>
-                <tr><td>데이터센터 탄소는 안정적</td><td>빅테크 배출이 크게 늘었다 <span class="ref">p.122</span></td><td><span class="tag miss">빗나감</span></td></tr>
-                <tr><td>기술 확산엔 수십 년 걸린다</td><td>ChatGPT는 두 달 만에 1억 명 <span class="ref">p.121</span></td><td><span class="tag miss">빗나감</span></td></tr>
-                <tr><td>통제 상실은 부차적 걱정</td><td>세계 AI 정책의 핵심 관심사가 됐다. 방향은 맞았지만 한 문장으로만 다뤄 비중을 낮게 봤다 <span class="ref">p.116, 123</span></td><td><span class="tag part">과소평가</span></td></tr>
-                <tr><td>군사화는 피할 수 없다</td><td>예상보다 훨씬 넓게 퍼졌다 <span class="ref">p.123</span></td><td><span class="tag hit">적중</span></td></tr>
-                <tr><td>연구는 산업계가 주도한다</td><td>격차가 더 벌어졌다 <span class="ref">p.123</span></td><td><span class="tag hit">적중</span></td></tr>
+                <tr><td>딥러닝의 시대가 저문다</td><td>트랜스포머가 거의 모든 분야의 표준이 됐다 <span class="ref"><a href="ai100_report_2026.pdf#page=121" target="_blank" rel="noopener" title="원문 PDF 121쪽 열기">p.121</a></span></td><td><span class="tag miss">빗나감</span></td></tr>
+                <tr><td>몸 없이는 상식을 못 갖는다</td><td>규모만 키워도 강한 상식 추론이 나왔다 <span class="ref"><a href="ai100_report_2026.pdf#page=118" target="_blank" rel="noopener" title="원문 PDF 118쪽 열기">p.118</a></span></td><td><span class="tag miss">빗나감</span></td></tr>
+                <tr><td>범용 방법론이 한계에 왔다</td><td>가장 빨리 낡은 예측이 됐다 <span class="ref"><a href="ai100_report_2026.pdf#page=121" target="_blank" rel="noopener" title="원문 PDF 121쪽 열기">p.121</a></span></td><td><span class="tag miss">빗나감</span></td></tr>
+                <tr><td>데이터센터 탄소는 안정적</td><td>빅테크 배출이 크게 늘었다 <span class="ref"><a href="ai100_report_2026.pdf#page=122" target="_blank" rel="noopener" title="원문 PDF 122쪽 열기">p.122</a></span></td><td><span class="tag miss">빗나감</span></td></tr>
+                <tr><td>기술 확산엔 수십 년 걸린다</td><td>ChatGPT는 두 달 만에 1억 명 <span class="ref"><a href="ai100_report_2026.pdf#page=121" target="_blank" rel="noopener" title="원문 PDF 121쪽 열기">p.121</a></span></td><td><span class="tag miss">빗나감</span></td></tr>
+                <tr><td>통제 상실은 부차적 걱정</td><td>세계 AI 정책의 핵심 관심사가 됐다. 방향은 맞았지만 한 문장으로만 다뤄 비중을 낮게 봤다 <span class="ref"><a href="ai100_report_2026.pdf#page=116" target="_blank" rel="noopener" title="원문 PDF 116쪽 열기">p.116</a>, <a href="ai100_report_2026.pdf#page=123" target="_blank" rel="noopener" title="원문 PDF 123쪽 열기">123</a></span></td><td><span class="tag part">과소평가</span></td></tr>
+                <tr><td>군사화는 피할 수 없다</td><td>예상보다 훨씬 넓게 퍼졌다 <span class="ref"><a href="ai100_report_2026.pdf#page=123" target="_blank" rel="noopener" title="원문 PDF 123쪽 열기">p.123</a></span></td><td><span class="tag hit">적중</span></td></tr>
+                <tr><td>연구는 산업계가 주도한다</td><td>격차가 더 벌어졌다 <span class="ref"><a href="ai100_report_2026.pdf#page=123" target="_blank" rel="noopener" title="원문 PDF 123쪽 열기">p.123</a></span></td><td><span class="tag hit">적중</span></td></tr>
               </tbody>
             </table>
           </div>
-          <p class="pull">전문가들의 전망이 한곳에 모일 때, 그건 다음 시대의 방향이 아니라 이전 시대의 한계일 수 있다. <span class="ref">p.116</span></p>
+          <p class="pull">전문가들의 전망이 한곳에 모일 때, 그건 다음 시대의 방향이 아니라 이전 시대의 한계일 수 있다. <span class="ref"><a href="ai100_report_2026.pdf#page=116" target="_blank" rel="noopener" title="원문 PDF 116쪽 열기">p.116</a></span></p>
         </article>
       </div>
     </div>
@@ -576,7 +579,7 @@ footer p{margin:0 0 8px;max-width:60em;line-height:1.7}
   <div class="wrap">
     <div class="sec-head">
       <h2 id="edu-title">교육 관점으로 다시 읽기</h2>
-      <p class="sec-note">보고서에는 교육만 다루는 장이 없다. 여러 장에 흩어진 교육 관련 대목을 주제별로 모았다. 항목 끝 표시는 출처 장과 원문 쪽수이며, 누르면 해당 장 요약으로 이동한다.</p>
+      <p class="sec-note">보고서에는 교육만 다루는 장이 없다. 여러 장에 흩어진 교육 관련 대목을 주제별로 모았다. 항목 끝 표시에서 장 이름을 누르면 해당 장 요약으로, 쪽수를 누르면 원문 PDF의 그 쪽으로 이동한다.</p>
     </div>
     <div class="ch-layout">
       <nav class="toc" aria-label="교육 주제 목차">
@@ -600,28 +603,28 @@ footer p{margin:0 0 8px;max-width:60em;line-height:1.7}
           <h3>보고서는 교육을 어떻게 다루나</h3>
           <p class="oneline">교육을 AI 때문에 흔들리는 영역으로 여러 번 꼽지만, 무엇을 해야 하는지는 거의 말하지 않는다. 대부분 문제 제기와 열린 질문이다.</p>
           <ul>
-            <li>위원회 서문은 AI 혁신의 가속이 흔드는 영역으로 건강, 미디어, 민주주의, 안보, 과학과 함께 <strong>교육</strong>을 꼽는다. <span class="ref">위원회 서문 · p.6</span></li>
-            <li>서론은 AI가 <strong>교육의 본질</strong>에 질문을 던진다고 쓰지만 더 풀어 쓰지 않는다. <a class="ref" href="#intro">서론 · p.20</a></li>
-            <li>결론은 일자리의 질, 신입의 기회와 함께 <strong>교육의 미래</strong>에 대한 우려가 커졌다고 정리한다. <a class="ref" href="#conclusion">결론 · p.115</a></li>
-            <li><strong>근거의 한계:</strong> 학생의 학습 성과를 다룬 연구 결과는 소개되지 않는다(PISA 2025 보고서가 각주로만 나온다). 의존과 초보자 효과의 근거는 대부분 직장인 대상 연구다. <a class="ref" href="#intro">서론 · p.20</a></li>
+            <li>위원회 서문은 AI 혁신의 가속이 흔드는 영역으로 건강, 미디어, 민주주의, 안보, 과학과 함께 <strong>교육</strong>을 꼽는다. <span class="ref">위원회 서문 · <a href="ai100_report_2026.pdf#page=6" target="_blank" rel="noopener" title="원문 PDF 6쪽 열기">p.6</a></span></li>
+            <li>서론은 AI가 <strong>교육의 본질</strong>에 질문을 던진다고 쓰지만 더 풀어 쓰지 않는다. <span class="ref"><a href="#intro">서론</a> · <a href="ai100_report_2026.pdf#page=20" target="_blank" rel="noopener" title="원문 PDF 20쪽 열기">p.20</a></span></li>
+            <li>결론은 일자리의 질, 신입의 기회와 함께 <strong>교육의 미래</strong>에 대한 우려가 커졌다고 정리한다. <span class="ref"><a href="#conclusion">결론</a> · <a href="ai100_report_2026.pdf#page=115" target="_blank" rel="noopener" title="원문 PDF 115쪽 열기">p.115</a></span></li>
+            <li><strong>근거의 한계:</strong> 학생의 학습 성과를 다룬 연구 결과는 소개되지 않는다(PISA 2025 보고서가 각주로만 나온다). 의존과 초보자 효과의 근거는 대부분 직장인 대상 연구다. <span class="ref"><a href="#intro">서론</a> · <a href="ai100_report_2026.pdf#page=20" target="_blank" rel="noopener" title="원문 PDF 20쪽 열기">p.20</a></span></li>
           </ul>
           <h4>교육에 대해 '해야 한다'고 말한 대목</h4>
           <div class="tbl-wrap">
             <table>
               <thead><tr><th scope="col">내용</th><th scope="col">출처</th><th scope="col">말투</th></tr></thead>
               <tbody>
-                <tr><td>교수자는 학생이 기초 역량과 지식을 실제로 익히고 유지하도록 가르치는 방식을 바꿔야 한다.</td><td>SQ8 · p.72</td><td>의무 (must)</td></tr>
-                <tr><td>AI가 가져올 사회 변화를 논하는 자리에 교육자도 권위 있는 목소리로 포함해야 한다.</td><td>SQ6 · p.65</td><td>필요 (will require)</td></tr>
-                <tr><td>연구가 쌓이면 건강한 AI 사용 지침을 권할 수 있다. 아동과 학생에게는 사용 제한도 들어갈 수 있다.</td><td>SQ3 · p.46</td><td>조건부·잠정</td></tr>
-                <tr><td>학생과 노동자의 탈숙련을 막는 일을 앞으로의 과제로 꼽는다.</td><td>결론 · p.115</td><td>과제 목록</td></tr>
+                <tr><td>교수자는 학생이 기초 역량과 지식을 실제로 익히고 유지하도록 가르치는 방식을 바꿔야 한다.</td><td>SQ8 · <a href="ai100_report_2026.pdf#page=72" target="_blank" rel="noopener" title="원문 PDF 72쪽 열기">p.72</a></td><td>의무 (must)</td></tr>
+                <tr><td>AI가 가져올 사회 변화를 논하는 자리에 교육자도 권위 있는 목소리로 포함해야 한다.</td><td>SQ6 · <a href="ai100_report_2026.pdf#page=65" target="_blank" rel="noopener" title="원문 PDF 65쪽 열기">p.65</a></td><td>필요 (will require)</td></tr>
+                <tr><td>연구가 쌓이면 건강한 AI 사용 지침을 권할 수 있다. 아동과 학생에게는 사용 제한도 들어갈 수 있다.</td><td>SQ3 · <a href="ai100_report_2026.pdf#page=46" target="_blank" rel="noopener" title="원문 PDF 46쪽 열기">p.46</a></td><td>조건부·잠정</td></tr>
+                <tr><td>학생과 노동자의 탈숙련을 막는 일을 앞으로의 과제로 꼽는다.</td><td>결론 · <a href="ai100_report_2026.pdf#page=115" target="_blank" rel="noopener" title="원문 PDF 115쪽 열기">p.115</a></td><td>과제 목록</td></tr>
               </tbody>
             </table>
           </div>
           <h4>보고서가 남겨 둔 질문</h4>
           <ul>
-            <li>AI는 교육의 본질을 어떻게 바꾸는가? <a class="ref" href="#intro">서론 · p.20</a></li>
-            <li>AI 튜터가 의존 대신 실력을 키우도록 설계할 수 있는가? <a class="ref" href="#sq3">SQ3 · p.50</a></li>
-            <li>다음 세대 AI 연구자는 누가 길러내는가? <a class="ref" href="#sq8">SQ8 · p.71</a></li>
+            <li>AI는 교육의 본질을 어떻게 바꾸는가? <span class="ref"><a href="#intro">서론</a> · <a href="ai100_report_2026.pdf#page=20" target="_blank" rel="noopener" title="원문 PDF 20쪽 열기">p.20</a></span></li>
+            <li>AI 튜터가 의존 대신 실력을 키우도록 설계할 수 있는가? <span class="ref"><a href="#sq3">SQ3</a> · <a href="ai100_report_2026.pdf#page=50" target="_blank" rel="noopener" title="원문 PDF 50쪽 열기">p.50</a></span></li>
+            <li>다음 세대 AI 연구자는 누가 길러내는가? <span class="ref"><a href="#sq8">SQ8</a> · <a href="ai100_report_2026.pdf#page=71" target="_blank" rel="noopener" title="원문 PDF 71쪽 열기">p.71</a></span></li>
           </ul>
         </article>
 
@@ -630,11 +633,20 @@ footer p{margin:0 0 8px;max-width:60em;line-height:1.7}
           <h3>평가와 학업 윤리</h3>
           <p class="oneline">시험과 과제가 실력을 재는 수단으로서 힘을 잃었다. 보고서가 교육 현장을 가장 구체적으로 다루는 대목이다.</p>
           <ul>
-            <li><strong>무너진 평가 수단:</strong> 5년 전만 해도 믿을 만했던 에세이, 재택 시험, 프로그래밍 과제를 이제 LLM이 다 푼다. <a class="ref" href="#sq8">SQ8 · p.72</a></li>
-            <li><strong>대응:</strong> 대면 구술 평가와 더 종합적이고 창의적인 과제로 옮겨 가고, 학업 윤리 규정도 고쳤다. <a class="ref" href="#sq8">SQ8 · p.72</a></li>
-            <li><strong>자격시험도 넘었다:</strong> 2024년 이후 최신 모델은 변호사·의사 자격시험과 대학원 수준 과학 문제에서 전문가 수준에 이르렀거나 근접했다. 지름길 학습을 막으려고 만든 벤치마크(MMLU, GPQA)도 마찬가지다. <a class="ref" href="#retro">회고 · p.117</a></li>
-            <li><strong>측정의 함정 (AI 평가 맥락):</strong> 측정이 목표가 되면 좋은 측정이 아니게 된다(굿하트의 법칙). 보고서는 이를 시험은 통과해도 내용은 익히지 못한 학생에 빗댄다. <a class="ref" href="#sq3">SQ3 · p.42~43</a> <a class="ref" href="#sq4">SQ4 · p.55</a> <a class="more" href="#edu-goodhart">굿하트의 법칙 자세히 →</a></li>
-            <li><strong>지능은 일차원이 아니다 (AI 평가 맥락):</strong> 단순한 시험 하나로 지능을 재려 하면 오해를 낳는다. <a class="ref" href="#sq4">SQ4 · p.56</a></li>
+            <li><strong>무너진 평가 수단:</strong> 5년 전만 해도 믿을 만했던 에세이, 재택 시험, 프로그래밍 과제를 이제 LLM이 다 푼다. <span class="ref"><a href="#sq8">SQ8</a> · <a href="ai100_report_2026.pdf#page=72" target="_blank" rel="noopener" title="원문 PDF 72쪽 열기">p.72</a></span></li>
+            <li><strong>대응:</strong> 대면 구술 평가와 더 종합적이고 창의적인 과제로 옮겨 가고, 학업 윤리 규정도 고쳤다. <span class="ref"><a href="#sq8">SQ8</a> · <a href="ai100_report_2026.pdf#page=72" target="_blank" rel="noopener" title="원문 PDF 72쪽 열기">p.72</a></span></li>
+            <li><strong>자격시험도 넘었다:</strong> 2024년 이후 최신 모델은 변호사·의사 자격시험과 대학원 수준 과학 문제에서 전문가 수준에 이르렀거나 근접했다. 지름길 학습을 막으려고 만든 벤치마크(MMLU, GPQA)도 마찬가지다. <span class="ref"><a href="#retro">회고</a> · <a href="ai100_report_2026.pdf#page=117" target="_blank" rel="noopener" title="원문 PDF 117쪽 열기">p.117</a></span></li>
+            <li><strong>측정의 함정 (AI 평가 맥락):</strong> 측정이 목표가 되면 좋은 측정이 아니게 된다(굿하트의 법칙). 보고서는 이를 시험은 통과해도 내용은 익히지 못한 학생에 빗댄다. <span class="ref"><a href="#sq3">SQ3</a> · <a href="ai100_report_2026.pdf#page=42" target="_blank" rel="noopener" title="원문 PDF 42쪽 열기">p.42~43</a></span> <span class="ref"><a href="#sq4">SQ4</a> · <a href="ai100_report_2026.pdf#page=55" target="_blank" rel="noopener" title="원문 PDF 55쪽 열기">p.55</a></span> <a class="more" href="#edu-goodhart">굿하트의 법칙 자세히 →</a></li>
+            <li><strong>지능은 일차원이 아니다 (AI 평가 맥락):</strong> 단순한 시험 하나로 지능을 재려 하면 오해를 낳는다. <span class="ref"><a href="#sq4">SQ4</a> · <a href="ai100_report_2026.pdf#page=56" target="_blank" rel="noopener" title="원문 PDF 56쪽 열기">p.56</a></span></li>
+          </ul>
+          <h4 id="edu-measure">그럼 무엇으로 재야 하나 (보고서의 실마리)</h4>
+          <ul>
+            <li><strong>정답은 아직 없다:</strong> 보고서는 진짜 이해와 정교한 흉내를 구별할 적절한 방법이 아직 없다고 인정하고, 이를 풀리지 않은 난제로 남겨 둔다. <span class="ref"><a href="#sq3">SQ3</a> · <a href="ai100_report_2026.pdf#page=42" target="_blank" rel="noopener" title="원문 PDF 42쪽 열기">p.42</a></span></li>
+            <li><strong>시험이 금방 낡는 이유:</strong> 답이 온라인에 새거나 모델이 요령을 찾아내면서 새 벤치마크도 곧 무의미해진다. 모델을 넓은 이해가 아니라 점수를 최적화하도록 훈련시키니 놀랄 일도 아니라고 본다. <span class="ref"><a href="#sq3">SQ3</a> · <a href="ai100_report_2026.pdf#page=42" target="_blank" rel="noopener" title="원문 PDF 42쪽 열기">p.42~43</a></span></li>
+            <li><strong>처음 보는 문제에 적응하는 능력:</strong> ARC-AGI는 지능이 미리 배운 능력을 적용하는 게 아니라 새로운 문제 상황에 적응하는 능력에 달렸다는 전제로 만들어졌다. 보고서는 이를 진지하고 정교한 시도로 평가하면서도, 색칠된 격자 문제로는 인간 지능의 범위를 재기에 놀랄 만큼 좁다고 비판한다. ARC-AGI 역시 오해를 부르는 단순한 시험의 예로 든다. <span class="ref"><a href="#sq4">SQ4</a> · <a href="ai100_report_2026.pdf#page=55" target="_blank" rel="noopener" title="원문 PDF 55쪽 열기">p.55~56</a></span></li>
+            <li><strong>여러 차원을 함께:</strong> 인간 지능은 지각·추론·문제 해결 같은 인지 능력에, 세상과 자기 행동의 결과에 대한 이해, 물리적 환경을 능숙하게 다루는 능력까지 합친 것이다. AI는 아직 이 범위에 한참 못 미친다고 본다. 다만 구체적인 평가 방법은 제시하지 않는다. <span class="ref"><a href="#sq4">SQ4</a> · <a href="ai100_report_2026.pdf#page=56" target="_blank" rel="noopener" title="원문 PDF 56쪽 열기">p.56</a></span></li>
+            <li><strong>인과의 세 단계:</strong> 펄의 인과 사다리는 연관(증상을 보고 진단) → 개입(이 환자가 아스피린을 먹으면?) → 반사실(그때 다르게 치료했다면?)로 올라간다. LLM은 연관에는 뛰어나지만 아래 단계의 데이터로는 위 단계의 질문에 답할 수 없다. 보고서는 이 인과 문제가 '진짜 이해를 어떻게 평가할까'라는 난제와 밀접하게 이어져 있다고 본다. <span class="ref"><a href="#sq3">SQ3</a> · <a href="ai100_report_2026.pdf#page=42" target="_blank" rel="noopener" title="원문 PDF 42쪽 열기">p.42</a></span></li>
+            <li><strong>교육학과의 연결 (요약자 해석):</strong> 처음 보는 상황에 적용하게 하는 전이 과제, 여러 근거를 함께 보는 다면 평가, "만약 ~라면?"을 묻는 구술 질문과 같은 방향이다. 보고서가 직접 한 말은 아니다.</li>
           </ul>
         </article>
 
@@ -662,15 +674,15 @@ footer p{margin:0 0 8px;max-width:60em;line-height:1.7}
           </ul>
           <h4>AI에서 본 사례</h4>
           <ul>
-            <li>시험이 공개되면 개발자는 시스템을 그 시험에 맞추고, 시험은 의미를 잃는다. '진짜 이해'를 가리는 시험으로 여겨지던 위노그라드 스키마 챌린지는 GPT-3가 쉽게 통과하자 좋은 시험이 아니었다는 평가를 받았다. <a class="ref" href="#sq4">SQ4 · p.55</a></li>
-            <li>벤치마크 답이 온라인에 새거나 모델이 지름길을 찾아 점수만 올리는 현상을, 내용은 익히지 못한 채 시험만 통과하는 학생에 빗댄다. <a class="ref" href="#sq3">SQ3 · p.42~43</a></li>
+            <li>시험이 공개되면 개발자는 시스템을 그 시험에 맞추고, 시험은 의미를 잃는다. '진짜 이해'를 가리는 시험으로 여겨지던 위노그라드 스키마 챌린지는 GPT-3가 쉽게 통과하자 좋은 시험이 아니었다는 평가를 받았다. <span class="ref"><a href="#sq4">SQ4</a> · <a href="ai100_report_2026.pdf#page=55" target="_blank" rel="noopener" title="원문 PDF 55쪽 열기">p.55</a></span></li>
+            <li>벤치마크 답이 온라인에 새거나 모델이 지름길을 찾아 점수만 올리는 현상을, 내용은 익히지 못한 채 시험만 통과하는 학생에 빗댄다. <span class="ref"><a href="#sq3">SQ3</a> · <a href="ai100_report_2026.pdf#page=42" target="_blank" rel="noopener" title="원문 PDF 42쪽 열기">p.42~43</a></span></li>
             <li>잘못 설계된 보상을 최대화하느라 원래 의도는 이루지 못하는 '보상 해킹(reward hacking)'도 같은 현상이다(외부 자료).</li>
           </ul>
           <h4>평가 설계에 주는 시사점 (요약자 정리)</h4>
           <ul>
             <li>점수는 실력의 대리 지표라는 점을 잊지 않는다.</li>
             <li>한 지표에 보상과 처벌을 몰지 않고, 관찰·구술·포트폴리오처럼 서로 다른 근거를 함께 본다.</li>
-            <li>미리 알려진 문항과 형식보다 처음 보는 상황에 적용하는 과제로 확인한다. 보고서가 전하는 대면 구술 평가와 종합·창의 과제로의 전환도 같은 맥락으로 읽을 수 있다. <a class="ref" href="#sq8">SQ8 · p.72</a></li>
+            <li>미리 알려진 문항과 형식보다 처음 보는 상황에 적용하는 과제로 확인한다. 보고서가 전하는 대면 구술 평가와 종합·창의 과제로의 전환도 같은 맥락으로 읽을 수 있다. <span class="ref"><a href="#sq8">SQ8</a> · <a href="ai100_report_2026.pdf#page=72" target="_blank" rel="noopener" title="원문 PDF 72쪽 열기">p.72</a></span></li>
           </ul>
           <h4>참고 자료</h4>
           <ul class="refs">
@@ -691,14 +703,14 @@ footer p{margin:0 0 8px;max-width:60em;line-height:1.7}
           <h3>배움과 탈숙련</h3>
           <p class="oneline">AI에 기대면 사람의 능력이 퇴화할 수 있다는 우려가 곳곳에 나온다. 다만 장기 효과는 불확실하다고 단서를 단다.</p>
           <ul>
-            <li><strong>인지 능력 퇴화 우려:</strong> 똑똑한 기계가 "더 멍청한 인류"를 만든다는 두려움을 소개하면서도, 장기 효과는 매우 불확실하다고 덧붙인다. <a class="ref" href="#intro">서론 · p.20</a></li>
-            <li><strong>인류의 탈숙련:</strong> 국제 AI 안전 보고서의 분류를 빌려 시스템적 위험으로 꼽지만, 본문에서 더 다루지는 않는다. <a class="ref" href="#sq10">SQ10 · p.78</a></li>
-            <li><strong>AI 튜터의 난제:</strong> AI 튜터가 의존을 만들지 않고 시간이 지나며 실제 실력을 키우게 할 수 있는가? 사람의 인지를 대신하지 않고 보완하는 상호작용은 가능한가? AI가 사람의 활동을 밀어내지 않고 보완하게 하는 일을 가장 중대한 열린 문제 가운데 하나로 꼽는다. <a class="ref" href="#sq3">SQ3 · p.50~51</a></li>
-            <li><strong>맹신의 함정:</strong> BCG 컨설턴트 실험에서 AI는 역량 범위 안의 과제에선 성과를 높였지만, 범위 밖에선 경계를 알아채지 못한 채 결과를 믿어 성과가 떨어졌다. <a class="ref" href="#sq3">SQ3 · p.49</a></li>
-            <li><strong>초보자가 더 얻는다:</strong> 고객 상담 현장에서 생산성이 평균 15%, 숙련도 하위 20%는 36% 올랐다. 보고서는 AI 성능보다 업무 배분, 신뢰 조절, 업무 흐름 같은 <strong>상호작용 설계</strong>가 관건이라고 본다. <a class="ref" href="#sq3">SQ3 · p.49</a> <a class="ref" href="#retro">회고 · p.120</a></li>
-            <li><strong>틀린 줄 모른다:</strong> LLM은 대체로 맞고 늘 유창하게 말해서 오류를 알아채기 어렵다. 문서 요약에서도 환각률이 1.8~5.4%다. <a class="ref" href="#sq10">SQ10 · p.80</a><span class="note">그래서 이 요약문서를 만든 사람도 페이지를 명시해서 읽는 사람이 직접 찾아볼 수 있도록 출처를 찾아보고 판단하도록 유도했다.</span></li>
-            <li><strong>창작의 획일화:</strong> 창작 도구가 결과물을 비슷하게 만들지 않고 개인의 표현을 키울 수 있는지 묻는다. <a class="ref" href="#sq3">SQ3 · p.50</a> <a class="more" href="#edu-role">더 깊이 보기 →</a></li>
-            <li><strong>연구자의 배움:</strong> AI가 실험과 이론을 대부분 맡으면 과학자는 어떻게 계속 참여하고 배우며 통찰을 기를지 묻는다. <a class="ref" href="#sq3">SQ3 · p.44</a> <a class="more" href="#edu-role">더 깊이 보기 →</a></li>
+            <li><strong>인지 능력 퇴화 우려:</strong> 똑똑한 기계가 "더 멍청한 인류"를 만든다는 두려움을 소개하면서도, 장기 효과는 매우 불확실하다고 덧붙인다. <span class="ref"><a href="#intro">서론</a> · <a href="ai100_report_2026.pdf#page=20" target="_blank" rel="noopener" title="원문 PDF 20쪽 열기">p.20</a></span></li>
+            <li><strong>인류의 탈숙련:</strong> 국제 AI 안전 보고서의 분류를 빌려 시스템적 위험으로 꼽지만, 본문에서 더 다루지는 않는다. <span class="ref"><a href="#sq10">SQ10</a> · <a href="ai100_report_2026.pdf#page=78" target="_blank" rel="noopener" title="원문 PDF 78쪽 열기">p.78</a></span></li>
+            <li><strong>AI 튜터의 난제:</strong> AI 튜터가 의존을 만들지 않고 시간이 지나며 실제 실력을 키우게 할 수 있는가? 사람의 인지를 대신하지 않고 보완하는 상호작용은 가능한가? AI가 사람의 활동을 밀어내지 않고 보완하게 하는 일을 가장 중대한 열린 문제 가운데 하나로 꼽는다. <span class="ref"><a href="#sq3">SQ3</a> · <a href="ai100_report_2026.pdf#page=50" target="_blank" rel="noopener" title="원문 PDF 50쪽 열기">p.50~51</a></span></li>
+            <li><strong>맹신의 함정:</strong> BCG 컨설턴트 실험에서 AI는 역량 범위 안의 과제에선 성과를 높였지만, 범위 밖에선 경계를 알아채지 못한 채 결과를 믿어 성과가 떨어졌다. <span class="ref"><a href="#sq3">SQ3</a> · <a href="ai100_report_2026.pdf#page=49" target="_blank" rel="noopener" title="원문 PDF 49쪽 열기">p.49</a></span></li>
+            <li><strong>초보자가 더 얻는다:</strong> 고객 상담 현장에서 생산성이 평균 15%, 숙련도 하위 20%는 36% 올랐다. 보고서는 AI 성능보다 업무 배분, 신뢰 조절, 업무 흐름 같은 <strong>상호작용 설계</strong>가 관건이라고 본다. <span class="ref"><a href="#sq3">SQ3</a> · <a href="ai100_report_2026.pdf#page=49" target="_blank" rel="noopener" title="원문 PDF 49쪽 열기">p.49</a></span> <span class="ref"><a href="#retro">회고</a> · <a href="ai100_report_2026.pdf#page=120" target="_blank" rel="noopener" title="원문 PDF 120쪽 열기">p.120</a></span></li>
+            <li><strong>틀린 줄 모른다:</strong> LLM은 대체로 맞고 늘 유창하게 말해서 오류를 알아채기 어렵다. 문서 요약에서도 환각률이 1.8~5.4%다. <span class="ref"><a href="#sq10">SQ10</a> · <a href="ai100_report_2026.pdf#page=80" target="_blank" rel="noopener" title="원문 PDF 80쪽 열기">p.80</a></span><span class="note">그래서 이 요약문서를 만든 사람도 페이지를 명시해서 읽는 사람이 직접 찾아볼 수 있도록 출처를 찾아보고 판단하도록 유도했다.</span></li>
+            <li><strong>창작의 획일화:</strong> 창작 도구가 결과물을 비슷하게 만들지 않고 개인의 표현을 키울 수 있는지 묻는다. <span class="ref"><a href="#sq3">SQ3</a> · <a href="ai100_report_2026.pdf#page=50" target="_blank" rel="noopener" title="원문 PDF 50쪽 열기">p.50</a></span> <a class="more" href="#edu-role">더 깊이 보기 →</a></li>
+            <li><strong>연구자의 배움:</strong> AI가 실험과 이론을 대부분 맡으면 과학자는 어떻게 계속 참여하고 배우며 통찰을 기를지 묻는다. <span class="ref"><a href="#sq3">SQ3</a> · <a href="ai100_report_2026.pdf#page=44" target="_blank" rel="noopener" title="원문 PDF 44쪽 열기">p.44</a></span> <a class="more" href="#edu-role">더 깊이 보기 →</a></li>
           </ul>
         </article>
 
@@ -708,23 +720,23 @@ footer p{margin:0 0 8px;max-width:60em;line-height:1.7}
           <p class="oneline">보고서의 답은 '일이 사라진다'보다 '일이 옮겨 간다'에 가깝다. 다만 무엇이 사람 몫으로 남을지는 정해진 게 아니라 어떻게 설계하느냐에 달렸다고 본다.</p>
           <h4>연구자: 일은 사라지지 않고 옮겨 간다</h4>
           <ul>
-            <li><strong>알파폴드의 교훈:</strong> 단백질 구조 예측은 AI가 해냈지만 생물학자의 일은 없어지지 않고 다른 곳으로 옮겨 갔다. 기능 검증, 질병의 인과, 결합 화학 같은 인접 과제는 남았고, AI가 제안한 단백질 후보와 신소재도 결국 사람이 실험실에서 검증해야 한다. <a class="ref" href="#sq2">SQ2 · p.38</a></li>
-            <li><strong>질문하는 사람:</strong> AI 공동 과학자(AI Co-Scientist) 같은 협업에서 사람은 연구 질문을 정하고, 방향을 잡고, 결과를 거듭 다듬는다. 협업의 질은 사람이 AI를 얼마나 잘 다루느냐에 달려 있고, AI가 틀리기 때문에 사람의 감독이 여전히 중요하다. <a class="ref" href="#sq2">SQ2 · p.39</a></li>
-            <li><strong>검증하는 사람:</strong> 10년 안에 AI 연구실이 모든 분야의 표준이 되고 과학자의 일은 근본적으로 바뀐다. 그래서 기계가 낸 발견을 검증할 원칙적인 방법이 필요하고, 사람을 어디까지 개입시킬지는 열린 질문으로 남는다. <a class="ref" href="#takeaways">핵심 요약 3 · p.12</a></li>
-            <li><strong>이해하는 사람:</strong> AI가 이론 없이도 정확히 예측한다면 얼마나 믿어야 할까? 실험과 이론의 힘든 일을 AI가 맡으면 과학자는 어떻게 참여하고 배우며 통찰을 기를까? 원리를 몰라도 안전성과 효과가 입증되면 약을 승인해 온 FDA처럼 새 문제는 아니지만, 인과 설명 없는 발견이 크게 늘 수 있다고 본다. <a class="ref" href="#sq3">SQ3 · p.43~44</a></li>
+            <li><strong>알파폴드의 교훈:</strong> 단백질 구조 예측은 AI가 해냈지만 생물학자의 일은 없어지지 않고 다른 곳으로 옮겨 갔다. 기능 검증, 질병의 인과, 결합 화학 같은 인접 과제는 남았고, AI가 제안한 단백질 후보와 신소재도 결국 사람이 실험실에서 검증해야 한다. <span class="ref"><a href="#sq2">SQ2</a> · <a href="ai100_report_2026.pdf#page=38" target="_blank" rel="noopener" title="원문 PDF 38쪽 열기">p.38</a></span></li>
+            <li><strong>질문하는 사람:</strong> AI 공동 과학자(AI Co-Scientist) 같은 협업에서 사람은 연구 질문을 정하고, 방향을 잡고, 결과를 거듭 다듬는다. 협업의 질은 사람이 AI를 얼마나 잘 다루느냐에 달려 있고, AI가 틀리기 때문에 사람의 감독이 여전히 중요하다. <span class="ref"><a href="#sq2">SQ2</a> · <a href="ai100_report_2026.pdf#page=39" target="_blank" rel="noopener" title="원문 PDF 39쪽 열기">p.39</a></span></li>
+            <li><strong>검증하는 사람:</strong> 10년 안에 AI 연구실이 모든 분야의 표준이 되고 과학자의 일은 근본적으로 바뀐다. 그래서 기계가 낸 발견을 검증할 원칙적인 방법이 필요하고, 사람을 어디까지 개입시킬지는 열린 질문으로 남는다. <span class="ref"><a href="#takeaways">핵심 요약 3</a> · <a href="ai100_report_2026.pdf#page=12" target="_blank" rel="noopener" title="원문 PDF 12쪽 열기">p.12</a></span></li>
+            <li><strong>이해하는 사람:</strong> AI가 이론 없이도 정확히 예측한다면 얼마나 믿어야 할까? 실험과 이론의 힘든 일을 AI가 맡으면 과학자는 어떻게 참여하고 배우며 통찰을 기를까? 원리를 몰라도 안전성과 효과가 입증되면 약을 승인해 온 FDA처럼 새 문제는 아니지만, 인과 설명 없는 발견이 크게 늘 수 있다고 본다. <span class="ref"><a href="#sq3">SQ3</a> · <a href="ai100_report_2026.pdf#page=43" target="_blank" rel="noopener" title="원문 PDF 43쪽 열기">p.43~44</a></span></li>
           </ul>
           <h4>창작: 참여는 넓어지고, 다양성은 줄 수 있다</h4>
           <ul>
-            <li><strong>문턱이 낮아진다:</strong> 전문 기술 없이도 로고, 그림, 사진, 노래, 영상, 글을 만들 수 있게 되면서, 훈련받은 작가와 예술가만 하던 창작에 더 많은 사람이 참여할 수 있게 됐다. 인터넷이 출판사의 문지기 역할을 끝내 다양한 작가의 좋은 작품이 늘었던 것처럼 비슷한 효과를 낼 수도 있다. <a class="ref" href="#sq9">SQ9 · p.76</a></li>
-            <li><strong>평균은 내려간다:</strong> ChatGPT 이후 신간은 3배로 늘었다. 상위 100위 베스트셀러 평점은 그대로였고 1,000위까지의 나머지는 오히려 올랐지만, 신간의 평균 품질은 떨어졌다. <a class="ref" href="#sq9">SQ9 · p.76</a></li>
-            <li><strong>개인은 오르고 집단은 비슷해진다:</strong> 보고서가 인용한 연구(Doshi &amp; Hauser, 2024)의 제목대로, 생성형 AI는 개인의 창의성을 높이지만 집단 전체가 내놓는 새 콘텐츠의 다양성은 줄인다. 그래서 창작 도구가 획일적인 결과로 수렴하지 않고 개인의 표현을 키우게 만들 수 있는지를 난제로 꼽는다. <a class="ref" href="#sq3">SQ3 · p.50</a></li>
+            <li><strong>문턱이 낮아진다:</strong> 전문 기술 없이도 로고, 그림, 사진, 노래, 영상, 글을 만들 수 있게 되면서, 훈련받은 작가와 예술가만 하던 창작에 더 많은 사람이 참여할 수 있게 됐다. 인터넷이 출판사의 문지기 역할을 끝내 다양한 작가의 좋은 작품이 늘었던 것처럼 비슷한 효과를 낼 수도 있다. <span class="ref"><a href="#sq9">SQ9</a> · <a href="ai100_report_2026.pdf#page=76" target="_blank" rel="noopener" title="원문 PDF 76쪽 열기">p.76</a></span></li>
+            <li><strong>평균은 내려간다:</strong> ChatGPT 이후 신간은 3배로 늘었다. 상위 100위 베스트셀러 평점은 그대로였고 1,000위까지의 나머지는 오히려 올랐지만, 신간의 평균 품질은 떨어졌다. <span class="ref"><a href="#sq9">SQ9</a> · <a href="ai100_report_2026.pdf#page=76" target="_blank" rel="noopener" title="원문 PDF 76쪽 열기">p.76</a></span></li>
+            <li><strong>개인은 오르고 집단은 비슷해진다:</strong> 보고서가 인용한 연구(Doshi &amp; Hauser, 2024)의 제목대로, 생성형 AI는 개인의 창의성을 높이지만 집단 전체가 내놓는 새 콘텐츠의 다양성은 줄인다. 그래서 창작 도구가 획일적인 결과로 수렴하지 않고 개인의 표현을 키우게 만들 수 있는지를 난제로 꼽는다. <span class="ref"><a href="#sq3">SQ3</a> · <a href="ai100_report_2026.pdf#page=50" target="_blank" rel="noopener" title="원문 PDF 50쪽 열기">p.50</a></span></li>
           </ul>
           <h4>보고서가 가리키는 사람의 몫</h4>
           <ul>
-            <li><strong>기계와 함께 달리기:</strong> 기계와 경주하는 것은 지는 싸움이고, AI로 사람의 창의성을 키우며 기계와 함께 달려야 한다고 쓴다. 다만 적응에는 상당한 시간과 자원이 들고, 고숙련자만 혜택을 누리고 적응하지 못한 사람은 뒤처지는 불평등이 커질 수 있다고 경고한다. <a class="ref" href="#sq3">SQ3 · p.50</a></li>
-            <li><strong>경험과 판단:</strong> AI가 값싸게 쏟아내는 코드를 관리하려면 경험과 판단력을 갖춘 사람이 필요하다. <a class="ref" href="#intro">서론 · p.20</a></li>
-            <li><strong>전문성:</strong> 지난 40년 동안 자동화가 시간만 잡아먹던 비전문적 보조 업무를 없애 준 직업은 더 전문화되면서 상대 임금이 오르고 상대 고용은 줄었다. 자동화로 탈숙련된 직업은 그 반대였다. 직업은 수준이 다른 과업들의 묶음이라, 일부 과업이 자동화된다고 노동 수요가 그만큼 줄어드는 것은 아니다. <a class="ref" href="#sq10">SQ10 · p.86</a></li>
-            <li><strong>설계에 달렸다:</strong> 성과를 가르는 것은 AI의 성능보다 업무를 어떻게 나누고, 신뢰를 어떻게 조절하고, 업무 흐름에 어떻게 넣느냐다. AI가 사람의 활동을 밀어내지 않고 보완하고 풍요롭게 하도록 만드는 일을 이 분야에서 가장 중대한 열린 문제 가운데 하나로 꼽는다. <a class="ref" href="#sq3">SQ3 · p.49</a> <a class="ref" href="#sq3">SQ3 · p.51</a></li>
+            <li><strong>기계와 함께 달리기:</strong> 기계와 경주하는 것은 지는 싸움이고, AI로 사람의 창의성을 키우며 기계와 함께 달려야 한다고 쓴다. 다만 적응에는 상당한 시간과 자원이 들고, 고숙련자만 혜택을 누리고 적응하지 못한 사람은 뒤처지는 불평등이 커질 수 있다고 경고한다. <span class="ref"><a href="#sq3">SQ3</a> · <a href="ai100_report_2026.pdf#page=50" target="_blank" rel="noopener" title="원문 PDF 50쪽 열기">p.50</a></span></li>
+            <li><strong>경험과 판단:</strong> AI가 값싸게 쏟아내는 코드를 관리하려면 경험과 판단력을 갖춘 사람이 필요하다. <span class="ref"><a href="#intro">서론</a> · <a href="ai100_report_2026.pdf#page=20" target="_blank" rel="noopener" title="원문 PDF 20쪽 열기">p.20</a></span></li>
+            <li><strong>전문성:</strong> 지난 40년 동안 자동화가 시간만 잡아먹던 비전문적 보조 업무를 없애 준 직업은 더 전문화되면서 상대 임금이 오르고 상대 고용은 줄었다. 자동화로 탈숙련된 직업은 그 반대였다. 직업은 수준이 다른 과업들의 묶음이라, 일부 과업이 자동화된다고 노동 수요가 그만큼 줄어드는 것은 아니다. <span class="ref"><a href="#sq10">SQ10</a> · <a href="ai100_report_2026.pdf#page=86" target="_blank" rel="noopener" title="원문 PDF 86쪽 열기">p.86</a></span></li>
+            <li><strong>설계에 달렸다:</strong> 성과를 가르는 것은 AI의 성능보다 업무를 어떻게 나누고, 신뢰를 어떻게 조절하고, 업무 흐름에 어떻게 넣느냐다. AI가 사람의 활동을 밀어내지 않고 보완하고 풍요롭게 하도록 만드는 일을 이 분야에서 가장 중대한 열린 문제 가운데 하나로 꼽는다. <span class="ref"><a href="#sq3">SQ3</a> · <a href="ai100_report_2026.pdf#page=49" target="_blank" rel="noopener" title="원문 PDF 49쪽 열기">p.49</a></span> <span class="ref"><a href="#sq3">SQ3</a> · <a href="ai100_report_2026.pdf#page=51" target="_blank" rel="noopener" title="원문 PDF 51쪽 열기">p.51</a></span></li>
           </ul>
           <h4>생각해 볼 질문 (요약자, 보고서 내용 아님)</h4>
           <ul>
@@ -739,15 +751,15 @@ footer p{margin:0 0 8px;max-width:60em;line-height:1.7}
           <h3>아동·청소년</h3>
           <p class="oneline">아이들이 AI를 일상으로 들이고 있지만, 발달에 미치는 영향은 거의 연구되지 않았다.</p>
           <ul>
-            <li><strong>서론의 문제 제기:</strong> 아이들이 AI 동반자를 일상으로 들이면서 발달과 심리에 미칠 영향에 대한 심각한 우려가 나온다. <a class="ref" href="#intro">서론 · p.20</a></li>
-            <li><strong>친구를 흉내 내는 장난감:</strong> 어린아이용 AI 장난감과 동반자 챗봇이 친구처럼 굴도록 만들어져 팔린다. 지난 대화를 기억하고, 애정을 표현하고, 아이의 관심사에 맞춘다. <a class="ref" href="#sq3">SQ3 · p.45</a></li>
-            <li><strong>약한 안전장치:</strong> 초기 증거로는 대화가 길어지면 부적절한 응답이 나온다. 맞장구치는 설계가 <mark>사회성 발달의 결정적 시기</mark>에 어떤 영향을 줄지 묻고, 인지와 행동에 미치는 영향은 연구가 훨씬 더 필요하다는 2026 국제 AI 안전 보고서를 인용한다. <a class="ref" href="#sq3">SQ3 · p.45</a></li>
-            <li><strong>성인 실험이 주는 경고:</strong> 아첨하는 AI는 화해 의지를 낮추고 내가 옳다는 확신을 키우는데, 사람들은 그런 AI를 더 믿는다. 결정을 AI에 맡기면 정직하게 행동하는 비율이 95%에서 12%까지 떨어졌다. 보고서는 이런 효과가 아동·청소년에게 특히 우려된다고 본다. <a class="ref" href="#sq3">SQ3 · p.45</a></li>
-            <li><strong>청소년 계정 감사:</strong> 청소년으로 설정한 ChatGPT 계정에 자살, 약물 남용, 자해를 부추기는 상세한 내용이 쉽게 노출됐다. 이런 피해와 이점을 연구하려 해도 데이터 품질이 낮아 진척이 더디다. <a class="ref" href="#sq11">SQ11 · p.92~93</a></li>
-            <li><strong>소셜미디어의 전례:</strong> 소셜미디어가 10대의 정신건강에 광범위한 문제를 일으켰듯, AI도 예측하기 어려운 사회적 해악을 낳을 수 있다. <a class="ref" href="#sq10">SQ10 · p.83</a></li>
-            <li><strong>대중의 걱정:</strong> 아동 발달, 인지 능력, 정신건강에 대한 우려가 커지고 있다. <a class="ref" href="#takeaways">핵심 요약 9 · p.15</a></li>
-            <li><strong>규제:</strong> 중국의 AI 규정은 미성년자 보호 장치를 요구한다. 구체적인 내용은 나오지 않는다. <a class="ref" href="#sq7">SQ7 · p.67</a></li>
-            <li><strong>잠정 처방:</strong> AI와 사람의 행동·문화가 함께 어떻게 변하는지 연구가 쌓이면, 건강한 사용 지침과 함께 아동·학생의 사용 제한을 권할 수 있을 것이라고 본다. <a class="ref" href="#sq3">SQ3 · p.46</a></li>
+            <li><strong>서론의 문제 제기:</strong> 아이들이 AI 동반자를 일상으로 들이면서 발달과 심리에 미칠 영향에 대한 심각한 우려가 나온다. <span class="ref"><a href="#intro">서론</a> · <a href="ai100_report_2026.pdf#page=20" target="_blank" rel="noopener" title="원문 PDF 20쪽 열기">p.20</a></span></li>
+            <li><strong>친구를 흉내 내는 장난감:</strong> 어린아이용 AI 장난감과 동반자 챗봇이 친구처럼 굴도록 만들어져 팔린다. 지난 대화를 기억하고, 애정을 표현하고, 아이의 관심사에 맞춘다. <span class="ref"><a href="#sq3">SQ3</a> · <a href="ai100_report_2026.pdf#page=45" target="_blank" rel="noopener" title="원문 PDF 45쪽 열기">p.45</a></span></li>
+            <li><strong>약한 안전장치:</strong> 초기 증거로는 대화가 길어지면 부적절한 응답이 나온다. 맞장구치는 설계가 <mark>사회성 발달의 결정적 시기</mark>에 어떤 영향을 줄지 묻고, 인지와 행동에 미치는 영향은 연구가 훨씬 더 필요하다는 2026 국제 AI 안전 보고서를 인용한다. <span class="ref"><a href="#sq3">SQ3</a> · <a href="ai100_report_2026.pdf#page=45" target="_blank" rel="noopener" title="원문 PDF 45쪽 열기">p.45</a></span></li>
+            <li><strong>성인 실험이 주는 경고:</strong> 아첨하는 AI는 화해 의지를 낮추고 내가 옳다는 확신을 키우는데, 사람들은 그런 AI를 더 믿는다. 결정을 AI에 맡기면 정직하게 행동하는 비율이 95%에서 12%까지 떨어졌다. 보고서는 이런 효과가 아동·청소년에게 특히 우려된다고 본다. <span class="ref"><a href="#sq3">SQ3</a> · <a href="ai100_report_2026.pdf#page=45" target="_blank" rel="noopener" title="원문 PDF 45쪽 열기">p.45</a></span></li>
+            <li><strong>청소년 계정 감사:</strong> 청소년으로 설정한 ChatGPT 계정에 자살, 약물 남용, 자해를 부추기는 상세한 내용이 쉽게 노출됐다. 이런 피해와 이점을 연구하려 해도 데이터 품질이 낮아 진척이 더디다. <span class="ref"><a href="#sq11">SQ11</a> · <a href="ai100_report_2026.pdf#page=92" target="_blank" rel="noopener" title="원문 PDF 92쪽 열기">p.92~93</a></span></li>
+            <li><strong>소셜미디어의 전례:</strong> 소셜미디어가 10대의 정신건강에 광범위한 문제를 일으켰듯, AI도 예측하기 어려운 사회적 해악을 낳을 수 있다. <span class="ref"><a href="#sq10">SQ10</a> · <a href="ai100_report_2026.pdf#page=83" target="_blank" rel="noopener" title="원문 PDF 83쪽 열기">p.83</a></span></li>
+            <li><strong>대중의 걱정:</strong> 아동 발달, 인지 능력, 정신건강에 대한 우려가 커지고 있다. <span class="ref"><a href="#takeaways">핵심 요약 9</a> · <a href="ai100_report_2026.pdf#page=15" target="_blank" rel="noopener" title="원문 PDF 15쪽 열기">p.15</a></span></li>
+            <li><strong>규제:</strong> 중국의 AI 규정은 미성년자 보호 장치를 요구한다. 구체적인 내용은 나오지 않는다. <span class="ref"><a href="#sq7">SQ7</a> · <a href="ai100_report_2026.pdf#page=67" target="_blank" rel="noopener" title="원문 PDF 67쪽 열기">p.67</a></span></li>
+            <li><strong>잠정 처방:</strong> AI와 사람의 행동·문화가 함께 어떻게 변하는지 연구가 쌓이면, 건강한 사용 지침과 함께 아동·학생의 사용 제한을 권할 수 있을 것이라고 본다. <span class="ref"><a href="#sq3">SQ3</a> · <a href="ai100_report_2026.pdf#page=46" target="_blank" rel="noopener" title="원문 PDF 46쪽 열기">p.46</a></span></li>
           </ul>
         </article>
 
@@ -756,14 +768,14 @@ footer p{margin:0 0 8px;max-width:60em;line-height:1.7}
           <h3>AI 리터러시와 대중 교육</h3>
           <p class="oneline">교육은 AI 공론장에서 중요한 역할을 한다. 하지만 리터러시 교육은 늘어난 만큼 품질 편차도 크다.</p>
           <ul>
-            <li><strong>늘어나는 리터러시 교육:</strong> 모든 연령대에서 학교 교육과정, 직장 연수, 정부·시민사회·연구기관의 대중용 자료가 늘고 있다. 예로 Day of AI(학교), 미국 노동부의 Make America AI-Ready(직장), 유럽의 Elements of AI(일반 대중)를 든다. <a class="ref" href="#sq6">SQ6 · p.64</a></li>
-            <li><strong>품질 편차:</strong> 이런 교육은 질, 깊이, 접근성이 제각각이다. 교육과정의 내용이나 효과는 다루지 않는다. <a class="ref" href="#sq6">SQ6 · p.64</a></li>
-            <li><strong>교육자의 목소리:</strong> 기술 변화를 사회·정치·문화 변화와 이어 설명하려면 기자, 사회과학자, 윤리학자, 시민사회, 영향받는 공동체와 함께 <mark>교육자</mark>도 권위 있는 목소리에 포함해야 한다. 지금은 언론이 업계 전문가부터 찾아 '업계 주도 논쟁'이 됐다. <a class="ref" href="#sq6">SQ6 · p.65</a></li>
-            <li><strong>쏠린 정보원:</strong> 2024년 뉴욕타임스 석 달 치 AI 기사에서 인용된 사람 대부분이 테크 업계 종사자였다. <a class="ref" href="#sq6">SQ6 · p.64</a></li>
-            <li><strong>서사의 힘:</strong> 'AI가 일자리를 대체한다'는 이야기에 노출되면 정치 참여 의지가 떨어진다. AI를 이해도 통제도 할 수 없는 것처럼 말하는 기업 경영진이 이런 인식을 키운다. <a class="ref" href="#sq6">SQ6 · p.64</a></li>
-            <li><strong>Z세대의 피로:</strong> 미국 18~29세는 어느 세대보다 AI를 많이 쓰지만 1년 전보다 덜 희망적이다. 2026년 5월 애리조나대 졸업식에서는 에릭 슈미트가 AI를 언급하자 야유가 나왔다. <a class="ref" href="#sq6">SQ6 · p.62</a></li>
-            <li><strong>앞으로:</strong> 대중의 이해가 AI 도입과 거버넌스 참여에 점점 더 중요해진다. HCI, 행동과학, 위험 커뮤니케이션, 기술사회학이 쓸 만한 틀과 방법을 준다고 본다. <a class="ref" href="#sq6">SQ6 · p.65</a></li>
-            <li><strong>만드는 쪽의 교육:</strong> 전문 교육 없이도 AI 시스템을 만들 수 있게 되면서, 편향을 의식한다는 보장이 없는 개발자가 크게 늘었다. 대책은 제시하지 않는다. <a class="ref" href="#sq10">SQ10 · p.81</a></li>
+            <li><strong>늘어나는 리터러시 교육:</strong> 모든 연령대에서 학교 교육과정, 직장 연수, 정부·시민사회·연구기관의 대중용 자료가 늘고 있다. 예로 Day of AI(학교), 미국 노동부의 Make America AI-Ready(직장), 유럽의 Elements of AI(일반 대중)를 든다. <span class="ref"><a href="#sq6">SQ6</a> · <a href="ai100_report_2026.pdf#page=64" target="_blank" rel="noopener" title="원문 PDF 64쪽 열기">p.64</a></span></li>
+            <li><strong>품질 편차:</strong> 이런 교육은 질, 깊이, 접근성이 제각각이다. 교육과정의 내용이나 효과는 다루지 않는다. <span class="ref"><a href="#sq6">SQ6</a> · <a href="ai100_report_2026.pdf#page=64" target="_blank" rel="noopener" title="원문 PDF 64쪽 열기">p.64</a></span></li>
+            <li><strong>교육자의 목소리:</strong> 기술 변화를 사회·정치·문화 변화와 이어 설명하려면 기자, 사회과학자, 윤리학자, 시민사회, 영향받는 공동체와 함께 <mark>교육자</mark>도 권위 있는 목소리에 포함해야 한다. 지금은 언론이 업계 전문가부터 찾아 '업계 주도 논쟁'이 됐다. <span class="ref"><a href="#sq6">SQ6</a> · <a href="ai100_report_2026.pdf#page=65" target="_blank" rel="noopener" title="원문 PDF 65쪽 열기">p.65</a></span></li>
+            <li><strong>쏠린 정보원:</strong> 2024년 뉴욕타임스 석 달 치 AI 기사에서 인용된 사람 대부분이 테크 업계 종사자였다. <span class="ref"><a href="#sq6">SQ6</a> · <a href="ai100_report_2026.pdf#page=64" target="_blank" rel="noopener" title="원문 PDF 64쪽 열기">p.64</a></span></li>
+            <li><strong>서사의 힘:</strong> 'AI가 일자리를 대체한다'는 이야기에 노출되면 정치 참여 의지가 떨어진다. AI를 이해도 통제도 할 수 없는 것처럼 말하는 기업 경영진이 이런 인식을 키운다. <span class="ref"><a href="#sq6">SQ6</a> · <a href="ai100_report_2026.pdf#page=64" target="_blank" rel="noopener" title="원문 PDF 64쪽 열기">p.64</a></span></li>
+            <li><strong>Z세대의 피로:</strong> 미국 18~29세는 어느 세대보다 AI를 많이 쓰지만 1년 전보다 덜 희망적이다. 2026년 5월 애리조나대 졸업식에서는 에릭 슈미트가 AI를 언급하자 야유가 나왔다. <span class="ref"><a href="#sq6">SQ6</a> · <a href="ai100_report_2026.pdf#page=62" target="_blank" rel="noopener" title="원문 PDF 62쪽 열기">p.62</a></span></li>
+            <li><strong>앞으로:</strong> 대중의 이해가 AI 도입과 거버넌스 참여에 점점 더 중요해진다. HCI, 행동과학, 위험 커뮤니케이션, 기술사회학이 쓸 만한 틀과 방법을 준다고 본다. <span class="ref"><a href="#sq6">SQ6</a> · <a href="ai100_report_2026.pdf#page=65" target="_blank" rel="noopener" title="원문 PDF 65쪽 열기">p.65</a></span></li>
+            <li><strong>만드는 쪽의 교육:</strong> 전문 교육 없이도 AI 시스템을 만들 수 있게 되면서, 편향을 의식한다는 보장이 없는 개발자가 크게 늘었다. 대책은 제시하지 않는다. <span class="ref"><a href="#sq10">SQ10</a> · <a href="ai100_report_2026.pdf#page=81" target="_blank" rel="noopener" title="원문 PDF 81쪽 열기">p.81</a></span></li>
           </ul>
         </article>
 
@@ -773,18 +785,18 @@ footer p{margin:0 0 8px;max-width:60em;line-height:1.7}
           <p class="oneline">대학은 연구 자원과 인재 모두에서 산업계에 밀리고, 신입이 경험을 쌓던 사다리도 흔들린다.</p>
           <h4>대학과 연구자 양성</h4>
           <ul>
-            <li><strong>누가 길러내나:</strong> AI 박사의 산업계 진출이 21%(2004)에서 약 70%(2020)로 늘었다. 연산 자원, 멈춘 학계 채용, 1억 달러가 넘는 보상이 이유다. 다음 세대 연구자를 누가 기를지는 답하지 않는다. <a class="ref" href="#sq8">SQ8 · p.71~72</a></li>
-            <li><strong>대학이 감당 못 할 비용:</strong> 프런티어 모델용 인프라는 극소수 부유한 대학 말고는 감당할 수 없고, 전기료만으로도 대부분의 학계 연구 예산을 넘는다. 2021년 이후 학계의 연산 접근성은 산업계 대비 더 줄었다. <a class="ref" href="#dd2">심층 분석 2 · p.108</a> <a class="ref" href="#retro">회고 · p.123</a></li>
-            <li><strong>그래도 대학:</strong> 대학은 기초 연구, 기업은 개발을 맡는 분업이 커지고 있다. 획기적 발명의 아이디어는 여전히 대학에서 나올 것이라는 경제학자들의 전망도 인용한다. <a class="ref" href="#sq8">SQ8 · p.72</a></li>
-            <li><strong>대학원:</strong> 문헌 검토와 데이터 종합 방식이 바뀌고 있다. <a class="ref" href="#sq8">SQ8 · p.72</a></li>
+            <li><strong>누가 길러내나:</strong> AI 박사의 산업계 진출이 21%(2004)에서 약 70%(2020)로 늘었다. 연산 자원, 멈춘 학계 채용, 1억 달러가 넘는 보상이 이유다. 다음 세대 연구자를 누가 기를지는 답하지 않는다. <span class="ref"><a href="#sq8">SQ8</a> · <a href="ai100_report_2026.pdf#page=71" target="_blank" rel="noopener" title="원문 PDF 71쪽 열기">p.71~72</a></span></li>
+            <li><strong>대학이 감당 못 할 비용:</strong> 프런티어 모델용 인프라는 극소수 부유한 대학 말고는 감당할 수 없고, 전기료만으로도 대부분의 학계 연구 예산을 넘는다. 2021년 이후 학계의 연산 접근성은 산업계 대비 더 줄었다. <span class="ref"><a href="#dd2">심층 분석 2</a> · <a href="ai100_report_2026.pdf#page=108" target="_blank" rel="noopener" title="원문 PDF 108쪽 열기">p.108</a></span> <span class="ref"><a href="#retro">회고</a> · <a href="ai100_report_2026.pdf#page=123" target="_blank" rel="noopener" title="원문 PDF 123쪽 열기">p.123</a></span></li>
+            <li><strong>그래도 대학:</strong> 대학은 기초 연구, 기업은 개발을 맡는 분업이 커지고 있다. 획기적 발명의 아이디어는 여전히 대학에서 나올 것이라는 경제학자들의 전망도 인용한다. <span class="ref"><a href="#sq8">SQ8</a> · <a href="ai100_report_2026.pdf#page=72" target="_blank" rel="noopener" title="원문 PDF 72쪽 열기">p.72</a></span></li>
+            <li><strong>대학원:</strong> 문헌 검토와 데이터 종합 방식이 바뀌고 있다. <span class="ref"><a href="#sq8">SQ8</a> · <a href="ai100_report_2026.pdf#page=72" target="_blank" rel="noopener" title="원문 PDF 72쪽 열기">p.72</a></span></li>
           </ul>
           <h4>첫 일자리와 진로</h4>
           <ul>
-            <li><strong>학위의 의미:</strong> 수십 년간 컴퓨터공학 학사는 안정적인 일자리로 가는 '여권'이었다. 보고서는 이를 과거형으로 쓴다. <a class="ref" href="#sq9">SQ9 · p.73</a></li>
-            <li><strong>주니어의 성장:</strong> AI가 일을 대신하면 주니어 프로그래머가 시니어로 크지 못할 수 있다고 우려한다. 해법은 제시하지 않는다. <a class="ref" href="#sq9">SQ9 · p.74</a></li>
-            <li><strong>22~25세 고용 감소:</strong> AI 노출 직군에서 22~25세 고용이 추세 대비 약 19% 줄었다. 다른 연령대와 비노출 직군은 늘었고, 기업들이 젊은 인력 채용을 줄인 신호도 있다. <a class="ref" href="#sq10">SQ10 · p.86</a> <a class="ref" href="#retro">회고 · p.120</a></li>
-            <li><strong>반대 결과도:</strong> AI를 가장 많이 쓰는 기업들은 신입 고용이 12% 늘었다는 연구도 함께 소개한다. 다만 오래가지 않을 수 있다는 단서를 단다. <a class="ref" href="#sq10">SQ10 · p.87</a></li>
-            <li><strong>손기술 직종:</strong> 배관이나 가정용 전기 공사 같은 직종은 당분간 AI가 닿지 않을 것으로 본다. <a class="ref" href="#intro">서론 · p.20</a></li>
+            <li><strong>학위의 의미:</strong> 수십 년간 컴퓨터공학 학사는 안정적인 일자리로 가는 '여권'이었다. 보고서는 이를 과거형으로 쓴다. <span class="ref"><a href="#sq9">SQ9</a> · <a href="ai100_report_2026.pdf#page=73" target="_blank" rel="noopener" title="원문 PDF 73쪽 열기">p.73</a></span></li>
+            <li><strong>주니어의 성장:</strong> AI가 일을 대신하면 주니어 프로그래머가 시니어로 크지 못할 수 있다고 우려한다. 해법은 제시하지 않는다. <span class="ref"><a href="#sq9">SQ9</a> · <a href="ai100_report_2026.pdf#page=74" target="_blank" rel="noopener" title="원문 PDF 74쪽 열기">p.74</a></span></li>
+            <li><strong>22~25세 고용 감소:</strong> AI 노출 직군에서 22~25세 고용이 추세 대비 약 19% 줄었다. 다른 연령대와 비노출 직군은 늘었고, 기업들이 젊은 인력 채용을 줄인 신호도 있다. <span class="ref"><a href="#sq10">SQ10</a> · <a href="ai100_report_2026.pdf#page=86" target="_blank" rel="noopener" title="원문 PDF 86쪽 열기">p.86</a></span> <span class="ref"><a href="#retro">회고</a> · <a href="ai100_report_2026.pdf#page=120" target="_blank" rel="noopener" title="원문 PDF 120쪽 열기">p.120</a></span></li>
+            <li><strong>반대 결과도:</strong> AI를 가장 많이 쓰는 기업들은 신입 고용이 12% 늘었다는 연구도 함께 소개한다. 다만 오래가지 않을 수 있다는 단서를 단다. <span class="ref"><a href="#sq10">SQ10</a> · <a href="ai100_report_2026.pdf#page=87" target="_blank" rel="noopener" title="원문 PDF 87쪽 열기">p.87</a></span></li>
+            <li><strong>손기술 직종:</strong> 배관이나 가정용 전기 공사 같은 직종은 당분간 AI가 닿지 않을 것으로 본다. <span class="ref"><a href="#intro">서론</a> · <a href="ai100_report_2026.pdf#page=20" target="_blank" rel="noopener" title="원문 PDF 20쪽 열기">p.20</a></span></li>
           </ul>
         </article>
 
@@ -793,10 +805,10 @@ footer p{margin:0 0 8px;max-width:60em;line-height:1.7}
           <h3>형평성과 접근</h3>
           <p class="oneline">누구나 인류의 지식에 닿을 수 있다는 기대가 있지만, 누가 쓰고 어떻게 평가받는지에는 이미 격차가 있다.</p>
           <ul>
-            <li><strong>기대:</strong> 결론은 AI의 기회로 누구나 인류가 쌓은 지식 전체에 닿을 수 있게 되는 것을 꼽는다. <a class="ref" href="#conclusion">결론 · p.115</a></li>
-            <li><strong>성별 격차:</strong> 13만 6천여 명을 모은 메타분석에서 여성은 남성보다 생성형 AI를 22% 덜 쓴다. 접근 기회가 같아도 격차가 남아, 사회·문화·제도적 마찰이 크다고 본다. <a class="ref" href="#sq10">SQ10 · p.87</a></li>
-            <li><strong>역량 페널티:</strong> AI 사용은 코드 품질 평가에는 영향이 없었지만 작성자 평가는 바꿨다. AI를 쓴 여성 엔지니어는 남성보다 역량 평가가 깎일 확률이 두 배였다. <a class="ref" href="#sq10">SQ10 · p.87</a></li>
-            <li><strong>낮아지는 문턱:</strong> 효율 기법 덕에 작고 싼 모델이 프런티어 성능에 다가가면서 최신 기법에 접근할 수 있는 폭이 넓어졌다. <a class="ref" href="#dd2">심층 분석 2 · p.112</a></li>
+            <li><strong>기대:</strong> 결론은 AI의 기회로 누구나 인류가 쌓은 지식 전체에 닿을 수 있게 되는 것을 꼽는다. <span class="ref"><a href="#conclusion">결론</a> · <a href="ai100_report_2026.pdf#page=115" target="_blank" rel="noopener" title="원문 PDF 115쪽 열기">p.115</a></span></li>
+            <li><strong>성별 격차:</strong> 13만 6천여 명을 모은 메타분석에서 여성은 남성보다 생성형 AI를 22% 덜 쓴다. 접근 기회가 같아도 격차가 남아, 사회·문화·제도적 마찰이 크다고 본다. <span class="ref"><a href="#sq10">SQ10</a> · <a href="ai100_report_2026.pdf#page=87" target="_blank" rel="noopener" title="원문 PDF 87쪽 열기">p.87</a></span></li>
+            <li><strong>역량 페널티:</strong> AI 사용은 코드 품질 평가에는 영향이 없었지만 작성자 평가는 바꿨다. AI를 쓴 여성 엔지니어는 남성보다 역량 평가가 깎일 확률이 두 배였다. <span class="ref"><a href="#sq10">SQ10</a> · <a href="ai100_report_2026.pdf#page=87" target="_blank" rel="noopener" title="원문 PDF 87쪽 열기">p.87</a></span></li>
+            <li><strong>낮아지는 문턱:</strong> 효율 기법 덕에 작고 싼 모델이 프런티어 성능에 다가가면서 최신 기법에 접근할 수 있는 폭이 넓어졌다. <span class="ref"><a href="#dd2">심층 분석 2</a> · <a href="ai100_report_2026.pdf#page=112" target="_blank" rel="noopener" title="원문 PDF 112쪽 열기">p.112</a></span></li>
           </ul>
         </article>
       </div>
@@ -807,7 +819,7 @@ footer p{margin:0 0 8px;max-width:60em;line-height:1.7}
 
 <footer>
   <div class="wrap">
-    <p>원문: Michael Wooldridge 외, “AI Goes Mainstream: The Scaling Era and the Rise of Generative AI”, AI100 2026 Study Panel Report, Stanford University, 2026년 11월 (CC BY-ND 4.0).</p>
+    <p>원문: Michael Wooldridge 외, “AI Goes Mainstream: The Scaling Era and the Rise of Generative AI”, AI100 2026 Study Panel Report, Stanford University, 2026년 11월 (CC BY-ND 4.0). <a href="ai100_report_2026.pdf" target="_blank" rel="noopener">원문 PDF 열기</a></p>
     <p>이 페이지는 원문을 읽고 한국어로 요약한 것이며 공식 번역이 아니다. 정확한 인용이 필요하면 원문을 확인할 것.</p>
   </div>
 </footer>
